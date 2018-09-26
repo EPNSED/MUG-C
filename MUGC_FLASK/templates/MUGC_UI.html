@@ -28,13 +28,13 @@
                                 <div class="col-6">
                                         <div class="container">
                                                 <form action="#" method="POST">
-                                                        <p>pdb ID: <input type="text" placeholder="1b8c.pdb" aria-label="pdbID" >  <br>
+                                                        <p>pdb ID: <input type="text" placeholder="1b8c.pdb" aria-label="pdbID" id="pdbFileName" >  <br>
                                                                 OR <br>
                                                         pdb file: <input type="file" name="fileToUpload" id="pdbFile"></p>
                                                         <hr>
-                                                        <input type="radio" name="gender" value="male"> X-ray <br>
-                                                          <input type="radio" name="gender" value="female"> NMR <br>
-                                                          <input type="radio" name="gender" value="other"> Other <br>
+                                                        <input type="radio" name="entry_type_X-ray" label="entryType" value="X-ray"> X-ray <br>
+                                                          <input type="radio" name="entry_type_NMR" label="entryType" value="NMR"> NMR <br>
+                                                          <input type="radio" name="entry_type_Other" label="entryType" value="other"> Other <br>
                                                         <p>email: <input type="email" placeholder="xxx@xxx.edu" aria-label="email"></p>
                                                         <hr>
                                                         <input class="btn btn-primary" type="submit" value="Submit">
