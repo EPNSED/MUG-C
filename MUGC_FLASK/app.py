@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def add():
+def mugc_home():
     return render_template('MUGC_UI.html')
 
 if __name__ == '__main__':
