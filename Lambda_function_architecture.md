@@ -2,7 +2,7 @@
 
 ##Objective: 
 Create a flask application(Lambda Function, Front-end component) that collects a pdb file and a email address for the user.
-    Then stores the data in Amazon s3 storage with metadat of session Id and email, and the pdb file. 
+    Then stores the data in Amazon s3 storage with metadata of session Id and email, and the pdb file. 
     Once the data is stored set up Controller component(Celery asynch Worker and waits for computation to be finished and waits for Result complete data event)
     that takes input data and feedsit into GSU hpc computational servers running MUGC java application that takes in the pdb file, 
     does its computation then output data files(List.txt of binding sites) and (pdb file).
@@ -23,6 +23,8 @@ Create a flask application(Lambda Function, Front-end component) that collects a
 5. AWS Lambda Email Function Method
 
 ##Architecture
+
+export: export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/apps/Python-3.7.1rc1/Debug-Build/lib/
 
 
 

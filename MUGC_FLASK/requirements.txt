@@ -1,12 +1,16 @@
 amqp==2.3.2
+awscli==1.16.23
 backports.ssl-match-hostname==3.5.0.1
 billiard==3.5.0.4
 blivet==0.61.15.69
+boto3==1.9.13
+botocore==1.12.13
 Brlapi==0.6.0
 celery==4.2.1
 cffi==1.6.0
 chardet==2.2.1
 click==6.7
+colorama==0.3.9
 configobj==4.7.2
 configshell-fb==1.1.23
 coverage==3.6b3
@@ -15,6 +19,7 @@ cupshelpers==1.0
 decorator==3.4.0
 di==0.3
 dnspython==1.15.0
+docutils==0.14
 enum==0.4.7
 enum34==1.0.4
 ethtool==0.8
@@ -22,6 +27,7 @@ firstboot==19.5
 Flask==1.0.2
 Flask-WTF==0.14.2
 fros==1.0
+futures==3.2.0
 gssapi==1.2.0
 idna==2.4
 iniparse==0.4
@@ -35,6 +41,7 @@ IPy==0.75
 itsdangerous==0.24
 javapackages==1.0.0
 Jinja2==2.10
+jmespath==0.9.3
 jwcrypto==0.4.2
 kitchen==1.1.1
 kmod==0.1
@@ -63,7 +70,7 @@ pyparsing==1.5.6
 pyparted==3.9
 pysmbc==1.0.13
 python-augeas==0.5.0
-python-dateutil==1.5
+python-dateutil==2.7.3
 python-dmidecode==3.10.13
 python-ldap==2.4.15
 python-linux-procfs==0.4.9
@@ -77,7 +84,9 @@ pyxattr==0.5.1
 PyYAML==3.10
 qrcode==5.0.1
 requests==2.6.0
+rsa==3.4.2
 rtslib-fb==2.1.63
+s3transfer==0.1.13
 schedutils==0.4
 seobject==0.1
 sepolicy==1.1
@@ -88,7 +97,7 @@ slip.dbus==0.4.0
 SSSDConfig==1.16.0
 targetcli-fb===2.1.fb46
 urlgrabber==3.10
-urllib3==1.10.2
+urllib3==1.23
 urwid==1.1.1
 vine==1.1.4
 virtualenv==16.0.0
