@@ -11,14 +11,15 @@ Create a flask application(Lambda Function, Front-end component) that collects a
 
 ##Requirements
 1. [AWS Lambda](https://aws.amazon.com/lambda/)
-..* [AWS s3](https://aws.amazon.com/sdk-for-python/)
+    * [AWS s3](https://aws.amazon.com/sdk-for-python/)
 2. Flask Front-End
-..* [Fullstack Flask](https://www.fullstackpython.com/aws-lambda.html)
-..* [Microservices](https://www.gun.io/blog/serverless-microservices-with-zappa-and-flask)
+    * [Fullstack Flask](https://www.fullstackpython.com/aws-lambda.html)
+    * [Microservices](https://www.gun.io/blog/serverless-microservices-with-zappa-and-flask)
 3. [Celery Asynch Worker]()
-⋅⋅* Data Handler Methods and Data Event Handler Methods
+    * Data Handler Methods and Data Event Handler Methods
+    * [ariavata API](https://airavata.readthedocs.io/en/latest/technical-documentation/airavata-api/)
 4. MUGC Java Application
-⋅⋅* [Science Gateway API](https://help.rs.gsu.edu/display/PD/ACoRE)
+    * [ACoRE](https://help.rs.gsu.edu/display/PD/ACoRE)
 5. AWS Lambda Email Function Method
 
 ##Architecture
