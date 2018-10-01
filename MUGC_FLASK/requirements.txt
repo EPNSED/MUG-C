@@ -6,7 +6,6 @@ blivet==0.61.15.69
 boto3==1.9.13
 botocore==1.12.13
 Brlapi==0.6.0
-celery==4.2.1
 cffi==1.6.0
 chardet==2.2.1
 click==6.7
