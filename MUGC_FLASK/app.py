@@ -3,7 +3,7 @@ from wtforms import Form, StringField, SubmitField, RadioField
 from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import Required, Optional, Email
 from werkzeug import secure_filename
-import requests
+import urllib
 import boto3
 import uuid
 import os
@@ -28,14 +28,16 @@ def getPDB(pID,pFile):
     resultFile = None
     if pID:
         pdb_url = 'https://files.rcsb.org/download/'+pID
-        resultFile = requests.get(pdb_url) # or the url
-        return resultFile
+        path = app.config['UPLOAD_FOLDER'] + pID
+        resultFile = urllib.urlretrieve(pdb_url, path)  # or the url
+        print path
+        return path
     else:
         resultFile = app.config['UPLOAD_FOLDER'] + pFile
         return resultFile
 def getS3Key(pID,pFile):
     key = None
-    if pID != None and pFile == None:
+    if pID:
         key = pID
         return key
     else:
@@ -65,8 +67,8 @@ def inputData():
       entryType = data['entryType']
       userEmail = data['email'] 
       # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
-      pdbData = open(getPDB(pdbID,pdbFile), 'rb')
-      s3.Bucket('mugctest').put_object(Key=getS3Key(pdbID,pdbFile), Body=getPDB(pdbID,pdbFile), Metadata={
+      pdbData = getPDB(pdbID,pdbFile)
+      s3.Bucket('mugctest').put_object(Key=getS3Key(pdbID,pdbFile), Body=pdbData, Metadata={
         'sessionID': sessionID,
         'pdbID': pdbID,
         'entryType': entryType,
