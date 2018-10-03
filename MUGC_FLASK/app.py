@@ -3,9 +3,11 @@ from wtforms import Form, StringField, SubmitField, RadioField
 from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import Required, Optional, Email
 from werkzeug import secure_filename
+import requests
 import boto3
 import uuid
 import os
+import io
 # import subprocess
 # from subprocess import Popen, PIPE
 
@@ -24,13 +26,21 @@ class InputForm(Form):
 # Get pdb file from API if pdbid and no file then get the file with request(http) else upload file from user input
 def getPDB(pID,pFile):
     resultFile = None
-    if pID != None and pFile == None:
+    if pID:
         pdb_url = 'https://files.rcsb.org/download/'+pID
-        resultFile = pdb_url # or request(pdb_url)
+        resultFile = requests.get(pdb_url) # or the url
         return resultFile
     else:
         resultFile = app.config['UPLOAD_FOLDER'] + pFile
         return resultFile
+def getS3Key(pID,pFile):
+    key = None
+    if pID != None and pFile == None:
+        key = pID
+        return key
+    else:
+        key = pFile
+        return key
 
 @app.route('/')
 def mugc_home():
@@ -49,16 +59,14 @@ def inputData():
       entryType = None
       userEmail = None
       # get User-Defined Metadata 
-      sessionID = uuid.uuid4()
+      sessionID = str(uuid.uuid4()).encode()
       pdbID = data['pdbID']
       pdbFile = data['pdbFile']
       entryType = data['entryType']
-      userEmail = data['email']
-      print data 
-      # create the handler method for storing the pdb file in s3
-      s3.meta.client.upload_file(getPDB(pdbID,pdbFile), 'mugctest', userEmail)
-      # Add metadata to s3 object: pdbFile
-      s3.Object('mugctest', userEmail).put(Metadata={
+      userEmail = data['email'] 
+      # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
+      pdbData = open(getPDB(pdbID,pdbFile), 'rb')
+      s3.Bucket('mugctest').put_object(Key=getS3Key(pdbID,pdbFile), Body=getPDB(pdbID,pdbFile), Metadata={
         'sessionID': sessionID,
         'pdbID': pdbID,
         'entryType': entryType,
