@@ -1,6 +1,6 @@
-# MUGC AWS Lambda functions Architecture 
+# MUGC AWS Architecture 
 
-##Objective: 
+## Objective: 
 Create a flask application(Front-end component) that collects a pdb file and a email address for the user.
     Then stores the data in Amazon s3 storage with metadata of session Id and email, and the pdb file. The Flask app is deloped with Zappa. 
     Once the data is stored set up Controller component(API gateway or SQS) That send s the data to the ariavata API and waits for computation to be finished and waits for Result complete data event)
@@ -9,7 +9,7 @@ Create a flask application(Front-end component) that collects a pdb file and a e
     Then use the science gateway api to send the output data to the Amazon s3 bucket with Session ID, Email, pdb file and Results tag. 
     Then the AWS API Gateway will use the results data to email the user the recipt and a link to the website with feature 8(Implementation of view pdb file in UI).
 
-##Requirements
+## Requirements
 1. [Zappa](https://www.zappa.io/)
     * Deploy the app with Zappa
     ```
@@ -29,5 +29,5 @@ Create a flask application(Front-end component) that collects a pdb file and a e
     * [ACoRE](https://help.rs.gsu.edu/display/PD/ACoRE)
 6. [AWS Simple Email Service](https://aws.amazon.com/ses/)
 
-##Process
+## Process
 
