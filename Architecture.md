@@ -12,6 +12,9 @@ Create a flask application(Front-end component) that collects a pdb file and a e
 ##Requirements
 1. [Zappa](https://www.zappa.io/)
     * Deploy the app with Zappa
+    ```
+    zappa init 
+    ```
 2. [AWS Lambda](https://aws.amazon.com/lambda/)
     * [AWS s3](https://aws.amazon.com/sdk-for-python/)
     * [AWS Async Capabilities](https://docs.aws.amazon.com/aws-technical-content/latest/microservices-on-aws/asynchronous-communication-and-lightweight-messaging.html)
