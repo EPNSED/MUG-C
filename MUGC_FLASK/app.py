@@ -75,7 +75,7 @@ def inputData():
         'userEmail': userEmail
         })
       print data 
-      return 'Create AWS API Gate way event handlers'
+      return 'Creating AWS API Gate way event handler, Check your Email!'
 
 if __name__ == '__main__':
     app.run(debug = True)
