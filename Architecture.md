@@ -2,7 +2,7 @@
 
 ## Objective: 
 Create a flask application(Front-end component) that collects a pdb file and a email address for the user.
-    Then stores the data in Amazon s3 storage with metadata of session Id and email, and the pdb file. The Flask app is deloped with Zappa. 
+    Then stores the data in Amazon s3 storage with metadata of session Id and email, and the pdb file. The Flask app is deloped with Zappa. s3 Bucket triggers  api gate way component with a lamba function.
     Once the data is stored set up Controller component(API gateway or SQS) That send s the data to the ariavata API and waits for computation to be finished and waits for Result complete data event)
     that takes input data and feeds it into GSU hpc computational servers running MUGC java application that takes in the pdb file, 
     does its computation then output data files(List.txt of binding sites) and (pdb file).
@@ -30,4 +30,10 @@ Create a flask application(Front-end component) that collects a pdb file and a e
 6. [AWS Simple Email Service](https://aws.amazon.com/ses/)
 
 ## Process
+```
+export PATH=/apps/Python-3.6.6/Debug_Build/bin/:$PATH
+```
 
+```
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/apps/Python-3.6.6/Debug_Build/lib
+```
