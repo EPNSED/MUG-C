@@ -3,7 +3,7 @@ from wtforms import Form, StringField, SubmitField, RadioField
 from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import Required, Optional, Email
 from werkzeug import secure_filename
-import urllib
+import urllib.request
 import boto3
 import uuid
 import os
@@ -29,8 +29,8 @@ def getPDB(pID,pFile):
     if pID:
         pdb_url = 'https://files.rcsb.org/download/'+pID
         path = app.config['UPLOAD_FOLDER'] + pID
-        resultFile = urllib.urlretrieve(pdb_url, path)  # or the url
-        print path
+        resultFile = urllib.request.urlretrieve(pdb_url, path)  # or the url
+        print (path)
         return path
     else:
         resultFile = app.config['UPLOAD_FOLDER'] + pFile
@@ -51,7 +51,7 @@ def mugc_home():
 @app.route('/',methods = ['POST', 'GET'])
 def inputData():
    form = InputForm(request.form)
-   print form.errors
+   print (form.errors)
    if request.method == 'POST':
       #requests
       data = request.form
@@ -65,16 +65,17 @@ def inputData():
       pdbID = data['pdbID']
       pdbFile = data['pdbFile']
       entryType = data['entryType']
-      userEmail = data['email'] 
+      userEmail = data['email']
+      print (userEmail)
       # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
       pdbData = getPDB(pdbID,pdbFile)
       s3.Bucket('mugctest').put_object(Key=getS3Key(pdbID,pdbFile), Body=pdbData, Metadata={
-        'sessionID': sessionID,
-        'pdbID': pdbID,
-        'entryType': entryType,
-        'userEmail': userEmail
+        'sessionID': str(sessionID),
+        'pdbID': str(pdbID),
+        'entryType': str(entryType),
+        'userEmail': str(userEmail)
         })
-      print data 
+      print (data) 
       return 'Creating AWS API Gate way event handler, Check your Email!'
 
 if __name__ == '__main__':
