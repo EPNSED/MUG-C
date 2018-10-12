@@ -38,10 +38,10 @@ def getPDB(pID,pFile):
 def getS3Key(pID,pFile):
     key = None
     if pID:
-        key = pID
+        key = str(uuid.uuid4()) +'/'+ pID
         return key
     else:
-        key = pFile
+        key = str(uuid.uuid4())+'/'+ pFile
         return key
 
 @app.route('/')
