@@ -37,3 +37,5 @@ export PATH=/apps/Python-3.6.6/Debug_Build/bin/:$PATH
 ```
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/apps/Python-3.6.6/Debug_Build/lib
 ```
+
+Add s3 TRigger manually
