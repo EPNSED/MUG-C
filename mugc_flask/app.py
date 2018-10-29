@@ -3,6 +3,7 @@ from wtforms import Form, StringField, SubmitField, RadioField
 from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import Required, Optional, Email
 from werkzeug import secure_filename
+import xml.etree.ElementTree as ET
 import urllib.request
 import boto3
 import uuid
@@ -43,6 +44,37 @@ def getS3Key(pID,pFile):
     else:
         key = str(uuid.uuid4())+'/'+ pFile
         return key
+def checkpdbType(pID,pFile,pType):
+    pdbType = None
+    if pID:
+        #get the xml response then get the pdb's type
+        var_id = pID.split('.pdb')
+        urlptype = "https://www.rcsb.org/pdb/rest/describePDB?structureId="+var_id[0]
+        print(urlptype)
+        response = urllib.request.urlopen(urlptype)
+        xml_str = str(response.read())
+        print(xml_str)
+        if (xml_str.find('X-RAY') != -1): 
+            print ("Contains X-RAY type ")
+        if (xml_str.find('NMR') != -1):
+            print ("Contains NMR")
+        else: 
+            print ("Other type")
+    else:
+        #get the xml response then get the pdb's type
+        var_id = pFile.split('.pdb')
+        urlptype = "https://www.rcsb.org/pdb/rest/describePDB?structureId="+var_id[0]
+        print(urlptype)
+        response = urllib.request.urlopen(urlptype)
+        xml_str = str(response.read())
+        print(xml_str)
+        if (xml_str.find('X-RAY') != -1): 
+            print ("Contains X-RAY type ")
+        if (xml_str.find('NMR') != -1):
+            print ("Contains NMR")
+        else: 
+            print ("Other type")
+    return pdbType
 
 @app.route('/')
 def mugc_home():
@@ -75,7 +107,8 @@ def inputData():
         'entryType': str(entryType),
         'userEmail': str(userEmail)
         })
-      print (data) 
+      print (data)
+      checkpdbType(pdbID,pdbFile,entryType) 
       return 'Creating AWS API Gate way event handler, Check your Email!'
 
 if __name__ == '__main__':
