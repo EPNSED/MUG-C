@@ -24,22 +24,27 @@ class InputForm(Form):
     email = StringField('email', validators=[Email()])
     submit = SubmitField('Submit')
 
-# Get pdb file from API if pdbid and no file then get the file with request(http) else upload file from user input
+# Intial Get pdb file from API if pdbid and no file then get the file with request(http) else upload file from user input
+# If pdbID then create a txt file with the url to the file and attach meta data to it
 def getPDB(pID,pFile):
     resultFile = None
     if pID:
         pdb_url = 'https://files.rcsb.org/download/'+pID
-        path = app.config['UPLOAD_FOLDER'] + pID
-        resultFile = urllib.request.urlretrieve(pdb_url, path)  # or the url
+        path = app.config['UPLOAD_FOLDER'] + 'pdb.txt'
+        #create and write pdb.txt
+        file = open(path,'w')
+        #file.write(pdb_url)
+        #file.close() 
+        resultFile =  path  # path to pdb.txt
         print (path)
-        return path
+        return pdb_url
     else:
         resultFile = app.config['UPLOAD_FOLDER'] + pFile
         return resultFile
 def getS3Key(pID,pFile):
     key = None
     if pID:
-        key = str(uuid.uuid4()) +'/'+ pID
+        key = str(uuid.uuid4()) +'/'+ 'pdb.txt'
         return key
     else:
         key = str(uuid.uuid4())+'/'+ pFile
@@ -92,20 +97,25 @@ def inputData():
       pdbFile = None
       entryType = None
       userEmail = None
+      pdbUrl = None
       # get User-Defined Metadata 
       sessionID = str(uuid.uuid4()).encode()
       pdbID = data['pdbID']
       pdbFile = data['pdbFile']
       entryType = data['entryType']
       userEmail = data['email']
+      pdbUrl = 'https://files.rcsb.org/download/'+pdbID
       print (userEmail)
       # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
       pdbData = getPDB(pdbID,pdbFile)
-      s3.Bucket('mugctest').put_object(Key=getS3Key(pdbID,pdbFile), Body=pdbData, Metadata={
+      s3key = getS3Key(pdbID,pdbFile)
+      s3.Bucket('mugctest').put_object(Key=s3key, Body=pdbData, Metadata={
         'sessionID': str(sessionID),
+        's3key': str(s3key),
         'pdbID': str(pdbID),
         'entryType': str(entryType),
-        'userEmail': str(userEmail)
+        'userEmail': str(userEmail),
+        'pdbUrl': str(pdbUrl)
         })
       print (data)
       checkpdbType(pdbID,pdbFile,entryType) 

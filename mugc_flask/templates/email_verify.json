@@ -1,0 +1,16 @@
+{
+  "TemplateName": "SampleTemplate",
+  "FromEmailAddress": "sender@example.com",
+  "TemplateSubject": "Please confirm your email address for MUG(C)",
+  "TemplateContent": "<html>
+                      <head></head>
+                      <body style="font-family:sans-serif;">
+                        <h1 style="text-align:center">MUG(C) Email confirmation</h1>
+                        <p>The following is an identify conformation for the use of MUG(C) application. Just click the following
+                          link to verify your email address. Once we confirm that 
+                          you're really you, you'll be able to submit jobs to MUG(C).</p>
+                      </body>
+                      </html>",
+  "SuccessRedirectionURL": "https://www.example.com/verifysuccess",
+  "FailureRedirectionURL": "https://www.example.com/verifyfailure"
+}

@@ -21,7 +21,7 @@ Create a flask application(Front-end component) that collects a pdb file and a e
 3. Flask Front-End
     * [Fullstack Flask](https://www.fullstackpython.com/aws-lambda.html)
     * [Microservices](https://www.gun.io/blog/serverless-microservices-with-zappa-and-flask)
-4. [Amazon API Gateway or SQS]()
+4. [Amazon API Gateway]()
     * Send Data to ariavata API
         * Data Handler Methods(GET files form s3 and meta data object) and Data Event Handler Methods(Send data to ariavata API and )
     * [ariavata API](https://airavata.readthedocs.io/en/latest/technical-documentation/airavata-api/)
@@ -30,6 +30,14 @@ Create a flask application(Front-end component) that collects a pdb file and a e
 6. [AWS Simple Email Service](https://aws.amazon.com/ses/)
 
 ## Process
+
+Create the php to python client and Java application connection. please see you understand the php client they sends, as well as the java code the chemistry group sent . so that you can prepare the interface between those segments.
+
+
+
+
+
+
 ```
 export PATH=/apps/Python-3.6.6/Debug_Build/bin/:$PATH
 ```

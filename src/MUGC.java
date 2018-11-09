@@ -4,7 +4,7 @@
 *@version:1.0
 *@date: 2/11/2014 
 *Please cite: Zhao, K., Wang, X., Wong, H. C., Wohlhueter, R., Kirberger, M. P., Chen, G. and Yang, J. J. (2012), 
-*Predicting Ca2+-binding sites using refined carbon clusters. Proteins, 80: 2666–2679. doi: 10.1002/prot.24149
+*Predicting Ca2+-binding sites using refined carbon clusters. Proteins, 80: 2666ï¿½2679. doi: 10.1002/prot.24149
 **/
 
 package src;
