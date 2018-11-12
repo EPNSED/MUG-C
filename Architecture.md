@@ -47,3 +47,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/apps/Python-3.6.6/Debug_Build/lib
 ```
 
 Added s3 TRigger manually
+
+
+https://files.rcsb.org/download/1b8c.pdb 1b8c
