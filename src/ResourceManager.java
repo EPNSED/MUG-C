@@ -16,12 +16,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.charset.Charset;
 
-public class Manager {
+public class ResourceManager {
 	public static void main(String[] args) throws Exception {
         String pdbURL = args[0];
         String pdbID = args[1];
+        System.out.println(pdbURL);
         String currDirectory = System.getProperty("user.dir");
-	    String targetDirectory = currDirectory+"/inputdata/"+ pdbID;
+	    String targetDirectory = currDirectory+"/inputdata/"+ pdbID+".pdb";
         download(pdbURL, targetDirectory);
         writeList(pdbID, currDirectory);
     }
