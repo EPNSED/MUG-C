@@ -3,7 +3,6 @@ from wtforms import Form, StringField, SubmitField, RadioField
 from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import Required, Optional, Email
 from werkzeug import secure_filename
-import xml.etree.ElementTree as ET
 import urllib.request
 import boto3
 import uuid
@@ -49,6 +48,16 @@ def getS3Key(pID,pFile):
     else:
         key = str(uuid.uuid4())+'/'+ pFile
         return key
+#get pdb Id for front end
+def getPDBID(pID,pFile):
+    Id = None
+    if pID:
+        Id = pID
+        return Id
+    else:
+        Id = pFile
+        return Id
+
 def checkpdbType(pID,pFile,pType):
     pdbType = None
     if pID:
@@ -81,6 +90,17 @@ def checkpdbType(pID,pFile,pType):
             print ("Other type")
     return pdbType
 
+def checkpdbValid(pFile):
+    urlptype = "https://www.rcsb.org/pdb/rest/describePDB?structureId="+pFile
+    print(urlptype)
+    response = urllib.request.urlopen(urlptype)
+    pdb = str(response.read()).find('structureId')
+    print(pdb)
+    if pdb != -1:
+        return True
+    else:
+        return False
+
 @app.route('/')
 def mugc_home():
     return render_template('MUGC_UI.html')
@@ -106,20 +126,27 @@ def inputData():
       userEmail = data['email']
       pdbUrl = 'https://files.rcsb.org/download/'+pdbID
       print (userEmail)
-      # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
-      pdbData = getPDB(pdbID,pdbFile)
-      s3key = getS3Key(pdbID,pdbFile)
-      s3.Bucket('mugctest').put_object(Key=s3key, Body=pdbData, Metadata={
-        'sessionID': str(sessionID),
-        's3key': str(s3key),
-        'pdbID': str(pdbID),
-        'entryType': str(entryType),
-        'userEmail': str(userEmail),
-        'pdbUrl': str(pdbUrl)
-        })
+      #confirming User inputs
+      confirm_message = None
+      checkpdbType(pdbID,pdbFile,entryType)
+      valid_pdbfile = checkpdbValid(pdbFile)
+      print (valid_pdbfile)
+      if valid_pdbfile or pdbID !='': 
+        # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
+        pdbData = getPDB(pdbID,pdbFile)
+        s3key = getS3Key(pdbID,pdbFile)
+        s3.Bucket('mugctest').put_object(Key=s3key, Body=pdbData, Metadata={
+            'sessionID': str(sessionID),
+            's3key': str(s3key),
+            'pdbID': str(pdbID),
+            'entryType': str(entryType),
+            'userEmail': str(userEmail),
+            'pdbUrl': str(pdbUrl)
+            })
+        confirm_message = 'Job submitted to MUG(C) succesfully, Check your Email!'
+      else:
+        confirm_message = 'Invalid PDB ID: Please Input the proper PDB file format e.g 1b8c.pdb'
       print (data)
-      checkpdbType(pdbID,pdbFile,entryType) 
-      return 'Creating AWS API Gate way event handler, Check your Email!'
-
+      return render_template('MUGC_Conformation.html', conformationmessage = confirm_message, sessionID = sessionID, pdbID = getPDBID(pdbID, pdbFile), entryType = entryType, userEmail = userEmail)
 if __name__ == '__main__':
     app.run(debug = True)
