@@ -97,7 +97,7 @@ public class MUGC {
 				
 				argsMugC[0] = (String)(PDBIDList.get(i));
 				MugControllCarbonShell runmugc = new MugControllCarbonShell();
-				System.out.println(argsMugC[0]);			
+				//System.out.println(argsMugC[0]);			
 			    runmugc.Predict(argsMugC); 		    		
 				    
 	    	}

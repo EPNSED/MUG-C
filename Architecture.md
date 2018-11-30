@@ -52,3 +52,5 @@ Added s3 TRigger manually
 https://files.rcsb.org/download/1b8c.pdb 1b8c
 
 Create a s3 bucket timer for resources to delete after a week or month.
+
+javac -cp /home/Mashiku/Documents/Dev/MUG-C/ src/MUGC.java

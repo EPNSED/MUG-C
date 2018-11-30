@@ -208,7 +208,7 @@ public class CenterOfMassFilter {
 						
 			for (int l = 0; l < allAtomNoWater.size(); l++){
 				
-				System.out.println(l);
+				//System.out.println(l);
 				rLine=(String) allAtomNoWater.get(l);
 		    	mainChainComX =  Double.parseDouble(rLine.split(" +")[6]);
 		    	mainChainComY =  Double.parseDouble(rLine.split(" +")[7]);

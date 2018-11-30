@@ -94,14 +94,14 @@ public class MugControllCarbonShell {
 		  for (int i=0;i<maxClique.size();i++){
 			  List maximumClique=new ArrayList();
 			  maximumClique=(ArrayList)maxClique.get(i+"");
-			  System.out.println(maximumClique.toString());
+			  //System.out.println(maximumClique.toString());
 		  }
 		  
 		  // Get elapsed time in milliseconds
 		  long elapsedTimeMillis = System.currentTimeMillis()-start;		    
 		  // Get elapsed time in seconds
 		  float elapsedTimeSec = elapsedTimeMillis/1000F;
-		  System.out.println(elapsedTimeSec);
+		  //System.out.println(elapsedTimeSec);
 		  start = System.currentTimeMillis();
 		  
 		  //judge all possible clusters and print results.
@@ -125,12 +125,12 @@ public class MugControllCarbonShell {
 						
 					  for(int reOrder=0; reOrder<clusterSize;reOrder++){
 						  
-						  System.out.print(clusterList[reOrder]);
+						  //System.out.print(clusterList[reOrder]);
 						  //add value each subclique in a maximum clique.  
 						  compsub1.add(maximumClique.get(clusterList[reOrder]));
 					  }						
 					  
-					  System.out.print("\n");
+					  //System.out.print("\n");
 					  
 					  //remove the repeated clusters existing in different cliques.
 					  String compsub1String=compsub1.toString();					  
@@ -150,7 +150,7 @@ public class MugControllCarbonShell {
 		  long elapsedTimeMillis2 = System.currentTimeMillis()-start;		    
 		  // Get elapsed time in minutes
 		  float elapsedTimeMin2 = elapsedTimeMillis2/(60*1000F);
-		  System.out.println(elapsedTimeMin2);
+		  //System.out.println(elapsedTimeMin2);
 		  
 	} //end predict ()
 	
@@ -283,7 +283,7 @@ public class MugControllCarbonShell {
 
 			for(int z=0; z< compsub.size(); z++){
 				String ocLine = (String)ocFile.get(Integer.parseInt((String)compsub.get(z)));
-			    System.out.print(ocLine.split(" +")[4] + " ");
+			    //System.out.print(ocLine.split(" +")[4] + " ");
 			}			
 		   
 			for (ii = 0; ii<lengthLocat; ii++){
@@ -345,9 +345,9 @@ public class MugControllCarbonShell {
 			 	 PutativeTrue.doPrint(ocFile, compsub, fileName, x);
 			}			
 			
-			System.out.print("\n");
-			System.out.print(flag);
-			System.out.print("\n");
+			//System.out.print("\n");
+			//System.out.print(flag);
+			//System.out.print("\n");
 		}
 	
 }

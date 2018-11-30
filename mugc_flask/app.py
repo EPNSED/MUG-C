@@ -32,13 +32,13 @@ def getPDB(pID,pFile):
         path = app.config['UPLOAD_FOLDER'] + 'pdb.txt'
         #create and write pdb.txt
         file = open(path,'w')
-        #file.write(pdb_url)
-        #file.close() 
+        file.write(pdb_url)
+        file.close() 
         resultFile =  path  # path to pdb.txt
         print (path)
         return pdb_url
     else:
-        resultFile = app.config['UPLOAD_FOLDER'] + pFile
+        resultFile = open(app.config['UPLOAD_FOLDER'] + pFile, 'rb')
         return resultFile
 def getS3Key(pID,pFile):
     key = None
