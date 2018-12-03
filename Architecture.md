@@ -54,3 +54,39 @@ https://files.rcsb.org/download/1b8c.pdb 1b8c
 Create a s3 bucket timer for resources to delete after a week or month.
 
 javac -cp /home/Mashiku/Documents/Dev/MUG-C/ src/MUGC.java
+
+## Deploy dev enviroment:
+
+1. Git clone the repository
+
+2. cd into mugc_flask
+
+3. set up python3 virtual enviroment. 
+
+4. run: source ./venv/bin/activate
+
+5. pip install -r requirement.txt
+
+6. Open the [IAM Console](https://console.aws.amazon.com/iam/home?#home).
+
+7. In the navigation pane of the console, choose Users.
+
+8. Choose your IAM user name (not the check box).
+
+9. Choose the Security credentials tab and then choose Create access key.
+
+10. To see the new access key, choose Show. Your credentials will look something like this:
+
+Access key ID: AKIAIOSFODNN7EXAMPLE
+
+Secret access key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+11. To download the key pair, choose Download .csv file. Store the keys in a secure location.
+
+Keep the keys confidential in order to protect your AWS account, and never email them. Do not share them outside your organization, even if an inquiry appears to come from AWS or Amazon.com. No one who legitimately represents Amazon will ever ask you for your secret key.
+
+12. run: aws configure
+
+13. Then cd into your mugc_flask
+
+14. Run zappa deploy dev

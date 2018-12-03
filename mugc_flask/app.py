@@ -39,6 +39,7 @@ def getPDB(pID,pFile):
         return pdb_url
     else:
         resultFile = open(app.config['UPLOAD_FOLDER'] + pFile, 'rb')
+        #resultFile = app.config['UPLOAD_FOLDER'] + pFile
         return resultFile
 def getS3Key(pID,pFile):
     key = None
