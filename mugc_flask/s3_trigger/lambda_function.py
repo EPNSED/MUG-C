@@ -1,3 +1,4 @@
+
 import json
 import urllib.parse
 import boto3
@@ -5,6 +6,7 @@ import boto3
 print('Loading function')
 
 s3 = boto3.client('s3')
+ses = boto3.client('ses')
 
 
 def lambda_handler(event, context):
@@ -16,14 +18,44 @@ def lambda_handler(event, context):
     try:
         response = s3.get_object(Bucket=bucket, Key=key)
         print(response)
+        #List all parameter args
         email_arg = response['Metadata']['useremail']
-        send_receipt(email_arg, email_arg)
+        s3key_arg = response['Metadata']['s3key']
+        pdbID_arg = response['Metadata']['pdbid']
+        pdbURL_arg = response['Metadata']['pdburl']
+        url_arg = getInputFileUrl(s3key_arg)
+        arivata_url_arg =shortenURL(url_arg)
+        if verify_email(email_arg) == True:#check if the email of the user is verified
+            send_receipt(email_arg, email_arg)#sent notication job has started
+            #AiravataLambdaInterface(sessionID_arg,s3key_arg,expInfo,inputURL_arg,outputFile_arg)
+        else:
+            print('Sent verification email')
         print("CONTENT TYPE: " + response['ContentType'])
         return response['ContentType']
     except Exception as e:
         print(e)
         print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
         raise e
+        
+#####///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#####///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+def verify_email(email):#Checks if the email is verified, if not it sends a verification email to the user.
+    user_verified = None
+    identity_response = ses.get_identity_verification_attributes(
+        Identities=[
+            email
+        ]
+    )
+    print(identity_response)
+    if identity_response['VerificationAttributes']:
+        user_verified = True
+    else:
+        response = ses.verify_email_identity(
+            EmailAddress= email
+        )#use custom email verification template
+        user_verified = False
+    return (user_verified)
 
 def send_receipt(sender_arg, recipient_arg):
     # Replace sender@example.com with your "From" address.
@@ -107,3 +139,30 @@ def send_receipt(sender_arg, recipient_arg):
     else:
         print("Email sent! Message ID:"),
         print(response['MessageId'])
+
+#def AiravataLambdaInterface(sessionID_arg,s3key_arg,expInfo,inputURL_arg,outputFile_arg):
+    #Define the stdin as the inputURL
+    #Define the stdout as the outputfile
+    #expInfo is the experiment name etc.
+    #Worker checks prior to using the AiravataWrapperInterface to send the job
+    #Create wait for completions then store the file to the same sessionID
+    #getInputFileUrl(s3Key)
+    
+def getInputFileUrl(s3Key):
+    #creates the presigned-url
+    key = s3Key
+    url = s3.generate_presigned_url(
+        ClientMethod='get_object',
+        Params={
+            'Bucket': 'mugctest',
+            'Key': key
+        }
+    )
+    print (url)
+    return (url)
+def shortenURL(url_arg):
+    URL = url_arg
+    response = urllib.request.urlopen("http://tinyurl.com/api-create.php?url=" + URL)
+    r = str(response.read())
+    print(r)
+    return(r)

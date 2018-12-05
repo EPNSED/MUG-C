@@ -15,7 +15,7 @@ Resources:
         been updated.
       MemorySize: 128
       Timeout: 3
-      Role: 'arn:aws:iam::005703555151:role/service-role/AwslambdaFullaccess'
+      Role: 'arn:aws:iam::005703555151:role/lambda_basic_execution_s3_trigger'
       Events:
         BucketEvent1:
           Type: S3
@@ -29,7 +29,21 @@ Resources:
                 Rules:
                   - Name: suffix
                     Value: .pdb
+        BucketEvent2:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: Bucket2
+            Events:
+              - 's3:ObjectCreated:*'
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: suffix
+                    Value: .txt
       Tags:
         'lambda-console:blueprint': s3-get-object-python3
   Bucket1:
+    Type: 'AWS::S3::Bucket'
+  Bucket2:
     Type: 'AWS::S3::Bucket'
