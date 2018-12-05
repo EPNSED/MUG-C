@@ -38,8 +38,10 @@ def getPDB(pID,pFile):
         print (path)
         return pdb_url
     else:
-        resultFile = open(app.config['UPLOAD_FOLDER'] + pFile, 'rb')
+        #resultFile = open(app.config['UPLOAD_FOLDER'] + pFile, 'rb')
         #resultFile = app.config['UPLOAD_FOLDER'] + pFile
+        resultFile = pFile
+        print(resultFile)
         return resultFile
 def getS3Key(pID,pFile):
     key = None
@@ -122,22 +124,20 @@ def inputData():
       # get User-Defined Metadata 
       sessionID = str(uuid.uuid4()).encode()
       pdbID = data['pdbID']
-      pdbFile = data['pdbFile']
+      pdbFile = request.files['pdbFile']
       entryType = data['entryType']
       userEmail = data['email']
-      f = request.files['file']
-      f.save(secure_filename(f.filename))
       pdbUrl = 'https://files.rcsb.org/download/'+pdbID
       print (userEmail)
       #confirming User inputs
       confirm_message = None
-      checkpdbType(pdbID,pdbFile,entryType)
-      valid_pdbfile = checkpdbValid(pdbFile)
+      #checkpdbType(pdbID,pdbFile,entryType)
+      valid_pdbfile = checkpdbValid(pdbFile.filename)
       print (valid_pdbfile)
       if valid_pdbfile or pdbID !='': 
         # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
         pdbData = getPDB(pdbID,pdbFile)
-        s3key = getS3Key(pdbID,pdbFile)
+        s3key = getS3Key(pdbID,pdbFile.filename)
         s3.Bucket('mugctest').put_object(Key=s3key, Body=pdbData, Metadata={
             'sessionID': str(sessionID),
             's3key': str(s3key),
