@@ -150,7 +150,7 @@ def inputData():
         s3.Bucket('mugctest').put_object(Key=s3key, Body=pdbFile, Metadata={
             'sessionID': str(sessionID),
             's3key': str(s3key),
-            'pdbID': str(pdbID),
+            'pdbID': str(pdbFile.filename),
             'entryType': str(entryType),
             'userEmail': str(userEmail),
             'pdbUrl': str(pdbUrl)
