@@ -124,20 +124,16 @@ def inputData():
       # get User-Defined Metadata 
       sessionID = str(uuid.uuid4()).encode()
       pdbID = data['pdbID']
-      pdbFile = request.files['pdbFile']
       entryType = data['entryType']
       userEmail = data['email']
       pdbUrl = 'https://files.rcsb.org/download/'+pdbID
       print (userEmail)
       #confirming User inputs
       confirm_message = None
-      #checkpdbType(pdbID,pdbFile,entryType)
-      valid_pdbfile = checkpdbValid(pdbFile.filename)
-      print (valid_pdbfile)
-      if valid_pdbfile or pdbID !='': 
+      if pdbID: 
         # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
-        pdbData = getPDB(pdbID,pdbFile)
-        s3key = getS3Key(pdbID,pdbFile.filename)
+        pdbData = getPDB(pdbID,'')
+        s3key = getS3Key(pdbID,'')
         s3.Bucket('mugctest').put_object(Key=s3key, Body=pdbData, Metadata={
             'sessionID': str(sessionID),
             's3key': str(s3key),
@@ -148,7 +144,18 @@ def inputData():
             })
         confirm_message = 'Job submitted to MUG(C) succesfully, Check your Email!'
       else:
-        confirm_message = 'Invalid PDB ID: Please Input the proper PDB file format e.g 1b8c.pdb'
+          # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
+        pdbFile = request.files['pdbFile']
+        s3key = getS3Key(pdbID,pdbFile.filename)
+        s3.Bucket('mugctest').put_object(Key=s3key, Body=pdbFile, Metadata={
+            'sessionID': str(sessionID),
+            's3key': str(s3key),
+            'pdbID': str(pdbID),
+            'entryType': str(entryType),
+            'userEmail': str(userEmail),
+            'pdbUrl': str(pdbUrl)
+            })
+        confirm_message = 'Job submitted to MUG(C) succesfully, Check your Email!'
       print (data)
       return render_template('MUGC_Conformation.html', conformationmessage = confirm_message, sessionID = sessionID, pdbID = getPDBID(pdbID, pdbFile), entryType = entryType, userEmail = userEmail)
 if __name__ == '__main__':
