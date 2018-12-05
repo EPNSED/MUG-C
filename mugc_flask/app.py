@@ -125,6 +125,8 @@ def inputData():
       pdbFile = data['pdbFile']
       entryType = data['entryType']
       userEmail = data['email']
+      f = request.files['file']
+      f.save(secure_filename(f.filename))
       pdbUrl = 'https://files.rcsb.org/download/'+pdbID
       print (userEmail)
       #confirming User inputs
