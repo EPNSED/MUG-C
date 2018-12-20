@@ -7,18 +7,18 @@
 *Predicting Ca2+-binding sites using refined carbon clusters. Proteins, 80: 2666�2679. doi: 10.1002/prot.24149
 **/
 
-package src;
+package mugcmaven.mugcmaven.src;
 import java.util.*;
 import java.io.*;
-import src.fileutil.Copy;
-import src.mugc.MugControllCarbonShell;
-import src.parsepdb.mugcarbonlist.CenterOfMass;
-import src.parsepdb.mugcarbonlist.CombineFiles;
-import src.parsepdb.mugcarbonlist.MetalBindingCC;
-import src.parsepdb.mugcarbonlist.MetalBindingM;
-import src.parsepdb.mugcarbonlist.MetalBindingMetal;
-import src.parsepdb.mugcarbonlist.NMRSeperate;
-import src.utils.FileOperation;
+import mugcmaven.mugcmaven.src.fileutil.Copy;
+import mugcmaven.mugcmaven.src.mugc.MugControllCarbonShell;
+import mugcmaven.mugcmaven.src.parsepdb.mugcarbonlist.CenterOfMass;
+import mugcmaven.mugcmaven.src.parsepdb.mugcarbonlist.CombineFiles;
+import mugcmaven.mugcmaven.src.parsepdb.mugcarbonlist.MetalBindingCC;
+import mugcmaven.mugcmaven.src.parsepdb.mugcarbonlist.MetalBindingM;
+import mugcmaven.mugcmaven.src.parsepdb.mugcarbonlist.MetalBindingMetal;
+import mugcmaven.mugcmaven.src.parsepdb.mugcarbonlist.NMRSeperate;
+import mugcmaven.mugcmaven.src.utils.FileOperation;
 
 public class MUGC {
 	public static void main(String args[]) {

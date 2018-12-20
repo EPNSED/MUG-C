@@ -5,15 +5,15 @@
 *@date: 2/11/2014 
 **/
 
-package src.parsepdb.mugcarbonlist;
+package mugcmaven.mugcmaven.src.parsepdb.mugcarbonlist;
 
 import java.io.*;
 import java.text.DecimalFormat;
 import java.lang.*;
-import src.utils.FileOperation;
-import src.utils.ParsePDB;
+import mugcmaven.mugcmaven.src.utils.FileOperation;
+import mugcmaven.mugcmaven.src.utils.ParsePDB;
 
-import src.utils.*;
+import mugcmaven.mugcmaven.src.utils.*;
 import java.util.*;
 
 public class CenterOfMass {

@@ -2,7 +2,7 @@
 A PDB parser tool which take only parse out perticular lines in PDB without modifying or manipulating them.
 */
 
-package src.utils;
+package mugcmaven.mugcmaven.src.utils;
 import java.util.*;
 
 public class ParsePDB {

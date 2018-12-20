@@ -46,6 +46,10 @@ export PATH=/apps/Python-3.6.6/Debug_Build/bin/:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/apps/Python-3.6.6/Debug_Build/lib
 ```
 
+```
+export JAVA_HOME=/usr/java/jdk1.8.0_191-amd64/
+```
+
 Added s3 TRigger manually
 
 

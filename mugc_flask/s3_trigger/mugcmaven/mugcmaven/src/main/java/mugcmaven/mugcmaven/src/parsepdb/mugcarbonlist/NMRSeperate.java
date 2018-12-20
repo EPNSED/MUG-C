@@ -2,11 +2,11 @@
  * MD simulation trajectories.  
 */
 
-package src.parsepdb.mugcarbonlist;
+package mugcmaven.mugcmaven.src.parsepdb.mugcarbonlist;
 
 import java.util.*;
-import src.utils.FileOperation;
-import src.utils.ParsePDB;
+import mugcmaven.mugcmaven.src.utils.FileOperation;
+import mugcmaven.mugcmaven.src.utils.ParsePDB;
 
 public class NMRSeperate {
 	

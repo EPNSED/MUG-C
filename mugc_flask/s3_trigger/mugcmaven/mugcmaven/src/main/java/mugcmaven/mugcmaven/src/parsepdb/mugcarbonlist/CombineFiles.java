@@ -8,12 +8,12 @@
 /*       and class ParsePDB in package pdbparser. 
 */
 
-package src.parsepdb.mugcarbonlist;
+package mugcmaven.mugcmaven.src.parsepdb.mugcarbonlist;
 
 import java.util.*;
 import java.io.*;
 
-import src.utils.*;
+import mugcmaven.mugcmaven.src.utils.*;
 
 public class CombineFiles{
     public static void combineSurfix(String args, String fileType){

@@ -25,15 +25,19 @@ public class Handler{
 		throws IOException {
 		try
 		{
-			//TODO implement handler
+            //TODO implement handler
+            System.out.println("MugcJava Handler has started");
 			context.getLogger().log("Input: " + json);
-			String pdbinfo = (String) json.get("pdbinfo");
+			String pdbinfo = (String) json.get("pdbinfo"); // Type casting :)
 			String[] data = pdbinfo.split(" ");
 			String pdbURL = data[0];
 			String pdbID = data[1];
 			System.out.println(pdbURL);
-			String currDirectory = System.getProperty("user.dir");
-			String targetDirectory = currDirectory+"/inputdata/"+ pdbID+".pdb";
+            String currDirectory = "/tmp/";
+            System.out.println(currDirectory);
+            new File("c:\\tmp\\inputdata").mkdirs();
+            System.out.println(new File("c:\\tmp\\outputdata").mkdirs());
+			String targetDirectory = currDirectory+"inputdata/"+ pdbID+".pdb";
 			try{
 				download(pdbURL, targetDirectory);
 			}catch(Exception ex){

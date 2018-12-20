@@ -1,4 +1,4 @@
-package src.utils;
+package mugcmaven.mugcmaven.src.utils;
 import java.text.DecimalFormat;
 import java.util.List;
 

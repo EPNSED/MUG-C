@@ -1,4 +1,4 @@
-package src.fileutil;
+package mugcmaven.mugcmaven.src.fileutil;
 
 import java.io.File;
 import java.io.FileReader;

@@ -8,9 +8,9 @@
 /*       and class ParsePDB in package pdbparser. 
 */
 
-package src.parsepdb.mugcarbonlist;
+package mugcmaven.mugcmaven.src.parsepdb.mugcarbonlist;
 
-import src.utils.*;
+import mugcmaven.mugcmaven.src.utils.*;
 
 import java.util.*;
 

@@ -4,13 +4,13 @@
 *@date: 2/11/2014 
 **/
 
-package src.mugc;
-import src.utils.*;
+package mugcmaven.mugcmaven.src.mugc;
+import mugcmaven.mugcmaven.src.utils.*;
 import java.util.*;
 import java.text.*;
 import java.io.*;
-import src.fileutil.Copy;
-import src.filter.*;
+import mugcmaven.mugcmaven.src.fileutil.Copy;
+import mugcmaven.mugcmaven.src.filter.*;
 
 public class MugControllCarbonShell {
 

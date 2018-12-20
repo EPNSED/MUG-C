@@ -1,11 +1,11 @@
-package src.filter;
+package mugcmaven.mugcmaven.src.filter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import src.utils.Dist;
-import src.utils.FileOperation;
-import src.utils.ParsePDB;
+import mugcmaven.mugcmaven.src.utils.Dist;
+import mugcmaven.mugcmaven.src.utils.FileOperation;
+import mugcmaven.mugcmaven.src.utils.ParsePDB;
 
 /**
  * Filter of center of mass.

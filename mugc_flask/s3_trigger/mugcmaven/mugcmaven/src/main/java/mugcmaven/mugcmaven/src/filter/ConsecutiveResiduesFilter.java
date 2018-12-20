@@ -1,4 +1,4 @@
-package src.filter;
+package mugcmaven.mugcmaven.src.filter;
 
 import java.util.ArrayList;
 import java.util.List;

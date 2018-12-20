@@ -1,10 +1,10 @@
 src/parsepdb/mugcarbonlist/CenterOfMass.class
 src/mugc/MugControllCarbonShell.class
-src/parsepdb/mugcarbonlist/NMRSeperate.class
 src/parsepdb/mugcarbonlist/MetalBindingCC.class
+src/parsepdb/mugcarbonlist/NMRSeperate.class
 src/utils/ParsePDB.class
-src/filter/ConsecutiveResiduesFilter.class
 src/utils/Dist.class
+src/filter/ConsecutiveResiduesFilter.class
 src/parsepdb/mugcarbonlist/MetalBindingM.class
 src/filter/PositionFun.class
 src/MUGC.class
@@ -14,8 +14,8 @@ src/filter/ChargeDistanceFilter.class
 src/parsepdb/mugcarbonlist/CombineFiles.class
 src/fileutil/Copy.class
 mugcmaven/mugcmaven/Handler.class
-src/filter/CenterOfMassFilter.class
 src/utils/AngleCalculation.class
+src/filter/CenterOfMassFilter.class
 src/parsepdb/mugcarbonlist/MetalBindingMetal.class
 src/utils/FileOperation.class
 src/utils/SideChainCenterOfMass.class

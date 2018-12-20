@@ -1,4 +1,4 @@
-package src.filter;
+package mugcmaven.mugcmaven.src.filter;
 
 /**
 *A filter and position function to calculate the calcium centers in the identified clusters.
@@ -9,8 +9,8 @@ package src.filter;
 
 import java.util.ArrayList;
 import java.util.List;
-import src.utils.AngleCalculation;
-import src.utils.Dist;
+import mugcmaven.mugcmaven.src.utils.AngleCalculation;
+import mugcmaven.mugcmaven.src.utils.Dist;
 
 public class PositionFun {
 	

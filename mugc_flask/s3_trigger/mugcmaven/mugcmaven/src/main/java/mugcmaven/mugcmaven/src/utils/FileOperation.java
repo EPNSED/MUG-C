@@ -1,4 +1,4 @@
-package src.utils;
+package mugcmaven.mugcmaven.src.utils;
 
 /* From http://java.sun.com/docs/books/tutorial/index.html */
 /*

@@ -1,4 +1,4 @@
-package src.filter;
+package mugcmaven.mugcmaven.src.filter;
 
 /**
 *A filter to calculate charge in the clusters and calculate the distance and angle constrains of the binding pockets.
@@ -8,8 +8,8 @@ package src.filter;
 **/
 import java.util.ArrayList;
 import java.util.List;
-import src.utils.AngleCalculation;
-import src.utils.Dist;
+import mugcmaven.mugcmaven.src.utils.AngleCalculation;
+import mugcmaven.mugcmaven.src.utils.Dist;
 public class ChargeDistanceFilter {
 	
 	//filter method
