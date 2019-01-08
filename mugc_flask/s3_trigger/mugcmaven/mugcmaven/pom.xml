@@ -12,6 +12,7 @@
     <inceptionYear>2016</inceptionYear>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <RESOURCE_PATH>${project.basedir}/src/main/resources</RESOURCE_PATH>
     </properties>
     <prerequisites>
         <maven>3.0.0</maven>
@@ -41,6 +42,11 @@
             <groupId>org.json</groupId>
             <artifactId>org.json</artifactId>
             <version>chargebee-1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.directory.studio</groupId>
+            <artifactId>org.apache.commons.io</artifactId>
+            <version>2.4</version>
         </dependency>
 
 
@@ -130,5 +136,10 @@
                 </executions>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>${RESOURCE_PATH}</directory>
+            </resource>
+        </resources>
     </build>
 </project>

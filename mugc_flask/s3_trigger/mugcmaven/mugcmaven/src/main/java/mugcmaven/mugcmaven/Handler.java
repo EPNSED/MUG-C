@@ -32,11 +32,9 @@ public class Handler{
 			String[] data = pdbinfo.split(" ");
 			String pdbURL = data[0];
 			String pdbID = data[1];
-			System.out.println(pdbURL);
-            String currDirectory = "/tmp/";
+            System.out.println(pdbURL);        
+            String currDirectory = getResourcePath();
             System.out.println(currDirectory);
-            new File("c:\\tmp\\inputdata").mkdirs();
-            System.out.println(new File("c:\\tmp\\outputdata").mkdirs());
 			String targetDirectory = currDirectory+"inputdata/"+ pdbID+".pdb";
 			try{
 				download(pdbURL, targetDirectory);
@@ -86,5 +84,17 @@ public class Handler{
         } catch (IOException e) {
             e.printStackTrace();
         }
-	}
+    }
+    private static String getResourcePath() {
+        try {
+            URI resourcePathFile = System.class.getResource("/RESOURCE_PATH").toURI();
+            String resourcePath = Files.readAllLines(Paths.get(resourcePathFile)).get(0);
+            URI rootURI = new File("").toURI();
+            URI resourceURI = new File(resourcePath).toURI();
+            URI relativeResourceURI = rootURI.relativize(resourceURI);
+            return relativeResourceURI.getPath();
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
