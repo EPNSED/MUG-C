@@ -7,3 +7,19 @@ sudo docker build -t test .
 sudo docker image rm test --force
 
 https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html
+
+AWS Rolearn for lambda boto3 ecs client run_task()
+Role ARN
+arn:aws:iam::005703555151:role/Dockerrunner 
+Role description
+Allows ECS tasks to call AWS services on your behalf.
+
+Policy name 
+Policy type 
+  AdministratorAccess
+AWS managed policy
+
+  AmazonECS_FullAccess
+AWS managed policy
+
+
