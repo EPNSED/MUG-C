@@ -5,3 +5,5 @@ javac /home/Mashiku/Documents/dockermugc/code/mugcmaven/Handler.java
 sudo docker build -t test .
 
 sudo docker image rm test --force
+
+https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html
