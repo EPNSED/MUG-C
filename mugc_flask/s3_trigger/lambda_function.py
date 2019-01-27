@@ -7,6 +7,8 @@ print('Loading function')
 
 s3 = boto3.client('s3')
 ses = boto3.client('ses')
+ecs = boto3.client('ecs')
+lambda_client = boto3.client('lambda')
 
 
 def lambda_handler(event, context):
@@ -23,11 +25,17 @@ def lambda_handler(event, context):
         s3key_arg = response['Metadata']['s3key']
         pdbID_arg = response['Metadata']['pdbid']
         pdbURL_arg = response['Metadata']['pdburl']
-        url_arg = getInputFileUrl(s3key_arg)
-        arivata_url_arg =shortenURL(url_arg)
+        pdbID_noextention = pdbID_arg.split(".")[0]
+        sessionID_arg = s3key_arg.split("/")[0]
+        if "pdb.txt" not in s3key_arg: 
+            url_arg = getInputFileUrl(s3key_arg)
+            arivata_url_arg =shortenURL(url_arg)
+        else:
+            arivata_url_arg = pdbURL_arg
         if verify_email(email_arg) == True:#check if the email of the user is verified
             send_receipt(email_arg, email_arg)#sent notication job has started
             #AiravataLambdaInterface(sessionID_arg,s3key_arg,expInfo,inputURL_arg,outputFile_arg)
+            MugcDockerInit(arivata_url_arg, pdbID_noextention, sessionID_arg)
         else:
             print('Sent verification email')
         print("CONTENT TYPE: " + response['ContentType'])
@@ -147,6 +155,32 @@ def send_receipt(sender_arg, recipient_arg):
     #Worker checks prior to using the AiravataWrapperInterface to send the job
     #Create wait for completions then store the file to the same sessionID
     #getInputFileUrl(s3Key)
+
+def MugcDockerInit(pdburl_arg, pdbid_arg, sessionid_arg):
+    invoke_response = ecs.run_task(
+    cluster='mugctestdocker',
+    taskDefinition='mugcdocker',
+    overrides={
+        'containerOverrides': [
+            {
+                'name': 'test',
+                'command': [
+                    pdburl_arg,
+                    pdbid_arg,
+                    sessionid_arg,
+                ]
+            },
+        ],
+        'taskRoleArn': 'arn:aws:iam::005703555151:role/Dockerrunner',
+        'executionRoleArn': 'arn:aws:iam::005703555151:role/Dockerrunner'
+    },
+    count=1,
+    startedBy='lambda')
+    # msg = {"key":"new_mugcjob", "pdbinfo": pdburl_arg+" "+pdbid_arg}
+    # invoke_response = lambda_client.invoke(FunctionName="MugcJava",
+    #                                       InvocationType='Event',
+    #                                       Payload=json.dumps(msg))
+    print(invoke_response)
     
 def getInputFileUrl(s3Key):
     #creates the presigned-url
@@ -163,6 +197,7 @@ def getInputFileUrl(s3Key):
 def shortenURL(url_arg):
     URL = url_arg
     response = urllib.request.urlopen("http://tinyurl.com/api-create.php?url=" + URL)
-    r = str(response.read())
-    print(r)
-    return(r)
+    r = str(response.read().decode())
+    short_url_secure = r.split(":")[0]+"s:"+r.split(":")[1]
+    print(short_url_secure)
+    return(short_url_secure)
