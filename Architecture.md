@@ -65,11 +65,12 @@ javac -cp /home/Mashiku/Documents/Dev/MUG-C/ src/MUGC.java
 
 2. cd into mugc_flask
 
-3. set up python3 virtual enviroment. 
+3. set up python3 virtual enviroment.
+    python3 -m venv venv
 
 4. run: source ./venv/bin/activate
 
-5. pip install -r requirement.txt
+5. pip install -r requirements.txt
 
 6. Open the [IAM Console](https://console.aws.amazon.com/iam/home?#home).
 
