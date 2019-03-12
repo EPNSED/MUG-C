@@ -1,29 +1,66 @@
-from flask import Flask, flash, render_template, request, url_for
+from flask import Flask, flash, render_template, request, url_for, Blueprint
+from flask_login import login_user, logout_user, login_required
 from wtforms import Form, StringField, SubmitField, RadioField
 from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import Required, Optional, Email
+from flywheel import Model, Field
+import datetime
+from datetime import datetime
 from werkzeug import secure_filename
 import urllib.request
+import bcrypt
 import boto3
 import uuid
 import os
 import io
 # import subprocess
 # from subprocess import Popen, PIPE
+from core.forms.user import LoginForm, RegisterForm
 
 app = Flask(__name__)
 app.config.from_object("config")
 
 s3 = boto3.resource('s3')
+db = boto3.resource('dynamodb')
 
-class InputForm(Form):
-    pdbID = StringField('pdbID', validators=[Required()])
-    pdbFile = FileField(validators=[Optional()])
-    entryType = RadioField('entryType', choices=[('X-ray'),('NMR'), ('Other')])
-    email = StringField('email', validators=[Email()])
-    submit = SubmitField('Submit')
+class User(Model):
 
-# Intial Get pdb file from API if pdbid and no file then get the file with request(http) else upload file from user input
+    __tablename__ = "users"
+
+    email = Field(type=str, hash_key=True, nullable=False)
+    password = Field(type=str, nullable=False)
+    registered_on = Field(type=datetime, nullable=False)
+    admin = Field(type=bool, nullable=False)
+
+    def __init__(self, email, password, admin=False):
+        self.email = email
+        self.password = bcrypt.generate_password_hash(
+            password, app.config.get('BCRYPT_LOG_ROUNDS')
+        )
+        self.registered_on = datetime.now()
+        self.admin = admin
+
+    def is_authenticated(self):
+        # TODO implement me
+        return True
+
+    def is_active(self):
+        # TODO implement me
+        return True
+
+    def is_anonymous(self):
+        # TODO implement me
+        return False
+
+    def get_id(self):
+        return self.email
+
+    def __repr__(self):
+        return '<User {0}>'.format(self.email)
+
+
+# Intial Get pdb file from API if pdbid and no file then get the file with request(http) 
+#else upload file from user input
 # If pdbID then create a txt file with the url to the file and attach meta data to it
 def getPDB(pID,pFile):
     resultFile = None
@@ -104,11 +141,57 @@ def checkpdbValid(pFile):
     else:
         return False
 
-@app.route('/')
-def mugc_home():
-    return render_template('MUGC_UI.html')
 
-@app.route('/',methods = ['POST', 'GET'])
+################
+#### routes ####
+################
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegisterForm(request.form)
+    if form.validate_on_submit():
+        user = User(
+            email=form.email.data,
+            password=form.password.data
+        )
+        db.save(user)
+        login_user(user)
+
+        flash('Thank you for registering.', 'success')
+        return redirect(url_for("mugc"))
+
+    return render_template('user/register.html', form=form)
+
+@app.route('/')
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm(request.form)
+    if form.validate_on_submit():
+        user = db.query(User).filter(User.email == form.email.data).first()
+
+        if user and bcrypt.check_password_hash(
+                user.password, request.form['password']):
+            login_user(user)
+            flash('You are logged in. Welcome!', 'success')
+            return redirect(url_for('/mugc'))
+        else:
+            flash('Invalid email and/or password.', 'danger')
+            return render_template('user/login.html', form=form)
+    return render_template('user/login.html', title='Please Login', form=form)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('You were logged out. Bye!', 'success')
+    return redirect(url_for('main.home'))
+
+
+@app.route('/mugc')
+def mugc_home():
+    return render_template('mugc.html')
+
+@app.route('/mugc',methods = ['POST', 'GET'])
 def inputData():
    form = InputForm(request.form)
    print (form.errors)
@@ -157,6 +240,8 @@ def inputData():
             })
         confirm_message = 'Job submitted to MUG(C) succesfully, Check your Email!'
       print (data)
-      return render_template('MUGC_Conformation.html', conformationmessage = confirm_message, sessionID = sessionID, pdbID = getPDBID(pdbID, pdbFile), entryType = entryType, userEmail = userEmail)
+      return render_template('MUGC_Conformation.html', conformationmessage = confirm_message, 
+      sessionID = sessionID, pdbID = getPDBID(pdbID, pdbFile), entryType = entryType, 
+      userEmail = userEmail)
 if __name__ == '__main__':
     app.run(debug = True)
