@@ -1,4 +1,4 @@
-from flask import Flask, flash, render_template, request, url_for, Blueprint
+from flask import Flask, flash, render_template, request, url_for, redirect, Blueprint
 from flask_login import login_user, logout_user, login_required
 from wtforms import Form, StringField, SubmitField, RadioField
 from flask_wtf.file import FileField, FileRequired
@@ -21,11 +21,12 @@ app = Flask(__name__)
 app.config.from_object("config")
 
 s3 = boto3.resource('s3')
-db = boto3.resource('dynamodb')
-
+dynamodb = boto3.resource('dynamodb')
+Table = dynamodb.Table('users_test')
+       
 class User(Model):
 
-    __tablename__ = "users"
+    __tablename__ = "users_test"
 
     email = Field(type=str, hash_key=True, nullable=False)
     password = Field(type=str, nullable=False)
@@ -146,21 +147,23 @@ def checkpdbValid(pFile):
 #### routes ####
 ################
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET','POST'])
 def register():
-    form = RegisterForm(request.form)
-    if form.validate_on_submit():
-        user = User(
-            email=form.email.data,
-            password=form.password.data
-        )
-        db.save(user)
-        login_user(user)
+    if request.method == 'POST':
+        # get User-Defined Metadata
+        email = request.form['email']
+        password = request.form['password']
+        Table.put_item(
+            Item ={ 
+                'email': email,
+                'password': password
+        })
+        #login_user(user)
 
         flash('Thank you for registering.', 'success')
-        return redirect(url_for("mugc"))
+        return redirect(url_for("login"))
 
-    return render_template('user/register.html', form=form)
+    return render_template('user/register.html') #form=form)
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])

@@ -28,15 +28,14 @@
                                 Developed by <a href = 'https://www.linkedin.com/in/kun-zhao-51720b22/'>Kun Zhao</a> and <a href="https://chemistry.gsu.edu/profile/jyang/">Jenny J. Yang</a>
                         </h3>
                 </div>
-                <form class="form" role="form" method="post" action="">
+                <form class="form" role="form" method="POST" action="{{ url_for('register') }}">
 
                 
                 
                     <div class="col-lg-4 col-sm-4">
                 
-                        <input type="email" value="" placeholder="Email" id="email" />
-                        <input type="password" value="" placeholder="Password" id="password" />
-                        <input type="password" value="" placeholder="confirm" id="confirm" />
+                        <input type="email" value="" placeholder="Email" id="email" name="email"/>
+                        <input type="password" value="" placeholder="Password" id="password" name="password"/>
                 
                         <button class="btn btn-success" type="submit">Register!</button>
                         <br><br>
