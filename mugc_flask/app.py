@@ -1,5 +1,5 @@
 from flask import Flask, flash, render_template, request, url_for, redirect, Blueprint
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, LoginManager
 from wtforms import Form, StringField, SubmitField, RadioField
 from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import Required, Optional, Email
@@ -19,6 +19,8 @@ from core.forms.user import LoginForm, RegisterForm
 
 app = Flask(__name__)
 app.config.from_object("config")
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 s3 = boto3.resource('s3')
 dynamodb = boto3.resource('dynamodb')
@@ -26,24 +28,19 @@ Table = dynamodb.Table('users_test')
        
 class User(Model):
 
-    __tablename__ = "users_test"
-
     email = Field(type=str, hash_key=True, nullable=False)
     password = Field(type=str, nullable=False)
-    registered_on = Field(type=datetime, nullable=False)
-    admin = Field(type=bool, nullable=False)
 
-    def __init__(self, email, password, admin=False):
-        self.email = email
-        self.password = bcrypt.generate_password_hash(
-            password, app.config.get('BCRYPT_LOG_ROUNDS')
-        )
-        self.registered_on = datetime.now()
-        self.admin = admin
+    def __init__(self, dbarg, password):
+        self.db = dbarg
+        self.email = dbarg['email']
+        self.password = dbarg['password']
+        self.checkPw = password
 
     def is_authenticated(self):
         # TODO implement me
-        return True
+        if self.checkPw == self.password:
+            return True
 
     def is_active(self):
         # TODO implement me
@@ -58,6 +55,10 @@ class User(Model):
 
     def __repr__(self):
         return '<User {0}>'.format(self.email)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
 
 
 # Intial Get pdb file from API if pdbid and no file then get the file with request(http) 
@@ -165,29 +166,36 @@ def register():
 
     return render_template('user/register.html') #form=form)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm(request.form)
-    if form.validate_on_submit():
-        user = db.query(User).filter(User.email == form.email.data).first()
-
-        if user and bcrypt.check_password_hash(
-                user.password, request.form['password']):
-            login_user(user)
+    if request.method == 'POST':
+        # get User-Defined Metadata
+        email = request.form['email']
+        password = request.form['password']
+        response = Table.get_item(
+        Key={
+            'email': email
+        })
+        db = response['Item']
+        print(db)
+        user = User(db, password)
+        if user.is_authenticated:
+            # login_user(user)
+            print("Working login, you are logged in")
             flash('You are logged in. Welcome!', 'success')
-            return redirect(url_for('/mugc'))
+            return redirect(url_for('mugc_home'))
         else:
             flash('Invalid email and/or password.', 'danger')
-            return render_template('user/login.html', form=form)
-    return render_template('user/login.html', title='Please Login', form=form)
+            return render_template('user/login.html')
+    return render_template('user/login.html', title='Please Login')
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     flash('You were logged out. Bye!', 'success')
-    return redirect(url_for('main.home'))
+    return redirect(url_for('login'))
 
 
 @app.route('/mugc')
