@@ -1,8 +1,9 @@
 from flask import Flask, flash, render_template, request, url_for, redirect, Blueprint
-from flask_login import login_user, logout_user, login_required, LoginManager
+from flask_login import login_user, logout_user, login_required, LoginManager, UserMixin
 from wtforms import Form, StringField, SubmitField, RadioField
 from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import Required, Optional, Email
+from boto3.dynamodb.conditions import Key, Attr
 from flywheel import Model, Field
 import datetime
 from datetime import datetime
@@ -26,39 +27,74 @@ s3 = boto3.resource('s3')
 dynamodb = boto3.resource('dynamodb')
 Table = dynamodb.Table('users_test')
        
-class User(Model):
+# class User(Model):
 
-    email = Field(type=str, hash_key=True, nullable=False)
-    password = Field(type=str, nullable=False)
+#     email = Field(type=str, hash_key=True, nullable=False)
+#     password = Field(type=str, nullable=False)
 
-    def __init__(self, dbarg, password):
-        self.db = dbarg
-        self.email = dbarg['email']
-        self.password = dbarg['password']
-        self.checkPw = password
+#     def __init__(self, dbarg, password):
+#         self.db = dbarg
+#         self.email = dbarg['email']
+#         self.password = dbarg['password']
+#         self.checkPw = password
 
-    def is_authenticated(self):
-        # TODO implement me
-        if self.checkPw == self.password:
-            return True
+#     def is_authenticated(self):
+#         # TODO implement me
+#         if self.checkPw == self.password:
+#             return True
 
-    def is_active(self):
-        # TODO implement me
-        return True
+#     def is_active(self):
+#         # TODO implement me
+#         return True
 
-    def is_anonymous(self):
-        # TODO implement me
-        return False
+#     def is_anonymous(self):
+#         # TODO implement me
+#         return False
 
-    def get_id(self):
-        return self.email
+#     def get_id(self):
+#         return self.email
 
-    def __repr__(self):
-        return '<User {0}>'.format(self.email)
+#     def __repr__(self):
+#         return '<User {0}>'.format(self.email)
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.get(user_id)
+
+class User(UserMixin):
+   @login_manager.user_loader
+   def user_loader(email):
+       response = Table.scan(FilterExpression=Attr('email').eq(email))
+       if email not in response['Items']:
+           print(email)
+           user = User()
+           user.id = email
+           return
+
+       return user
+
+
+   @login_manager.request_loader
+   def request_loader(request):
+       
+       email = request.form.get('email')
+       password = request.form.get('password')
+       response = Table.scan(FilterExpression=Attr('email').eq(email))
+       print(response['Items'])
+       users = response['Items']
+       if email not in users:
+           print(email)
+       return
+
+       user = User()
+       user.id = email
+
+       # DO NOT ever store passwords in plaintext and always compare password
+       # hashes using constant-time comparison!
+       hashed=response['Items'][0]['info']['password'].encode('utf-8')
+       user.is_authenticated = hashed == bcrypt.hashpw(password, hashed)
+
+       return user
 
 
 # Intial Get pdb file from API if pdbid and no file then get the file with request(http) 
@@ -179,7 +215,12 @@ def login():
         })
         db = response['Item']
         print(db)
-        user = User(db, password)
+        #user = User(db, password)
+        user = User()
+        user.id =email
+        response=redirect("/")
+        response.set_cookie('YourSessionCookie', user.id)
+        login_user(user)
         if user.is_authenticated:
             # login_user(user)
             print("Working login, you are logged in")
