@@ -9,7 +9,7 @@ import datetime
 from datetime import datetime
 from werkzeug import secure_filename
 import urllib.request
-import bcrypt
+from flask_bcrypt import Bcrypt
 import boto3
 import uuid
 import os
@@ -22,44 +22,13 @@ app = Flask(__name__)
 app.config.from_object("config")
 login_manager = LoginManager()
 login_manager.init_app(app)
+bcrypt = Bcrypt(app)
+
 
 s3 = boto3.resource('s3')
 dynamodb = boto3.resource('dynamodb')
 Table = dynamodb.Table('users_test')
        
-# class User(Model):
-
-#     email = Field(type=str, hash_key=True, nullable=False)
-#     password = Field(type=str, nullable=False)
-
-#     def __init__(self, dbarg, password):
-#         self.db = dbarg
-#         self.email = dbarg['email']
-#         self.password = dbarg['password']
-#         self.checkPw = password
-
-#     def is_authenticated(self):
-#         # TODO implement me
-#         if self.checkPw == self.password:
-#             return True
-
-#     def is_active(self):
-#         # TODO implement me
-#         return True
-
-#     def is_anonymous(self):
-#         # TODO implement me
-#         return False
-
-#     def get_id(self):
-#         return self.email
-
-#     def __repr__(self):
-#         return '<User {0}>'.format(self.email)
-
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return User.get(user_id)
 
 class User(UserMixin):
    @login_manager.user_loader
@@ -189,7 +158,7 @@ def register():
     if request.method == 'POST':
         # get User-Defined Metadata
         email = request.form['email']
-        password = request.form['password']
+        password = bcrypt.generate_password_hash(request.form['password']).decode('UTF-8')
         Table.put_item(
             Item ={ 
                 'email': email,
