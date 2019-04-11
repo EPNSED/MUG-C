@@ -17,6 +17,7 @@ import io
 # import subprocess
 # from subprocess import Popen, PIPE
 from core.forms.user import LoginForm, RegisterForm
+from tables import Results
 
 app = Flask(__name__)
 app.config.from_object("config")
@@ -207,6 +208,21 @@ def logout():
     flash('You were logged out. Bye!', 'success')
     return redirect(url_for('login'))
 
+@app.route('/log')
+@login_required
+def activitylog():
+    #Get the table data and display it
+    # display results
+    
+    table = Results(results)
+    table.border = True
+    return render_template('results.html', table=table)
+
+@app.route('/display')
+def display():
+    #Get the url or file and display it
+    # display molecule
+    return render_template('display.html')
 
 @app.route('/mugc')
 def mugc_home():
