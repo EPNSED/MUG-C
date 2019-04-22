@@ -222,7 +222,7 @@ def activitylog():
 def display():
     #Get the url or file and display it
     # display molecule
-    return render_template('display.html')
+    return render_template('index.html')
 
 @app.route('/mugc')
 def mugc_home():
