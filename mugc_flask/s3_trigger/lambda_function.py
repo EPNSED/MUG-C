@@ -5,7 +5,8 @@ import boto3
 
 print('Loading function')
 
-s3 = boto3.client('s3')
+s3 = boto3.client('s3',aws_access_key_id='AKIAJ2ZEPSYLQ3UYKHQQ',aws_secret_access_key='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')
+ss3 = boto3.client('s3')
 ses = boto3.client('ses')
 ecs = boto3.client('ecs')
 lambda_client = boto3.client('lambda')
@@ -17,6 +18,9 @@ def lambda_handler(event, context):
     # Get the object from the event and show its content type
     bucket = event['Records'][0]['s3']['bucket']['name']
     key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
+    resultKey_arg = key
+    print("This is the key for the results: "+resultKey_arg)
+    resultAuthValidator(bucket, resultKey_arg)
     try:
         response = s3.get_object(Bucket=bucket, Key=key)
         print(response)
@@ -29,13 +33,12 @@ def lambda_handler(event, context):
         sessionID_arg = s3key_arg.split("/")[0]
         if "pdb.txt" not in s3key_arg: 
             url_arg = getInputFileUrl(s3key_arg)
-            arivata_url_arg =shortenURL(url_arg)
+            mugcdocker_url_arg =shortenURL(url_arg)
         else:
-            arivata_url_arg = pdbURL_arg
+            mugcdocker_url_arg = pdbURL_arg
         if verify_email(email_arg) == True:#check if the email of the user is verified
             send_receipt(email_arg, email_arg)#sent notication job has started
-            #AiravataLambdaInterface(sessionID_arg,s3key_arg,expInfo,inputURL_arg,outputFile_arg)
-            MugcDockerInit(arivata_url_arg, pdbID_noextention, sessionID_arg)
+            MugcDockerInit(mugcdocker_url_arg, pdbID_noextention, sessionID_arg)
         else:
             print('Sent verification email')
         print("CONTENT TYPE: " + response['ContentType'])
@@ -83,7 +86,7 @@ def send_receipt(sender_arg, recipient_arg):
     AWS_REGION = "us-east-1"
     
     # The subject line for the email.
-    SUBJECT = "Amazon SES Test (SDK for Python)"
+    SUBJECT = "MUGC: Processing ordered PDB file"
     
     # The email body for recipients with non-HTML email clients.
     BODY_TEXT = ("Amazon SES Test (Python)\r\n"
@@ -95,11 +98,7 @@ def send_receipt(sender_arg, recipient_arg):
     BODY_HTML = """<html>
     <head></head>
     <body>
-      <h1>Amazon SES Test (SDK for Python)</h1>
-      <p>This email was sent with
-        <a href='https://aws.amazon.com/ses/'>Amazon SES</a> using the
-        <a href='https://aws.amazon.com/sdk-for-python/'>
-          AWS SDK for Python (Boto)</a>.</p>
+      <h1>MUGC: Processing ordered</h1>
         <p> Your PDB file has been recieved and is currently being processed. After the results are ready you will recieve another email with your results.</p>
     </body>
     </html>
@@ -148,14 +147,6 @@ def send_receipt(sender_arg, recipient_arg):
         print("Email sent! Message ID:"),
         print(response['MessageId'])
 
-#def AiravataLambdaInterface(sessionID_arg,s3key_arg,expInfo,inputURL_arg,outputFile_arg):
-    #Define the stdin as the inputURL
-    #Define the stdout as the outputfile
-    #expInfo is the experiment name etc.
-    #Worker checks prior to using the AiravataWrapperInterface to send the job
-    #Create wait for completions then store the file to the same sessionID
-    #getInputFileUrl(s3Key)
-
 def MugcDockerInit(pdburl_arg, pdbid_arg, sessionid_arg):
     invoke_response = ecs.run_task(
     cluster='mugctestdocker',
@@ -163,7 +154,7 @@ def MugcDockerInit(pdburl_arg, pdbid_arg, sessionid_arg):
     overrides={
         'containerOverrides': [
             {
-                'name': 'test',
+                'name': 'mugcdocker',
                 'command': [
                     pdburl_arg,
                     pdbid_arg,
@@ -176,10 +167,6 @@ def MugcDockerInit(pdburl_arg, pdbid_arg, sessionid_arg):
     },
     count=1,
     startedBy='lambda')
-    # msg = {"key":"new_mugcjob", "pdbinfo": pdburl_arg+" "+pdbid_arg}
-    # invoke_response = lambda_client.invoke(FunctionName="MugcJava",
-    #                                       InvocationType='Event',
-    #                                       Payload=json.dumps(msg))
     print(invoke_response)
     
 def getInputFileUrl(s3Key):
@@ -201,3 +188,132 @@ def shortenURL(url_arg):
     short_url_secure = r.split(":")[0]+"s:"+r.split(":")[1]
     print(short_url_secure)
     return(short_url_secure)
+    
+def SendMugcDockerOutput(s3key_arg, email_arg):
+    devUrl = 'https://101rrgsi71.execute-api.us-east-1.amazonaws.com/dev/display?pdbUrl='
+    key = s3key_arg.split("/")[0]
+    pdbID_arg = s3key_arg.split("/")[1].split("_")[0]
+    print(pdbID_arg)
+    pdbSite = shortenURL(getInputFileUrl(key+"/"+pdbID_arg+"_site.pdb"))
+    txtSite = shortenURL(getInputFileUrl(key+"/"+pdbID_arg+"_site.txt"))
+    # Replace sender@example.com with your "From" address.
+    # This address must be verified with Amazon SES.
+    SENDER = email_arg
+    
+    # Replace recipient@example.com with a "To" address. If your account 
+    # is still in the sandbox, this address must be verified.
+    RECIPIENT = email_arg
+    
+    # Specify a configuration set. If you do not want to use a configuration
+    # set, comment the following variable, and the 
+    # ConfigurationSetName=CONFIGURATION_SET argument below.
+    #CONFIGURATION_SET = "ConfigSet"
+    
+    # If necessary, replace us-west-2 with the AWS Region you're using for Amazon SES.
+    AWS_REGION = "us-east-1"
+    
+    # The subject line for the email.
+    SUBJECT = "MUG(C) Results: "+pdbID_arg
+    
+    # The email body for recipients with non-HTML email clients.
+    BODY_TEXT = ("MUG(C) Results\r\n"
+                 "This email contains the links to your files "
+                 "PDB Site file:"
+                 "PDB Site text file:"
+                )
+                
+    # The HTML body of the email.
+    BODY_HTML = """<html>
+    <head></head>
+    <body>
+      <h1>MUG(C) Results: """+pdbID_arg+"""</h1>
+      <p>This email contains links to the MUG(C) outputs:
+        <a href='"""+pdbSite+"""'>PDB Site</a> using the
+        <a href='"""+txtSite+"""'>
+         PDB Site text file</a>.</p>
+        <p> Your PDB file has been sucessfully processed.</p>
+        <a href='"""+devUrl+pdbSite+"""'>
+         View PDB Site on MUGC-Viewer</a>.</p>
+    </body>
+    </html>
+                """            
+    
+    # The character encoding for the email.
+    CHARSET = "UTF-8"
+    
+    # Create a new SES resource and specify a region.
+    client = boto3.client('ses',region_name=AWS_REGION)
+
+    
+    # Try to send the email.
+    try:
+        #Provide the contents of the email.
+        response = client.send_email(
+            Destination={
+                'ToAddresses': [
+                    RECIPIENT,
+                ],
+            },
+            Message={
+                'Body': {
+                    'Html': {
+                        'Charset': CHARSET,
+                        'Data': BODY_HTML,
+                    },
+                    'Text': {
+                        'Charset': CHARSET,
+                        'Data': BODY_TEXT,
+                    },
+                },
+                'Subject': {
+                    'Charset': CHARSET,
+                    'Data': SUBJECT,
+                },
+            },
+            Source=SENDER,
+            # If you are not using a configuration set, comment or delete the
+            # following line
+            # ConfigurationSetName=CONFIGURATION_SET,
+        )
+    # Display an error if something goes wrong.	
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
+        print("Email sent! Message ID:"),
+        print(response['MessageId'])
+#def MugcDockerInfo():
+#    response = ecs.list_tasks(cluster='mugctestdocker', startedBy='lambda', desiredStatus='RUNNING')
+#    return(response)
+def resultAuthValidator(bucket, resultKey_arg):
+    if "site" in resultKey_arg:
+        email_arg = None
+        wasSent = None
+        keyForEmail_arg = getKeyForResultEmail(bucket, resultKey_arg)
+        print("This is the key for email arg: "+keyForEmail_arg)
+        try:
+            if "site" in resultKey_arg:
+                responseForEmail = s3.get_object(Bucket=bucket, Key=keyForEmail_arg)
+                resultEmail_arg = responseForEmail['Metadata']['useremail']
+                email_arg = resultEmail_arg
+                writer = ss3.head_object(Bucket = bucket, Key = resultKey_arg)
+                newMeta = writer["Metadata"]
+                newMeta["wasSent"] = "True"
+                ss3.copy_object(Bucket = bucket, Key = resultKey_arg, CopySource = bucket + '/' + resultKey_arg, Metadata = newMeta, MetadataDirective='REPLACE')
+                if wasSent != "True" and email_arg != None:
+                    SendMugcDockerOutput(resultKey_arg, email_arg)
+        except Exception as e:
+            print(e)
+            print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(keyForEmail_arg, bucket))
+
+def getKeyForResultEmail(bucket, currKey):
+    finalKey = None
+    prefix = currKey.split("/")[0]
+    response = s3.list_objects(Bucket=bucket, Prefix=prefix, Delimiter='')
+    strResponse = str(response['Contents'])
+    print(strResponse)
+    if 'pdb.txt' in strResponse:
+        finalKey = currKey.split("/")[0]+"/"+"pdb.txt"
+    else:
+        finalKey = currKey.split("/")[0]+"/"+currKey.split("/")[1].split("_")[0]+".pdb"
+    print(finalKey)
+    return(finalKey)

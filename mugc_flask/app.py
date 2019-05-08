@@ -29,6 +29,14 @@ bcrypt = Bcrypt(app)
 s3 = boto3.resource('s3')
 dynamodb = boto3.resource('dynamodb')
 Table = dynamodb.Table('users_test')
+
+
+class InputForm(Form):
+    pdbID = StringField('pdbID', validators=[Required()])
+    pdbFile = FileField(validators=[Optional()])
+    entryType = RadioField('entryType', choices=[('X-ray'),('NMR'), ('Other')])
+    email = StringField('email', validators=[Email()])
+    submit = SubmitField('Submit')
        
 
 class User(UserMixin):
@@ -202,7 +210,6 @@ def login():
     return render_template('user/login.html', title='Please Login')
 
 @app.route('/logout')
-@login_required
 def logout():
     logout_user()
     flash('You were logged out. Bye!', 'success')
@@ -277,7 +284,7 @@ def inputData():
             })
         confirm_message = 'Job submitted to MUG(C) succesfully, Check your Email!'
       print (data)
-      return render_template('MUGC_Conformation.html', conformationmessage = confirm_message, 
+      return render_template('mugc_conformation.html', conformationmessage = confirm_message, 
       sessionID = sessionID, pdbID = getPDBID(pdbID, pdbFile), entryType = entryType, 
       userEmail = userEmail)
 if __name__ == '__main__':

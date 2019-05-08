@@ -20743,7 +20743,8 @@
                                     n(new Error("Loading aborted"))
                                 }), o.addEventListener("progress", function(t) {
                                     e.dispatchEvent(t)
-                                }), o.open("GET", r), e._binary ? o.responseType = "arraybuffer" : o.responseType = "text", o.send()
+                                }), o.open("GET", r), o.withCredentials = true, o.setRequestHeader("Access-Control-Allow-Origin", "*"), o.setRequestHeader("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"),
+                                o.setRequestHeader("Content-Type", "application/json"), o.setRequestHeader("Access-Control-Allow-Methods", "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT"), e._binary ? o.responseType = "arraybuffer" : o.responseType = "text", o.send()
                             })
                         }
                     }]) && hv(n.prototype, r), o && hv(n, o), t
@@ -29949,7 +29950,7 @@
                 }), o
             }, window.MIEWS = [], window.addEventListener("load", function() {
                 o()(".miew-container").each(function(e, t) {
-                    console.log("URL input test: http://127.0.0.1:5000/display?pdbUrl=https://files.rcsb.org/download/1b8c.pdb");               
+                    console.log("URL input test: https://101rrgsi71.execute-api.us-east-1.amazonaws.com/dev/display?pdbUrl=https://files.rcsb.org/download/1b8c.pdb");               
                     function getUrlVars() {
                         var vars = {};
                         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
