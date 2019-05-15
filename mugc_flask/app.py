@@ -30,7 +30,13 @@ s3 = boto3.resource('s3')
 dynamodb = boto3.resource('dynamodb')
 Table = dynamodb.Table('users_test')
 
-
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+    return response
+    
 class InputForm(Form):
     pdbID = StringField('pdbID', validators=[Required()])
     pdbFile = FileField(validators=[Optional()])
@@ -251,7 +257,7 @@ def inputData():
       # get User-Defined Metadata 
       sessionID = str(uuid.uuid4()).encode()
       pdbID = data['pdbID']
-      entryType = data['entryType']
+      entryType = "Protein Data Bank (PDB) File"
       userEmail = data['email']
       pdbUrl = 'https://files.rcsb.org/download/'+pdbID
       print (userEmail)

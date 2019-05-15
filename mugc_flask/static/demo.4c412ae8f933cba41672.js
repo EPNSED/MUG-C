@@ -20743,8 +20743,7 @@
                                     n(new Error("Loading aborted"))
                                 }), o.addEventListener("progress", function(t) {
                                     e.dispatchEvent(t)
-                                }), o.open("GET", r), o.withCredentials = true, o.setRequestHeader("Access-Control-Allow-Origin", "*"), o.setRequestHeader("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"),
-                                o.setRequestHeader("Content-Type", "application/json"), o.setRequestHeader("Access-Control-Allow-Methods", "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT"), e._binary ? o.responseType = "arraybuffer" : o.responseType = "text", o.send()
+                                }), o.open("GET",r), e._binary ? o.responseType = "arraybuffer" : o.responseType = "text", o.send()
                             })
                         }
                     }]) && hv(n.prototype, r), o && hv(n, o), t

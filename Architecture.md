@@ -95,3 +95,7 @@ Keep the keys confidential in order to protect your AWS account, and never email
 13. Then cd into your mugc_flask
 
 14. Run zappa deploy dev
+
+https://www.html5rocks.com/en/tutorials/file/filesystem/
+
+https://www.h3xed.com/web-development/how-to-make-all-objects-in-amazon-s3-bucket-public-by-default
