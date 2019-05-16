@@ -169,25 +169,25 @@ def MugcDockerInit(pdburl_arg, pdbid_arg, sessionid_arg):
     startedBy='lambda')
     print(invoke_response)
     
-# def getInputFileUrl(s3Key):
-#     #creates the presigned-url
-#     key = s3Key
-#     url = s3.generate_presigned_url(
-#         ClientMethod='get_object',
-#         Params={
-#             'Bucket': 'mugctest',
-#             'Key': key
-#         }
-#     )
-#     print (url)
-#     return (url)
-# def shortenURL(url_arg):
-#     URL = url_arg
-#     response = urllib.request.urlopen("http://tinyurl.com/api-create.php?url=" + URL)
-#     r = str(response.read().decode())
-#     short_url_secure = r.split(":")[0]+"s:"+r.split(":")[1]
-#     print(short_url_secure)
-#     return(short_url_secure)
+def getInputFileUrl(s3Key):
+    #creates the presigned-url
+    key = s3Key
+    url = s3.generate_presigned_url(
+        ClientMethod='get_object',
+        Params={
+            'Bucket': 'mugctest',
+            'Key': key
+        }
+    )
+    print (url)
+    return (url)
+def shortenURL(url_arg):
+    URL = url_arg
+    response = urllib.request.urlopen("http://tinyurl.com/api-create.php?url=" + URL)
+    r = str(response.read().decode())
+    short_url_secure = r.split(":")[0]+"s:"+r.split(":")[1]
+    print(short_url_secure)
+    return(short_url_secure)
     
 def SendMugcDockerOutput(s3key_arg, email_arg):
     devUrl = 'https://101rrgsi71.execute-api.us-east-1.amazonaws.com/dev/display?pdbUrl='

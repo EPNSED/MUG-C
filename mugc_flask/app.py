@@ -53,7 +53,7 @@ class User(UserMixin):
            print(email)
            user = User()
            user.id = email
-           return
+           return user
 
        return user
 
@@ -202,11 +202,11 @@ def login():
         #user = User(db, password)
         user = User()
         user.id =email
-        response=redirect("/")
+        response=redirect("/mugc")
         response.set_cookie('YourSessionCookie', user.id)
         login_user(user)
         if user.is_authenticated:
-            # login_user(user)
+            login_user(user)
             print("Working login, you are logged in")
             flash('You are logged in. Welcome!', 'success')
             return redirect(url_for('mugc_home'))
@@ -232,16 +232,19 @@ def activitylog():
     return render_template('results.html', table=table)
 
 @app.route('/display')
+@login_required
 def display():
     #Get the url or file and display it
     # display molecule
     return render_template('index.html')
 
 @app.route('/mugc')
+@login_required
 def mugc_home():
     return render_template('mugc.html')
 
 @app.route('/mugc',methods = ['POST', 'GET'])
+@login_required
 def inputData():
    form = InputForm(request.form)
    print (form.errors)
