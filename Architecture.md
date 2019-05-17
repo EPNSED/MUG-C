@@ -28,6 +28,7 @@ Create a flask application(Front-end component) that collects a pdb file and a e
 5. MUGC Java Application
     * [ACoRE](https://help.rs.gsu.edu/display/PD/ACoRE)
 6. [AWS Simple Email Service](https://aws.amazon.com/ses/)
+7. AWS Cloudwatch
 
 ## Process
 
@@ -95,7 +96,5 @@ Keep the keys confidential in order to protect your AWS account, and never email
 13. Then cd into your mugc_flask
 
 14. Run zappa deploy dev
-
-https://www.html5rocks.com/en/tutorials/file/filesystem/
 
 https://www.h3xed.com/web-development/how-to-make-all-objects-in-amazon-s3-bucket-public-by-default
