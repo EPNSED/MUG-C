@@ -51,6 +51,11 @@
               <item name="MUG-C" type="b2602c69:ProjectViewProjectNode" />
               <item name="MUG-C" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MUG-C" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MUG-C" type="462c0819:PsiDirectoryNode" />
+              <item name="notebooks" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -58,6 +63,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -137,6 +143,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mugc_flask/environment.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/hybridtest6.ipynb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
