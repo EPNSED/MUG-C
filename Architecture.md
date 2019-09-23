@@ -99,6 +99,7 @@ Keep the keys confidential in order to protect your AWS account, and never email
 
 https://www.h3xed.com/web-development/how-to-make-all-objects-in-amazon-s3-bucket-public-by-default
 
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -111,3 +112,4 @@ https://www.h3xed.com/web-development/how-to-make-all-objects-in-amazon-s3-bucke
         }
     ]
 }
+```
