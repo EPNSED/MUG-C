@@ -1327,19 +1327,15 @@ HETATM 1327  O   HOH A 260      24.568 -36.065  14.682  1.00 47.54           O
 HETATM 1328  O   HOH A 261      35.878   6.692  11.446  1.00 49.67           O  
 HETATM 1329  O   HOH A 262      29.894 -12.641  -9.820  1.00 55.29           O  
 HETATM 1330  O   HOH A 263      16.949 -42.876  24.588  1.00 61.82           O  
-HETATM      CA    CA           28.335  8.904  -2.998
-HETATM      CA    CA           3.5459  -28.72  25.531
-HETATM      CA    CA           3.879  -29.107  26.11
-HETATM      CA    CA           3.960  -30.45  26.850
-HETATM      CA    CA           2.6146  -29.78  26.539
-HETATM      CA    CA           17.254  8.154  2.4747
-HETATM      CA    CA           16.394  9.43  1.1636
-HETATM      CA    CA           17.02  8.90  1.0145
-HETATM      CA    CA           17.927  7.708  4.064
-HETATM      CA    CA           3.372  -29.163  28.051
-HETATM      CA    CA           22.615  8.11  -0.39849
-HETATM      CA    CA           4.856  -27.3  25.279
+HETATM      CA    CA           16.806  8.452  1.4146
+HETATM      CA    CA           16.806  8.452  1.4146
+HETATM      CA    CA           3.5799  -28.583  26.209
+HETATM      CA    CA           3.382  -29.33  26.14
+HETATM      CA    CA           3.385  -29.395  25.51
+HETATM      CA    CA           13.230  -37.81  22.880
+HETATM      CA    CA           14.068  -37.101  23.407
+HETATM      CA    CA           13.840  -37.776  23.172
+HETATM      CA    CA           14.068  -37.101  23.407
+HETATM      CA    CA           14.068  -37.101  23.407
 HETATM      CA    CA           12.511  -38.23  21.74
-HETATM      CA    CA           12.991  -37.38  22.890
-HETATM      CA    CA           14.309  -37.191  24.587
-HETATM      CA    CA           12.057  -36.70  21.90
+HETATM      CA    CA           2.6146  -29.78  26.539
