@@ -316,3 +316,31 @@ def shortenURL(url_arg):
     short_url_secure = r.split(":")[0]+"s:"+r.split(":")[1]
     print(short_url_secure)
     return(short_url_secure)
+
+
+#################################################################################################
+
+#################################################################################################
+
+def write2S3(file_name_arg, data_arg, folder_path_arg, typefolder_arg):
+    string = data_arg
+
+    file_name = file_name_arg
+    lambda_path = "/tmp/" + file_name
+    s3_path = folder_path_arg + "/" + typefolder_arg + "/" + file_name
+
+    with open(lambda_path, 'w+') as file:
+        file.write(string)
+        file.close()
+
+    s3 = boto3.resource('s3')
+    s3.meta.client.upload_file(lambda_path, 's3bucket', s3_path)
+
+
+def readS3File(file_name_arg):
+    bucketname = ''
+    filename = file_name_arg
+    print("Filename and : ", filename)
+    fileObj = s3.get_object(Bucket=bucketname, Key=filename)
+    file_content = fileObj["Body"].read().decode('utf-8')
+    print(file_content)
