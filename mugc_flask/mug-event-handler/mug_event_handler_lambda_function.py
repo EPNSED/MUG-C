@@ -5,11 +5,9 @@ import boto3
 
 print('Loading function')
 
-s3 = boto3.client('s3',aws_access_key_id='AKIAJ2ZEPSYLQ3UYKHQQ',aws_secret_access_key='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')
-ss3 = boto3.client('s3')
+s3 = boto3.client('s3')
 ses = boto3.client('ses')
 ecs = boto3.client('ecs')
-lambda_client = boto3.client('lambda')
 
 
 def lambda_handler(event, context):
@@ -147,7 +145,7 @@ def send_receipt(sender_arg, recipient_arg):
         print("Email sent! Message ID:"),
         print(response['MessageId'])
 
-def MugcDockerInit(pdburl_arg, pdbid_arg, sessionid_arg):
+def MugcDockerInit(pdburl_arg, pdbid_arg, sessionid_arg): #replace with MUGxpy
     invoke_response = ecs.run_task(
     cluster='mugctestdocker',
     taskDefinition='mugcdocker',
@@ -274,10 +272,10 @@ def resultAuthValidator(bucket, resultKey_arg):
                 responseForEmail = s3.get_object(Bucket=bucket, Key=keyForEmail_arg)
                 resultEmail_arg = responseForEmail['Metadata']['useremail']
                 email_arg = resultEmail_arg
-                writer = ss3.head_object(Bucket = bucket, Key = resultKey_arg)
+                writer = s3.head_object(Bucket = bucket, Key = resultKey_arg)
                 newMeta = writer["Metadata"]
                 newMeta["wasSent"] = "True"
-                ss3.copy_object(Bucket = bucket, Key = resultKey_arg, CopySource = bucket + '/' + resultKey_arg, Metadata = newMeta, MetadataDirective='REPLACE')
+                s3.copy_object(Bucket = bucket, Key = resultKey_arg, CopySource = bucket + '/' + resultKey_arg, Metadata = newMeta, MetadataDirective='REPLACE')
                 if wasSent != "True" and email_arg != None:
                     SendMugcDockerOutput(resultKey_arg, email_arg)
         except Exception as e:
