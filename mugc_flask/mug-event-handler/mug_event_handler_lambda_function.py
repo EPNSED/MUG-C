@@ -335,8 +335,8 @@ def write2S3(file_name_arg, data_arg, folder_path_arg, typefolder_arg):
     s3.meta.client.upload_file(lambda_path, 's3bucket', s3_path)
 
 
-def readS3File(file_name_arg):
-    bucketname = ''
+def readS3File(bucketname_arg, file_name_arg):
+    bucketname = bucketname_arg
     filename = file_name_arg
     print("Filename and : ", filename)
     fileObj = s3.get_object(Bucket=bucketname, Key=filename)
