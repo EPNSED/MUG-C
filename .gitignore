@@ -1,5 +1,5 @@
 .idea
 .ipynb_checkpoints
 inputdata
-.zip
+*.zip
 __pycache__
