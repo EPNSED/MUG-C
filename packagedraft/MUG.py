@@ -223,9 +223,15 @@ class FileOperation(object):
         """ generated source for method getEntriesAsList """
         #  Return list entries.
         #  An element of that list is one line of the file fileName.
-        with open(fileName, 'r') as fil:
-            entries = fil.read().split('\n')
-            fil.close()
+        try:
+            with open(fileName, 'r') as fil:
+                entries = fil.read().split('\n')
+                fil.close()
+        except OSError as exc:
+            if exc.errno == 36:
+                pass
+            else:
+                raise  # re-raise previously caught exception
         return entries
     
     @classmethod
