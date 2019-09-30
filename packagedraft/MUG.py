@@ -368,7 +368,7 @@ class ParsePDB(object):
                 float1 = m.group(1)
                 float2 = m.group(2)
                 float3 = m.group(3)
-                print ("(" + float1 + ")" + "(" + float2 + ")" + "(" + float3 + ")" + "\n")
+                # print ("(" + float1 + ")" + "(" + float2 + ")" + "(" + float3 + ")" + "\n")
             plhld = [float(float1), float(float2), float(float3)]
             ac = array(plhld)
             fList.append(ac)
@@ -431,7 +431,7 @@ class ParsePDB(object):
                 else:
                     continue
             renamed_cliques.append(c)
-        print('Number of cliques found: ', len(cliques))
+        # print('Number of cliques found: ', len(cliques))
         return (renamed_cliques)
 
     @classmethod
@@ -463,7 +463,7 @@ class ParsePDB(object):
                     resoxygroup = []
                     for i, (atom) in enumerate(resatoms):
                         # subtract the two position vectors
-                        print(atom.get_coord())
+                        # print(atom.get_coord())
                         diff_vector = alpha_carbon - atom.get_coord()
                         # to get a positive value we square the difference vector
                         # we then take the square root to go back to the original scale
