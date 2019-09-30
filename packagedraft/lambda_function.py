@@ -41,7 +41,7 @@ def lambda_handler(event, context):
             bucketname = bucket
             fileObj = s3.get_object(Bucket=bucketname, Key=s3key_arg)
             file_content = fileObj["Body"].read().decode('utf-8')
-            MUG.runPrediction(file_content, pdbID_noextention, sessionID_arg, 'predictionResults', metal = 'CA')
+            MUG.runPrediction(file_content, pdbID_noextention, sessionID_arg, 'predictionResults', bucketname, metal = 'CA')
         else:
             print('Sent verification email')
         print("CONTENT TYPE: " + response['ContentType'])

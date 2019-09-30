@@ -235,8 +235,9 @@ class FileOperation(object):
                 raise  # re-raise previously caught exception
     
     @classmethod
-    def write2S3(cls, file_name_arg, data_arg, folder_path_arg, typefolder_arg):
-        string = data_arg
+    def write2S3(cls, file_name_arg, data_arg, folder_path_arg, typefolder_arg, bucket):
+        # string = '\n'.join(data_arg)
+        string = '\n'.join(map(str, data_arg))
 
         file_name = file_name_arg
         lambda_path = "/tmp/" + file_name
@@ -247,7 +248,7 @@ class FileOperation(object):
             file.close()
 
         s3 = boto3.resource('s3')
-        s3.meta.client.upload_file(lambda_path, 's3bucket', s3_path)
+        s3.meta.client.upload_file(lambda_path, bucket, s3_path)
     
     @classmethod
     def saveResults(cls, entryNames, fileName, option):
@@ -279,7 +280,7 @@ class ParsePDB(object):
         if atom != "allatom":
             if (0 == len(atom)) or (len(atom) >= 4):
                 print("error! in getLines")
-        fileList = FileOperation.getEntriesAsList(PDBFile)
+        fileList = PDBFile
         while i < len(fileList):
             line = str(fileList[i])
             if field == "HETATM" and subfield != "HOH" and line.startswith(field) and line[17:20].strip() in atom:
@@ -492,13 +493,16 @@ class MUG(object):
     """ This is the MUG Python class """ 
     
     @classmethod
-    def runPrediction(self, fileName, PDBID, folder_path_arg, typefolder_arg, metal = 'CA'):
+    def runPrediction(self, fileName, PDBID, folder_path_arg, typefolder_arg, bucket, metal = 'CA'):
         """ generated source for method getMetal """
         caListtest = ParsePDB.getLines(fileName, "HETATM", metal, metal)
         print(caListtest)
         caList = ParsePDB.vecCaList(caListtest)
         print(caList)
-        molecule = Pmolecule(fileName)
+        with open('/tmp/'+PDBID+'.pdb', "w") as text_file:
+            text_file.write(fileName)
+        filaddress = '/tmp/'+PDBID+'.pdb'
+        molecule = Pmolecule(filaddress)
         # Create Biograph, uses Biopython for stucture and networkx for drawing the graphs
         Graph = molecule.get_network()
         # nx.draw(Graph, with_labels = True) #, with_labels = True
@@ -526,7 +530,7 @@ class MUG(object):
         pdb_site_list = allAtom + resultAtoms
         FileOperation.saveResults(pdb_site_list, currDirectory + "/" + PDBID + "_site.pdb", "w")
         locfileName = PDBID + "_site.pdb"
-        FileOperation.write2S3(locfileName, pdb_site_list, folder_path_arg, typefolder_arg)
+        FileOperation.write2S3(locfileName, pdb_site_list, folder_path_arg, typefolder_arg, bucket)
         print("File: " + currDirectory + "/predictionResults/" + PDBID + "_site.pdb" + " just written")
         print('Completed!')
         resultList = []
