@@ -238,15 +238,15 @@ class FileOperation(object):
     def write2S3(cls, file_name_arg, data_arg, folder_path_arg, typefolder_arg, bucket):
         # string = '\n'.join(data_arg)
         string = '\n'.join(map(str, data_arg))
-
         file_name = file_name_arg
         lambda_path = "/tmp/" + file_name
         s3_path = folder_path_arg + "/"+ typefolder_arg + "/" + file_name
-
-        with open(lambda_path, 'w+') as file:
-            file.write(string)
-            file.close()
-
+        try:
+            with open(lambda_path, 'w') as data:
+                data.write(str(string))
+        except Exception as e:
+            print('Writing file to s3 not working')
+            pass
         s3 = boto3.resource('s3')
         s3.meta.client.upload_file(lambda_path, bucket, s3_path)
     
@@ -280,7 +280,7 @@ class ParsePDB(object):
         if atom != "allatom":
             if (0 == len(atom)) or (len(atom) >= 4):
                 print("error! in getLines")
-        fileList = PDBFile
+        fileList = FileOperation.getEntriesAsList(PDBFile)
         while i < len(fileList):
             line = str(fileList[i])
             if field == "HETATM" and subfield != "HOH" and line.startswith(field) and line[17:20].strip() in atom:
@@ -456,7 +456,7 @@ class ParsePDB(object):
             for res in resli:
                 atom_list = res.get_list()
                 resatoms = [atom for atom in atom_list if 'O' in atom.name]
-                print(resatoms)
+                # print(resatoms)
                 for acvec in caList:
                     alpha_carbon = acvec
                     distances = []
@@ -469,13 +469,13 @@ class ParsePDB(object):
                         # we then take the square root to go back to the original scale
                         distances.append(np.sqrt(np.sum(diff_vector * diff_vector)))
                         dist = np.sqrt(np.sum(diff_vector * diff_vector))
-                        print(i)
-                        print('The distances are: ', distances)
+                        # print(i)
+                        # print('The distances are: ', distances)
                         # we get the nearest atom using min(distances) or dist and see if it falls inside
                         # the cutoff
                         if (0 < dist) and (dist > limit) and (dist < cutoff):
                             grup.append(atom)
-                        print(res)
+                        # print(res)
             resoxygrouped.append(grup)
         return resoxygrouped
     @classmethod
@@ -495,13 +495,13 @@ class MUG(object):
     @classmethod
     def runPrediction(self, fileName, PDBID, folder_path_arg, typefolder_arg, bucket, metal = 'CA'):
         """ generated source for method getMetal """
-        caListtest = ParsePDB.getLines(fileName, "HETATM", metal, metal)
-        print(caListtest)
-        caList = ParsePDB.vecCaList(caListtest)
-        print(caList)
         with open('/tmp/'+PDBID+'.pdb', "w") as text_file:
             text_file.write(fileName)
         filaddress = '/tmp/'+PDBID+'.pdb'
+        caListtest = ParsePDB.getLines(filaddress, "HETATM", metal, metal)
+        print(caListtest)
+        caList = ParsePDB.vecCaList(caListtest)
+        print(caList)
         molecule = Pmolecule(filaddress)
         # Create Biograph, uses Biopython for stucture and networkx for drawing the graphs
         Graph = molecule.get_network()
@@ -518,19 +518,11 @@ class MUG(object):
         print(centreCa2ans)
         resultAtoms = ParsePDB.writeresultAtoms(centreCa2ans)
         #########
-        fileList = []
-        resultList = []
         allAtom = []
-        allAtomNoWater = []
-        currDirectory = os.getcwd()
-        fileList = FileOperation.getEntriesAsList(fileName)
-        fileName = currDirectory + "/inputdata/" + PDBID + ".pdb"
-        caList = ParsePDB.getLines(fileName, "HETATM", metal, metal)
-        allAtom = ParsePDB.getLines(fileName, "ATOM", "Res", "allatom")
+        allAtom = ParsePDB.getLines(filaddress, "ATOM", "Res", "allatom")
         pdb_site_list = allAtom + resultAtoms
-        FileOperation.saveResults(pdb_site_list, currDirectory + "/" + PDBID + "_site.pdb", "w")
+        FileOperation.saveResults(pdb_site_list, "/tmp/" + PDBID + "_site.pdb", "w")
         locfileName = PDBID + "_site.pdb"
         FileOperation.write2S3(locfileName, pdb_site_list, folder_path_arg, typefolder_arg, bucket)
-        print("File: " + currDirectory + "/predictionResults/" + PDBID + "_site.pdb" + " just written")
+        print("File: " + bucket + folder_path_arg + typefolder_arg + PDBID + "_site.pdb" + " just written")
         print('Completed!')
-        resultList = []
