@@ -21,36 +21,38 @@ def lambda_handler(event, context):
     key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
     resultKey_arg = key
     print("This is the key for the results: "+resultKey_arg)
-    resultAuthValidator(bucket, resultKey_arg)
-    try:
-        response = s3.get_object(Bucket=bucket, Key=key)
-        print(response)
-        #List all parameter args
-        email_arg = response['Metadata']['useremail']
-        s3key_arg = response['Metadata']['s3key']
-        pdbID_arg = response['Metadata']['pdbid']
-        pdbURL_arg = response['Metadata']['pdburl']
-        pdbID_noextention = pdbID_arg.split(".")[0]
-        sessionID_arg = s3key_arg.split("/")[0]
-        if "pdb.txt" not in s3key_arg: 
-            url_arg = getInputFileUrl(s3key_arg)
-            mugin_url_arg = shortenURL(url_arg)
-        else:
-            mugin_url_arg = pdbURL_arg
-        if verify_email(email_arg) == True:#check if the email of the user is verified
-            send_receipt(email_arg, email_arg)#sent notication job has started
-            bucketname = bucket
-            fileObj = s3.get_object(Bucket=bucketname, Key=s3key_arg)
-            file_content = fileObj["Body"].read().decode('utf-8')
-            MUG.runPrediction(file_content, pdbID_noextention, sessionID_arg, 'predictionResults', bucketname, email_arg, metal = 'CA')
-        else:
-            print('Sent verification email')
-        print("CONTENT TYPE: " + response['ContentType'])
-        return response['ContentType']
-    except Exception as e:
-        print(e)
-        print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
-        raise e
+    if 'predictionResults' in resultKey_arg:
+        resultAuthValidator(bucket, resultKey_arg)
+    if not ('predictionResults' in resultKey_arg):
+        try:
+            response = s3.get_object(Bucket=bucket, Key=key)
+            print(response)
+            #List all parameter args
+            email_arg = response['Metadata']['useremail']
+            s3key_arg = response['Metadata']['s3key']
+            pdbID_arg = response['Metadata']['pdbid']
+            pdbURL_arg = response['Metadata']['pdburl']
+            pdbID_noextention = pdbID_arg.split(".")[0]
+            sessionID_arg = s3key_arg.split("/")[0]
+            if "pdb.txt" not in s3key_arg: 
+                url_arg = getInputFileUrl(s3key_arg)
+                mugin_url_arg = shortenURL(url_arg)
+            else:
+                mugin_url_arg = pdbURL_arg
+            if verify_email(email_arg) == True:#check if the email of the user is verified
+                send_receipt(email_arg, email_arg)#sent notication job has started
+                bucketname = bucket
+                fileObj = s3.get_object(Bucket=bucketname, Key=s3key_arg)
+                file_content = fileObj["Body"].read().decode('utf-8')
+                MUG.runPrediction(file_content, pdbID_noextention, sessionID_arg, 'predictionResults', bucketname, email_arg, metal = 'CA')
+            else:
+                print('Sent verification email')
+            print("CONTENT TYPE: " + response['ContentType'])
+            return response['ContentType']
+        except Exception as e:
+            print(e)
+            print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
+            raise e
         
 #####///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -151,39 +153,17 @@ def send_receipt(sender_arg, recipient_arg):
         print("Email sent! Message ID:"),
         print(response['MessageId'])
 
-def MugcDockerInit(pdburl_arg, pdbid_arg, sessionid_arg):
-    invoke_response = ecs.run_task(
-    cluster='mugctestdocker',
-    taskDefinition='mugcdocker',
-    overrides={
-        'containerOverrides': [
-            {
-                'name': 'mugcdocker',
-                'command': [
-                    pdburl_arg,
-                    pdbid_arg,
-                    sessionid_arg,
-                ]
-            },
-        ],
-        'taskRoleArn': 'arn:aws:iam::005703555151:role/Dockerrunner',
-        'executionRoleArn': 'arn:aws:iam::005703555151:role/Dockerrunner'
-    },
-    count=1,
-    startedBy='lambda')
-    print(invoke_response)
 #################################################################################################
 
 #################################################################################################
 
     
-def SendMugcDockerOutput(s3key_arg, email_arg):
-    devUrl = 'https://101rrgsi71.execute-api.us-east-1.amazonaws.com/dev/display?pdbUrl='
+def SendMugcOutput(s3key_arg, url_arg, email_arg):
     key = s3key_arg.split("/")[0]
-    pdbID_arg = s3key_arg.split("/")[1].split("_")[0]
-    print(pdbID_arg)
-    pdbSite = "https://s3.amazonaws.com/mugctest/"+key+"/"+pdbID_arg+"_site.pdb"
-    txtSite = "https://s3.amazonaws.com/mugctest/"+key+"/"+pdbID_arg+"_site.txt"
+    pdbID_arg = s3key_arg.split("/")[2].split("_")[0]
+    # print(pdbID_arg)
+    pdbSite = url_arg
+    # txtSite = "https://s3.amazonaws.com/mugctest/"+key+"/"+pdbID_arg+"_site.txt"
     # Replace sender@example.com with your "From" address.
     # This address must be verified with Amazon SES.
     SENDER = email_arg
@@ -207,7 +187,6 @@ def SendMugcDockerOutput(s3key_arg, email_arg):
     BODY_TEXT = ("MUG(C) Results\r\n"
                  "This email contains the links to your files "
                  "PDB Site file:"
-                 "PDB Site text file:"
                 )
                 
     # The HTML body of the email.
@@ -216,12 +195,8 @@ def SendMugcDockerOutput(s3key_arg, email_arg):
     <body>
       <h1>MUG(C) Results: """+pdbID_arg+"""</h1>
       <p>This email contains links to the MUG(C) outputs:
-        <a href='"""+pdbSite+"""'>PDB Site</a> using the
-        <a href='"""+txtSite+"""'>
-         PDB Site text file</a>.</p>
+        <a href='"""+pdbSite+"""'>PDB Site</a> </p>
         <p> Your PDB file has been sucessfully processed.</p>
-        <a href='"""+devUrl+pdbSite+"""'>
-         View PDB Site on MUGC-Viewer</a>.</p>
     </body>
     </html>
                 """            
@@ -270,26 +245,25 @@ def SendMugcDockerOutput(s3key_arg, email_arg):
         print("Email sent! Message ID:"),
         print(response['MessageId'])
 
-def resultAuthValidator(bucket, resultKey_arg):
-    if "site" in resultKey_arg:
-        email_arg = None
-        wasSent = None
-        keyForEmail_arg = getKeyForResultEmail(bucket, resultKey_arg)
+def resultAuthValidator(bucket_arg, resultKey_arg):
+    if "predictionResults" in resultKey_arg:
+        try:
+            keyForEmail_arg = str(resultKey_arg)
+        except Exception as e:
+            pass
         print("This is the key for email arg: "+keyForEmail_arg)
         try:
-            if "predictionResults" in resultKey_arg:
-                responseForEmail = s3.get_object(Bucket=bucket, Key=keyForEmail_arg)
+            if "predictionResults" in resultKey_arg and "site" in resultKey_arg:
+                responseForEmail = s3.get_object(Bucket=bucket_arg, Key=resultKey_arg)
                 resultEmail_arg = responseForEmail['Metadata']['useremail']
                 email_arg = resultEmail_arg
-                writer = s3.head_object(Bucket = bucket, Key = resultKey_arg)
-                newMeta = writer["Metadata"]
-                newMeta["wasSent"] = "True"
-                s3.copy_object(Bucket = bucket, Key = resultKey_arg, CopySource = bucket + '/' + resultKey_arg, Metadata = newMeta, MetadataDirective='REPLACE')
-                if wasSent != "True" and email_arg != None:
-                    SendMugcDockerOutput(resultKey_arg, email_arg)
+                if email_arg != None:
+                    url_arg = 'https://'+ bucket_arg +'.s3.amazonaws.com/'+resultKey_arg
+                    print('Object url: '+ url_arg )
+                    SendMugcOutput(resultKey_arg, url_arg, email_arg)
         except Exception as e:
             print(e)
-            print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(keyForEmail_arg, bucket))
+            print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(keyForEmail_arg, bucket_arg))
 
 def getKeyForResultEmail(bucket, currKey):
     finalKey = None
@@ -300,7 +274,7 @@ def getKeyForResultEmail(bucket, currKey):
     if 'pdb.txt' in strResponse:
         finalKey = currKey.split("/")[0]+"/"+"pdb.txt"
     else:
-        finalKey = currKey.split("/")[0]+"/"+currKey.split("/")[1].split("_")[0]+".pdb"
+        finalKey = currKey
     print(finalKey)
     return(finalKey)
     
@@ -327,20 +301,6 @@ def shortenURL(url_arg):
 #################################################################################################
 
 #################################################################################################
-
-def write2S3(file_name_arg, data_arg, folder_path_arg, typefolder_arg):
-    string = data_arg
-    
-    file_name = file_name_arg
-    lambda_path = "/tmp/" + file_name
-    s3_path = folder_path_arg + "/"+ typefolder_arg + "/" + file_name
-    
-    with open(lambda_path, 'w+') as file:
-        file.write(string)
-        file.close()
-    
-    s3 = boto3.resource('s3')
-    s3.meta.client.upload_file(lambda_path, 's3bucket', s3_path)
     
 def readS3File(file_name_arg):
     bucketname = ''
