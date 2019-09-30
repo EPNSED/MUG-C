@@ -11,6 +11,7 @@ import shutil
 import networkx as nx
 import sys
 import boto3
+from botocore.exceptions import ClientError
 from collections import Counter
 from Bio.PDB import MMCIFParser, PDBParser, Selection, NeighborSearch, Entity
 
@@ -235,7 +236,7 @@ class FileOperation(object):
                 raise  # re-raise previously caught exception
     
     @classmethod
-    def write2S3(cls, file_name_arg, data_arg, folder_path_arg, typefolder_arg, bucket):
+    def write2S3(cls, file_name_arg, data_arg, folder_path_arg, typefolder_arg, bucket, email_arg):
         # string = '\n'.join(data_arg)
         string = '\n'.join(map(str, data_arg))
         file_name = file_name_arg
@@ -247,8 +248,12 @@ class FileOperation(object):
         except Exception as e:
             print('Writing file to s3 not working')
             pass
-        s3 = boto3.resource('s3')
-        s3.meta.client.upload_file(lambda_path, bucket, s3_path)
+        s3 = boto3.client('s3')
+        object_data = open(lambda_path, 'rb')
+        try:
+            s3.put_object(Bucket=bucket, Key=s3_path, Body=object_data, Metadata={'useremail': email_arg})
+        except ClientError as e:
+            print(e)
     
     @classmethod
     def saveResults(cls, entryNames, fileName, option):
@@ -493,7 +498,7 @@ class MUG(object):
     """ This is the MUG Python class """ 
     
     @classmethod
-    def runPrediction(self, fileName, PDBID, folder_path_arg, typefolder_arg, bucket, metal = 'CA'):
+    def runPrediction(self, fileName, PDBID, folder_path_arg, typefolder_arg, bucket, email_arg, metal = 'CA'):
         """ generated source for method getMetal """
         with open('/tmp/'+PDBID+'.pdb', "w") as text_file:
             text_file.write(fileName)
@@ -523,6 +528,6 @@ class MUG(object):
         pdb_site_list = allAtom + resultAtoms
         FileOperation.saveResults(pdb_site_list, "/tmp/" + PDBID + "_site.pdb", "w")
         locfileName = PDBID + "_site.pdb"
-        FileOperation.write2S3(locfileName, pdb_site_list, folder_path_arg, typefolder_arg, bucket)
+        FileOperation.write2S3(locfileName, pdb_site_list, folder_path_arg, typefolder_arg, bucket, email_arg)
         print("File: " + bucket + folder_path_arg + typefolder_arg + PDBID + "_site.pdb" + " just written")
         print('Completed!')

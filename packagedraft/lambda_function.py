@@ -2,6 +2,7 @@
 import json
 import urllib.parse
 import boto3
+from botocore.exceptions import ClientError
 from MUG import MUG
 
 print('Loading function')
@@ -41,7 +42,7 @@ def lambda_handler(event, context):
             bucketname = bucket
             fileObj = s3.get_object(Bucket=bucketname, Key=s3key_arg)
             file_content = fileObj["Body"].read().decode('utf-8')
-            MUG.runPrediction(file_content, pdbID_noextention, sessionID_arg, 'predictionResults', bucketname, metal = 'CA')
+            MUG.runPrediction(file_content, pdbID_noextention, sessionID_arg, 'predictionResults', bucketname, email_arg, metal = 'CA')
         else:
             print('Sent verification email')
         print("CONTENT TYPE: " + response['ContentType'])
@@ -276,7 +277,7 @@ def resultAuthValidator(bucket, resultKey_arg):
         keyForEmail_arg = getKeyForResultEmail(bucket, resultKey_arg)
         print("This is the key for email arg: "+keyForEmail_arg)
         try:
-            if "site" in resultKey_arg:
+            if "predictionResults" in resultKey_arg:
                 responseForEmail = s3.get_object(Bucket=bucket, Key=keyForEmail_arg)
                 resultEmail_arg = responseForEmail['Metadata']['useremail']
                 email_arg = resultEmail_arg
