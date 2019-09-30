@@ -37,16 +37,27 @@ def lambda_handler(event, context):
             if "pdb.txt" not in s3key_arg: 
                 url_arg = getInputFileUrl(s3key_arg)
                 mugin_url_arg = shortenURL(url_arg)
+                if verify_email(email_arg) == True:#check if the email of the user is verified
+                    send_receipt(email_arg, email_arg)#sent notication job has started
+                    bucketname = bucket
+                    fileObj = s3.get_object(Bucket=bucketname, Key=s3key_arg)
+                    file_content = fileObj["Body"].read().decode('utf-8')
+                    MUG.runPrediction(file_content, pdbID_noextention, sessionID_arg, 'predictionResults', bucketname, email_arg, metal = 'CA')
+                else:
+                    print('Sent verification email')
             else:
                 mugin_url_arg = pdbURL_arg
-            if verify_email(email_arg) == True:#check if the email of the user is verified
-                send_receipt(email_arg, email_arg)#sent notication job has started
-                bucketname = bucket
-                fileObj = s3.get_object(Bucket=bucketname, Key=s3key_arg)
-                file_content = fileObj["Body"].read().decode('utf-8')
-                MUG.runPrediction(file_content, pdbID_noextention, sessionID_arg, 'predictionResults', bucketname, email_arg, metal = 'CA')
-            else:
-                print('Sent verification email')
+                print('pdb.txt mugin_url_arg: ',mugin_url_arg)
+                if verify_email(email_arg) == True:#check if the email of the user is verified
+                    send_receipt(email_arg, email_arg)#sent notication job has started
+                    bucketname = bucket
+                    response = urllib.request.urlopen(mugin_url_arg)
+                    file_content = str(response.read().decode('utf-8'))
+                    MUG.runPrediction(file_content, pdbID_noextention, sessionID_arg, 'predictionResults', bucketname, email_arg, metal = 'CA')
+                    #delete pdb.txt file
+                    fileObj = s3.delete_object(Bucket=bucketname, Key=s3key_arg)
+                else:
+                    print('Sent verification email')
             print("CONTENT TYPE: " + response['ContentType'])
             return response['ContentType']
         except Exception as e:
