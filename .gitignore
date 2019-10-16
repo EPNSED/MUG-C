@@ -4,4 +4,8 @@ inputdata
 # *.zip
 **/__pycache__
 # **/.DS_Store
+venv
+__pycache__
+.vscode
+.idea
 .DS_Store
