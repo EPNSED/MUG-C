@@ -3,9 +3,12 @@
 inputdata
 # *.zip
 **/__pycache__
-# **/.DS_Store
+**/.DS_Store
 venv
 __pycache__
 .vscode
 .idea
 .DS_Store
+.DS_Store
+.DS_Store
+.idea/workspace.xml
