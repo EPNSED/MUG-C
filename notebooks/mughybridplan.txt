@@ -1,0 +1,8 @@
+Create list of carbon clusters with atleast 4 atoms, list should contain metadata of distance metrics for oxygen center, then iterate through the list and remove the clusters that dont meet the defined
+criteria.
+
+In general, execution of this algorithm involves three major steps (Fig. 1B). In step 1, taking a PDB structure as input, we construct the protein topological graph whose vertices are the carbon atoms with associated oxygen atoms. Two vertices share an edge if the distance between them is less than some defined threshold. In step 2, we search for all maximum cliques in the graph to identify carbon clusters, and tentatively position Ca2+ at the geometric center (Ca2+ center) of each cluster. These clusters are required to have at least four carbon atoms, ensuring a minimum of four oxygen atoms in the site available to chelate Ca2+ 18,39. In step 3, we apply three different filters to remove clusters that are not suitable for Ca2+-binding. The remaining clusters, as well as the Ca2+ center of each cluster, are the predicted Ca2+-binding sites.
+
+Next step is to add angle filters
+
+Create graph with angular and distance weights, then apply node2vec then train ML model with Graph Convelutional Neural network to identify Ca2+ binding sites.

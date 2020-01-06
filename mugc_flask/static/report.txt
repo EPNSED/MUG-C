@@ -1,0 +1,500 @@
+[ 2019-04-22 21:29:47 ] files_iframe_info.xml NOT YET CREATED
+[ 2019-04-22 21:29:47 ] #################################################################
+[ 2019-04-22 21:29:47 ] ######################   SCRAPING STARTED  ######################
+[ 2019-04-22 21:29:47 ] #################################################################
+[ 2019-04-22 21:29:47 ] Create an empty xml file : files_count.xml
+[ 2019-04-22 21:29:47 ] set_files_count_xml() function
+[ 2019-04-22 21:29:47 ] increment +1
+[ 2019-04-22 21:29:47 ] key = 'scraping_reload' |  value = '1'
+[ 2019-04-22 21:29:47 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:47 ] demo email sent !!!
+[ 2019-04-22 21:29:47 ] Number of running request for this user : 1
+[ 2019-04-22 21:29:47 ] Limit of running request by bulk user : 7
+[ 2019-04-22 21:29:47 ] -------------------------------------------
+[ 2019-04-22 21:29:47 ]  Reading From 'report_to_create_file.txt' 
+[ 2019-04-22 21:29:47 ] -------------------------------------------
+[ 2019-04-22 21:29:47 ] err_msg = file not Exist !!!
+[ 2019-04-22 21:29:47 ] -------------------------------------------
+[ 2019-04-22 21:29:47 ] Front Page is Complete = No
+[ 2019-04-22 21:29:47 ] -------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:47 ] scraping_front_page() Function ...
+[ 2019-04-22 21:29:47 ] archive_url_origine = http://miew.opensource.epam.com/
+[ 2019-04-22 21:29:47 ] Scraping of front page ( test number 1/3 )
+[ 2019-04-22 21:29:47 ] ---------------------------------------
+[ 2019-04-22 21:29:47 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:47 ] ---------------------------------------
+[ 2019-04-22 21:29:47 ] TEST 1
+[ 2019-04-22 21:29:47 ] URL = http://miew.opensource.epam.com/
+[ 2019-04-22 21:29:47 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:48 ] useragent = Mozilla/5.0 (X11; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1 Iceweasel/15.0.1
+[ 2019-04-22 21:29:48 ] set_files_count_xml() function
+[ 2019-04-22 21:29:48 ] key = 'final_archive_url' |  value = 'http://miew.opensource.epam.com/'
+[ 2019-04-22 21:29:48 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:48 ] Final Archive URL = http://miew.opensource.epam.com/
+[ 2019-04-22 21:29:48 ] -------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:48 ] Create front page row in 'to_create_arr' table
+[ 2019-04-22 21:29:48 ] set_files_count_xml() function
+[ 2019-04-22 21:29:48 ] key = 'html_total' |  value = '1'
+[ 2019-04-22 21:29:48 ] key = 'html_done' |  value = '0'
+[ 2019-04-22 21:29:48 ] key = 'total_size' |  value = '12'
+[ 2019-04-22 21:29:48 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:48 ] ( 0 / 1 )  Done - 0 error pages fixed
+[ 2019-04-22 21:29:48 ] Archive url = http://miew.opensource.epam.com/
+[ 2019-04-22 21:29:48 ] Website url = miew.opensource.epam.com/
+[ 2019-04-22 21:29:48 ] No www url = miew.opensource.epam.com
+[ 2019-04-22 21:29:48 ] Main Domain = epam.com
+[ 2019-04-22 21:29:48 ] full archive url = http://miew.opensource.epam.com/
+[ 2019-04-22 21:29:48 ] archive url = http://miew.opensource.epam.com/
+[ 2019-04-22 21:29:48 ] subdomain = miew.opensource
+[ 2019-04-22 21:29:48 ] type( demo or live ) = demo
+[ 2019-04-22 21:29:48 ] max_level = 6
+[ 2019-04-22 21:29:48 ] main folder = miew.opensource.epam.com_mmashiku1_student.gsu.edu_jtt06hb7jay
+[ 2019-04-22 21:29:48 ] email = mmashiku1@student.gsu.edu
+[ 2019-04-22 21:29:48 ] scrape_html_then_files_in_front_page = Yes
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] Download PDF = 0
+[ 2019-04-22 21:29:48 ] file_path_index = 
+[ 2019-04-22 21:29:48 ] file_path_without_ext_index = 
+[ 2019-04-22 21:29:48 ] strings_to_replace = 
+[ 2019-04-22 21:29:48 ] remove_broken_outbound_links = 1
+[ 2019-04-22 21:29:48 ] redirect_all_404_to_frontpage = No
+[ 2019-04-22 21:29:48 ] force_work_in_local = Yes
+[ 2019-04-22 21:29:48 ] skip_fix_encoding = Yes
+[ 2019-04-22 21:29:48 ] Use Proxy after first scraping fail = Yes
+[ 2019-04-22 21:29:48 ] scraping_reload number = 1
+[ 2019-04-22 21:29:48 ] max_pages_demo = 10
+[ 2019-04-22 21:29:48 ] max_size_demo = 10000
+[ 2019-04-22 21:29:48 ] ------------------------------------------------------------------
+[ 2019-04-22 21:29:48 ] set_files_count_xml() function
+[ 2019-04-22 21:29:48 ] key = 'html_total' |  value = '1'
+[ 2019-04-22 21:29:48 ] key = 'html_done' |  value = '0'
+[ 2019-04-22 21:29:48 ] key = 'total_size' |  value = '16'
+[ 2019-04-22 21:29:48 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:48 ] ( 0 / 1 )  Done - 0 error pages fixed
+[ 2019-04-22 21:29:48 ] 'index.html' Exist in 'to_create_arr' in the first row ( Completed : No )
+[ 2019-04-22 21:29:48 ] Scraping duration not calculated because front page not created yet
+[ 2019-04-22 21:29:48 ] index.html -> File name found in to_create_arr
+[ 2019-04-22 21:29:48 ] #####################################################################################################
+[ 2019-04-22 21:29:48 ] ###############http://miew.opensource.epam.com/ ( Scraping  of 1 / 1 )  - 0 error pages fixed###############
+[ 2019-04-22 21:29:48 ] ###############Local URL = index.html (code = 200) ###############
+[ 2019-04-22 21:29:48 ] ###############This is front page###############
+[ 2019-04-22 21:29:48 ] ###############Try number = 1###############
+[ 2019-04-22 21:29:48 ] #####################################################################################################
+[ 2019-04-22 21:29:48 ]  Main level =0
+[ 2019-04-22 21:29:48 ] HTML already scraped ( it's probably a front page )
+[ 2019-04-22 21:29:48 ] Original encoding = UTF-8
+[ 2019-04-22 21:29:48 ] Original encoding is in probably UTF-8= true
+[ 2019-04-22 21:29:48 ] ----------------------------------------
+[ 2019-04-22 21:29:48 ] Not checking the encoding
+[ 2019-04-22 21:29:48 ] Final encoding = UTF-8
+[ 2019-04-22 21:29:48 ] Language = N/A
+[ 2019-04-22 21:29:48 ] set_files_count_xml() function
+[ 2019-04-22 21:29:48 ] key = 'is_pretty_url' |  value = 'false'
+[ 2019-04-22 21:29:48 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:48 ] local_file_path not created yet = index.html
+[ 2019-04-22 21:29:48 ] code = 200
+[ 2019-04-22 21:29:48 ] index.html -> Front page created
+[ 2019-04-22 21:29:48 ] set_files_count_xml() function
+[ 2019-04-22 21:29:48 ] key = 'html_total' |  value = '1'
+[ 2019-04-22 21:29:48 ] key = 'html_done' |  value = '1'
+[ 2019-04-22 21:29:48 ] key = 'total_size' |  value = '20'
+[ 2019-04-22 21:29:48 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:48 ] ( 1 / 1 )  Done - 0 error pages fixed
+[ 2019-04-22 21:29:48 ] index.html ( Front page ) : index.html already created so now I need to scrape all extensions and update the index.html file
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] /**************************************************************/
+[ 2019-04-22 21:29:48 ] /*******		Extract 'css_from_import' files		**********/
+[ 2019-04-22 21:29:48 ] /*******		From    'index.html'      **********/
+[ 2019-04-22 21:29:48 ] /**************************************************************/
+[ 2019-04-22 21:29:48 ] We still update 'index.html'
+[ 2019-04-22 21:29:48 ] /*******		End : Extract css_from_import files		**********/
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] /**************************************************************/
+[ 2019-04-22 21:29:48 ] /*******		Extract 'fonts_from_html' files		**********/
+[ 2019-04-22 21:29:48 ] /*******		From    'index.html'      **********/
+[ 2019-04-22 21:29:48 ] /**************************************************************/
+[ 2019-04-22 21:29:48 ] We still update 'index.html'
+[ 2019-04-22 21:29:48 ] /*******		End : Extract fonts_from_html files		**********/
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] /**************************************************************/
+[ 2019-04-22 21:29:48 ] /*******		Extract 'css' files		**********/
+[ 2019-04-22 21:29:48 ] /*******		From    'index.html'      **********/
+[ 2019-04-22 21:29:48 ] /**************************************************************/
+[ 2019-04-22 21:29:48 ] We still update 'index.html'
+[ 2019-04-22 21:29:48 ] file url = http://miew.opensource.epam.com/vendor.700b6d2d596d79a20436.css
+[ 2019-04-22 21:29:48 ] ---------------------------------------
+[ 2019-04-22 21:29:48 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:48 ] ---------------------------------------
+[ 2019-04-22 21:29:48 ] TEST 1
+[ 2019-04-22 21:29:48 ] URL = http://miew.opensource.epam.com/vendor.700b6d2d596d79a20436.css
+[ 2019-04-22 21:29:48 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:48 ] useragent = Mozilla/5.0 (Windows; U; Windows NT 6.0; ja-JP) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.4 Safari/533.20.27
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] /**************************************************************/
+[ 2019-04-22 21:29:48 ] /*******		Extract 'css_from_import' files		**********/
+[ 2019-04-22 21:29:48 ] /*******		From    'vendor.700b6d2d596d79a20436.css'      **********/
+[ 2019-04-22 21:29:48 ] /**************************************************************/
+[ 2019-04-22 21:29:48 ] We still update 'index.html'
+[ 2019-04-22 21:29:48 ] /*******		End : Extract css_from_import files		**********/
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] 
+[ 2019-04-22 21:29:48 ] /**************************************************************/
+[ 2019-04-22 21:29:48 ] /*******		Extract 'fonts_from_css' files		**********/
+[ 2019-04-22 21:29:48 ] /*******		From    'vendor.700b6d2d596d79a20436.css'      **********/
+[ 2019-04-22 21:29:48 ] /**************************************************************/
+[ 2019-04-22 21:29:48 ] We still update 'index.html'
+[ 2019-04-22 21:29:48 ] file url = http://miew.opensource.epam.com/f4769f9bdb7466be65088239c12046d1.eot
+[ 2019-04-22 21:29:48 ] ---------------------------------------
+[ 2019-04-22 21:29:48 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:48 ] ---------------------------------------
+[ 2019-04-22 21:29:48 ] TEST 1
+[ 2019-04-22 21:29:48 ] URL = http://miew.opensource.epam.com/f4769f9bdb7466be65088239c12046d1.eot
+[ 2019-04-22 21:29:48 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:49 ] useragent = Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:27.0) Gecko/20121011 Firefox/27.0Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0
+[ 2019-04-22 21:29:49 ] f4769f9bdb7466be65088239c12046d1.eot --> File Created !!!
+[ 2019-04-22 21:29:49 ] set_files_count_xml() function
+[ 2019-04-22 21:29:49 ] increment +1
+[ 2019-04-22 21:29:49 ] key = 'fonts' |  value = '1'
+[ 2019-04-22 21:29:49 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:49 ] local_file_path_rel = f4769f9bdb7466be65088239c12046d1.eot (Exist = Yes)
+[ 2019-04-22 21:29:49 ] vendor.700b6d2d596d79a20436.css : REPLACE './f4769f9bdb7466be65088239c12046d1.eot' WITH 'f4769f9bdb7466be65088239c12046d1.eot'
+[ 2019-04-22 21:29:49 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:49 ] folder_path = 
+[ 2019-04-22 21:29:49 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:49 ] file url = http://miew.opensource.epam.com/f4769f9bdb7466be65088239c12046d1.eot?#iefix
+[ 2019-04-22 21:29:49 ] local_file_path_rel = f4769f9bdb7466be65088239c12046d1.eot (Exist = Yes)
+[ 2019-04-22 21:29:49 ] vendor.700b6d2d596d79a20436.css : REPLACE './f4769f9bdb7466be65088239c12046d1.eot?#iefix' WITH 'f4769f9bdb7466be65088239c12046d1.eot'
+[ 2019-04-22 21:29:49 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:49 ] folder_path = 
+[ 2019-04-22 21:29:49 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:49 ] file url = http://miew.opensource.epam.com/448c34a56d699c29117adc64c43affeb.woff2
+[ 2019-04-22 21:29:49 ] ---------------------------------------
+[ 2019-04-22 21:29:49 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:49 ] ---------------------------------------
+[ 2019-04-22 21:29:49 ] TEST 1
+[ 2019-04-22 21:29:49 ] URL = http://miew.opensource.epam.com/448c34a56d699c29117adc64c43affeb.woff2
+[ 2019-04-22 21:29:49 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:49 ] useragent = Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.2309.372 Safari/537.36
+[ 2019-04-22 21:29:49 ] 448c34a56d699c29117adc64c43affeb.woff --> File Created !!!
+[ 2019-04-22 21:29:49 ] set_files_count_xml() function
+[ 2019-04-22 21:29:49 ] increment +1
+[ 2019-04-22 21:29:49 ] key = 'fonts' |  value = '2'
+[ 2019-04-22 21:29:49 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:49 ] local_file_path_rel = 448c34a56d699c29117adc64c43affeb.woff (Exist = Yes)
+[ 2019-04-22 21:29:49 ] vendor.700b6d2d596d79a20436.css : REPLACE './448c34a56d699c29117adc64c43affeb.woff2' WITH '448c34a56d699c29117adc64c43affeb.woff'
+[ 2019-04-22 21:29:49 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:49 ] folder_path = 
+[ 2019-04-22 21:29:49 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:49 ] file url = http://miew.opensource.epam.com/fa2772327f55d8198301fdb8bcfc8158.woff
+[ 2019-04-22 21:29:49 ] ---------------------------------------
+[ 2019-04-22 21:29:49 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:49 ] ---------------------------------------
+[ 2019-04-22 21:29:49 ] TEST 1
+[ 2019-04-22 21:29:49 ] URL = http://miew.opensource.epam.com/fa2772327f55d8198301fdb8bcfc8158.woff
+[ 2019-04-22 21:29:49 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:49 ] useragent = Mozilla/5.0 (X11; Linux x86_64; rv:14.0) Gecko/20100101 Firefox/14.0.1 Iceweasel/14.0.1
+[ 2019-04-22 21:29:49 ] fa2772327f55d8198301fdb8bcfc8158.woff --> File Created !!!
+[ 2019-04-22 21:29:49 ] set_files_count_xml() function
+[ 2019-04-22 21:29:49 ] increment +1
+[ 2019-04-22 21:29:49 ] key = 'fonts' |  value = '3'
+[ 2019-04-22 21:29:49 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:49 ] local_file_path_rel = fa2772327f55d8198301fdb8bcfc8158.woff (Exist = Yes)
+[ 2019-04-22 21:29:49 ] vendor.700b6d2d596d79a20436.css : REPLACE './fa2772327f55d8198301fdb8bcfc8158.woff' WITH 'fa2772327f55d8198301fdb8bcfc8158.woff'
+[ 2019-04-22 21:29:49 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:49 ] folder_path = 
+[ 2019-04-22 21:29:49 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:49 ] file url = http://miew.opensource.epam.com/e18bbf611f2a2e43afc071aa2f4e1512.ttf
+[ 2019-04-22 21:29:49 ] ---------------------------------------
+[ 2019-04-22 21:29:49 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:49 ] ---------------------------------------
+[ 2019-04-22 21:29:49 ] TEST 1
+[ 2019-04-22 21:29:49 ] URL = http://miew.opensource.epam.com/e18bbf611f2a2e43afc071aa2f4e1512.ttf
+[ 2019-04-22 21:29:49 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:49 ] useragent = Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20121202 Firefox/17.0 Iceweasel/17.0.1
+[ 2019-04-22 21:29:49 ] e18bbf611f2a2e43afc071aa2f4e1512.ttf --> File Created !!!
+[ 2019-04-22 21:29:49 ] set_files_count_xml() function
+[ 2019-04-22 21:29:49 ] increment +1
+[ 2019-04-22 21:29:49 ] key = 'fonts' |  value = '4'
+[ 2019-04-22 21:29:49 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:50 ] local_file_path_rel = e18bbf611f2a2e43afc071aa2f4e1512.ttf (Exist = Yes)
+[ 2019-04-22 21:29:50 ] vendor.700b6d2d596d79a20436.css : REPLACE './e18bbf611f2a2e43afc071aa2f4e1512.ttf' WITH 'e18bbf611f2a2e43afc071aa2f4e1512.ttf'
+[ 2019-04-22 21:29:50 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:50 ] folder_path = 
+[ 2019-04-22 21:29:50 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:50 ] file url = http://miew.opensource.epam.com/89889688147bd7575d6327160d64e760.svg#glyphicons_halflingsregular
+[ 2019-04-22 21:29:50 ] ---------------------------------------
+[ 2019-04-22 21:29:50 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:50 ] ---------------------------------------
+[ 2019-04-22 21:29:50 ] TEST 1
+[ 2019-04-22 21:29:50 ] URL = http://miew.opensource.epam.com/89889688147bd7575d6327160d64e760.svg#glyphicons_halflingsregular
+[ 2019-04-22 21:29:50 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:50 ] useragent = Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1
+[ 2019-04-22 21:29:50 ] 89889688147bd7575d6327160d64e760.svg --> File Created !!!
+[ 2019-04-22 21:29:50 ] set_files_count_xml() function
+[ 2019-04-22 21:29:50 ] increment +1
+[ 2019-04-22 21:29:50 ] key = 'fonts' |  value = '5'
+[ 2019-04-22 21:29:50 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:50 ] local_file_path_rel = 89889688147bd7575d6327160d64e760.svg (Exist = Yes)
+[ 2019-04-22 21:29:50 ] vendor.700b6d2d596d79a20436.css : REPLACE './89889688147bd7575d6327160d64e760.svg#glyphicons_halflingsregular' WITH '89889688147bd7575d6327160d64e760.svg'
+[ 2019-04-22 21:29:50 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:50 ] folder_path = 
+[ 2019-04-22 21:29:50 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:50 ] /*******		End : Extract fonts_from_css files		**********/
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] /**************************************************************/
+[ 2019-04-22 21:29:50 ] /*******		Extract 'background_images' files		**********/
+[ 2019-04-22 21:29:50 ] /*******		From    'vendor.700b6d2d596d79a20436.css'      **********/
+[ 2019-04-22 21:29:50 ] /*******		folder_path    'img'      **********/
+[ 2019-04-22 21:29:50 ] /**************************************************************/
+[ 2019-04-22 21:29:50 ] We still update 'index.html'
+[ 2019-04-22 21:29:50 ] count of background images 2
+[ 2019-04-22 21:29:50 ] href_1 =>f4769f9bdb7466be65088239c12046d1.eot
+[ 2019-04-22 21:29:50 ] href_1 =>f4769f9bdb7466be65088239c12046d1.eot?#iefix
+[ 2019-04-22 21:29:50 ] href_1 =>448c34a56d699c29117adc64c43affeb.woff
+[ 2019-04-22 21:29:50 ] href_1 =>fa2772327f55d8198301fdb8bcfc8158.woff
+[ 2019-04-22 21:29:50 ] href_1 =>e18bbf611f2a2e43afc071aa2f4e1512.ttf
+[ 2019-04-22 21:29:50 ] href_1 =>89889688147bd7575d6327160d64e760.svg
+[ 2019-04-22 21:29:50 ] href_1 =>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGwSURBVEhLtZa9SgNBEMc9sUxxRcoUKSzSWIhXpFMhhYWFhaBg4yPYiWCXZxBLERsLRS3EQkEfwCKdjWJAwSKCgoKCcudv4O5YLrt7EzgXhiU3/4+b2ckmwVjJSpKkQ6wAi4gwhT+z3wRBcEz0yjSseUTrcRyfsHsXmD0AmbHOC9Ii8VImnuXBPglHpQ5wwSVM7sNnTG7Za4JwDdCjxyAiH3nyA2mtaTJufiDZ5dCaqlItILh1NHatfN5skvjx9Z38m69CgzuXmZgVrPIGE763Jx9qKsRozWYw6xOHdER+nn2KkO+Bb+UV5CBN6WC6QtBgbRVozrahAbmm6HtUsgtPC19tFdxXZYBOfkbmFJ1VaHA1VAHjd0pp70oTZzvR+EVrx2Ygfdsq6eu55BHYR8hlcki+n+kERUFG8BrA0BwjeAv2M8WLQBtcy+SD6fNsmnB3AlBLrgTtVW1c2QN4bVWLATaIS60J2Du5y1TiJgjSBvFVZgTmwCU+dAZFoPxGEEs8nyHC9Bwe2GvEJv2WXZb0vjdyFT4Cxk3e/kIqlOGoVLwwPevpYHT+00T+hWwXDf4AJAOUqWcDhbwAAAAASUVORK5CYII=
+[ 2019-04-22 21:29:50 ] href_1 =>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHOSURBVEhLrZa/SgNBEMZzh0WKCClSCKaIYOED+AAKeQQLG8HWztLCImBrYadgIdY+gIKNYkBFSwu7CAoqCgkkoGBI/E28PdbLZmeDLgzZzcx83/zZ2SSXC1j9fr+I1Hq93g2yxH4iwM1vkoBWAdxCmpzTxfkN2RcyZNaHFIkSo10+8kgxkXIURV5HGxTmFuc75B2RfQkpxHG8aAgaAFa0tAHqYFfQ7Iwe2yhODk8+J4C7yAoRTWI3w/4klGRgR4lO7Rpn9+gvMyWp+uxFh8+H+ARlgN1nJuJuQAYvNkEnwGFck18Er4q3egEc/oO+mhLdKgRyhdNFiacC0rlOCbhNVz4H9FnAYgDBvU3QIioZlJFLJtsoHYRDfiZoUyIxqCtRpVlANq0EU4dApjrtgezPFad5S19Wgjkc0hNVnuF4HjVA6C7QrSIbylB+oZe3aHgBsqlNqKYH48jXyJKMuAbiyVJ8KzaB3eRc0pg9VwQ4niFryI68qiOi3AbjwdsfnAtk0bCjTLJKr6mrD9g8iq/S/B81hguOMlQTnVyG40wAcjnmgsCNESDrjme7wfftP4P7SP4N3CJZdvzoNyGq2c/HWOXJGsvVg+RA/k2MC/wN6I2YA2Pt8GkAAAAASUVORK5CYII=
+[ 2019-04-22 21:29:50 ] href_1 =>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhLY2AYBfQMgf///3P8+/evAIgvA/FsIF+BavYDDWMBGroaSMMBiE8VC7AZDrIFaMFnii3AZTjUgsUUWUDA8OdAH6iQbQEhw4HyGsPEcKBXBIC4ARhex4G4BsjmweU1soIFaGg/WtoFZRIZdEvIMhxkCCjXIVsATV6gFGACs4Rsw0EGgIIH3QJYJgHSARQZDrWAB+jawzgs+Q2UO49D7jnRSRGoEFRILcdmEMWGI0cm0JJ2QpYA1RDvcmzJEWhABhD/pqrL0S0CWuABKgnRki9lLseS7g2AlqwHWQSKH4oKLrILpRGhEQCw2LiRUIa4lwAAAABJRU5ErkJggg==
+[ 2019-04-22 21:29:50 ] href_1 =>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGYSURBVEhL5ZSvTsNQFMbXZGICMYGYmJhAQIJAICYQPAACiSDB8AiICQQJT4CqQEwgJvYASAQCiZiYmJhAIBATCARJy+9rTsldd8sKu1M0+dLb057v6/lbq/2rK0mS/TRNj9cWNAKPYIJII7gIxCcQ51cvqID+GIEX8ASG4B1bK5gIZFeQfoJdEXOfgX4QAQg7kH2A65yQ87lyxb27sggkAzAuFhbbg1K2kgCkB1bVwyIR9m2L7PRPIhDUIXgGtyKw575yz3lTNs6X4JXnjV+LKM/m3MydnTbtOKIjtz6VhCBq4vSm3ncdrD2lk0VgUXSVKjVDJXJzijW1RQdsU7F77He8u68koNZTz8Oz5yGa6J3H3lZ0xYgXBK2QymlWWA+RWnYhskLBv2vmE+hBMCtbA7KX5drWyRT/2JsqZ2IvfB9Y4bWDNMFbJRFmC9E74SoS0CqulwjkC0+5bpcV1CZ8NMej4pjy0U+doDQsGyo1hzVJttIjhQ7GnBtRFN1UarUlH8F3xict+HY07rEzoUGPlWcjRFRr4/gChZgc3ZL2d8oAAAAASUVORK5CYII=
+[ 2019-04-22 21:29:50 ] file url = http://miew.opensource.epam.com/89889688147bd7575d6327160d64e760.svg
+[ 2019-04-22 21:29:50 ] ---------------------------------------
+[ 2019-04-22 21:29:50 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:50 ] ---------------------------------------
+[ 2019-04-22 21:29:50 ] TEST 1
+[ 2019-04-22 21:29:50 ] URL = http://miew.opensource.epam.com/89889688147bd7575d6327160d64e760.svg
+[ 2019-04-22 21:29:50 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:50 ] useragent = Mozilla/5.0 (X11; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0 Iceweasel/15.0
+[ 2019-04-22 21:29:50 ] img --> Folder Created !!!
+[ 2019-04-22 21:29:50 ] img/89889688147bd7575d6327160d64e760.svg --> File Created !!!
+[ 2019-04-22 21:29:50 ] set_files_count_xml() function
+[ 2019-04-22 21:29:50 ] increment +1
+[ 2019-04-22 21:29:50 ] key = 'img' |  value = '1'
+[ 2019-04-22 21:29:50 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:50 ] local_file_path_rel = img/89889688147bd7575d6327160d64e760.svg (Exist = Yes)
+[ 2019-04-22 21:29:50 ] vendor.700b6d2d596d79a20436.css : REPLACE '89889688147bd7575d6327160d64e760.svg' WITH 'img/89889688147bd7575d6327160d64e760.svg'
+[ 2019-04-22 21:29:50 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:50 ] folder_path = img
+[ 2019-04-22 21:29:50 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:50 ] /*******		End : Extract background_images files		**********/
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] vendor.700b6d2d596d79a20436.css --> File Created !!!
+[ 2019-04-22 21:29:50 ] set_files_count_xml() function
+[ 2019-04-22 21:29:50 ] increment +1
+[ 2019-04-22 21:29:50 ] key = 'css' |  value = '1'
+[ 2019-04-22 21:29:50 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:50 ] local_file_path_rel = vendor.700b6d2d596d79a20436.css (Exist = Yes)
+[ 2019-04-22 21:29:50 ] index.html : REPLACE './vendor.700b6d2d596d79a20436.css' WITH 'vendor.700b6d2d596d79a20436.css'
+[ 2019-04-22 21:29:50 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:50 ] folder_path = 
+[ 2019-04-22 21:29:50 ] Page updated = index.html
+[ 2019-04-22 21:29:50 ] index.html ( Front page ) : update index.html
+[ 2019-04-22 21:29:50 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:50 ] file url = http://miew.opensource.epam.com/demo.c7b6bd0629722e07a032.css
+[ 2019-04-22 21:29:50 ] ---------------------------------------
+[ 2019-04-22 21:29:50 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:50 ] ---------------------------------------
+[ 2019-04-22 21:29:50 ] TEST 1
+[ 2019-04-22 21:29:50 ] URL = http://miew.opensource.epam.com/demo.c7b6bd0629722e07a032.css
+[ 2019-04-22 21:29:50 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:50 ] useragent = Mozilla/5.0 (Windows NT 6.2; WOW64; rv:21.0) Gecko/20130514 Firefox/21.0
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] /**************************************************************/
+[ 2019-04-22 21:29:50 ] /*******		Extract 'css_from_import' files		**********/
+[ 2019-04-22 21:29:50 ] /*******		From    'demo.c7b6bd0629722e07a032.css'      **********/
+[ 2019-04-22 21:29:50 ] /**************************************************************/
+[ 2019-04-22 21:29:50 ] We still update 'index.html'
+[ 2019-04-22 21:29:50 ] /*******		End : Extract css_from_import files		**********/
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] /**************************************************************/
+[ 2019-04-22 21:29:50 ] /*******		Extract 'fonts_from_css' files		**********/
+[ 2019-04-22 21:29:50 ] /*******		From    'demo.c7b6bd0629722e07a032.css'      **********/
+[ 2019-04-22 21:29:50 ] /**************************************************************/
+[ 2019-04-22 21:29:50 ] We still update 'index.html'
+[ 2019-04-22 21:29:50 ] /*******		End : Extract fonts_from_css files		**********/
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] /**************************************************************/
+[ 2019-04-22 21:29:50 ] /*******		Extract 'background_images' files		**********/
+[ 2019-04-22 21:29:50 ] /*******		From    'demo.c7b6bd0629722e07a032.css'      **********/
+[ 2019-04-22 21:29:50 ] /*******		folder_path    'img'      **********/
+[ 2019-04-22 21:29:50 ] /**************************************************************/
+[ 2019-04-22 21:29:50 ] We still update 'index.html'
+[ 2019-04-22 21:29:50 ] count of background images 2
+[ 2019-04-22 21:29:50 ] /*******		End : Extract background_images files		**********/
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] demo.c7b6bd0629722e07a032.css --> File Created !!!
+[ 2019-04-22 21:29:50 ] set_files_count_xml() function
+[ 2019-04-22 21:29:50 ] increment +1
+[ 2019-04-22 21:29:50 ] key = 'css' |  value = '2'
+[ 2019-04-22 21:29:50 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:50 ] local_file_path_rel = demo.c7b6bd0629722e07a032.css (Exist = Yes)
+[ 2019-04-22 21:29:50 ] index.html : REPLACE './demo.c7b6bd0629722e07a032.css' WITH 'demo.c7b6bd0629722e07a032.css'
+[ 2019-04-22 21:29:50 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:50 ] folder_path = 
+[ 2019-04-22 21:29:50 ] Page updated = index.html
+[ 2019-04-22 21:29:50 ] index.html ( Front page ) : update index.html
+[ 2019-04-22 21:29:50 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:50 ] /*******		End : Extract css files		**********/
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] 
+[ 2019-04-22 21:29:50 ] /**************************************************************/
+[ 2019-04-22 21:29:50 ] /*******		Extract 'img' files		**********/
+[ 2019-04-22 21:29:50 ] /*******		From    'index.html'      **********/
+[ 2019-04-22 21:29:50 ] /**************************************************************/
+[ 2019-04-22 21:29:50 ] We still update 'index.html'
+[ 2019-04-22 21:29:50 ] file url = http://miew.opensource.epam.com/favicon.ico
+[ 2019-04-22 21:29:50 ] ---------------------------------------
+[ 2019-04-22 21:29:50 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:50 ] ---------------------------------------
+[ 2019-04-22 21:29:50 ] TEST 1
+[ 2019-04-22 21:29:50 ] URL = http://miew.opensource.epam.com/favicon.ico
+[ 2019-04-22 21:29:50 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:51 ] useragent = Mozilla/5.0 (X11; Linux x86_64; rv:14.0) Gecko/20100101 Firefox/14.0 Iceweasel/14.0
+[ 2019-04-22 21:29:51 ] favicon.ico --> File Created !!!
+[ 2019-04-22 21:29:51 ] set_files_count_xml() function
+[ 2019-04-22 21:29:51 ] increment +1
+[ 2019-04-22 21:29:51 ] key = 'img' |  value = '2'
+[ 2019-04-22 21:29:51 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:51 ] local_file_path_rel = favicon.ico (Exist = Yes)
+[ 2019-04-22 21:29:51 ] index.html : REPLACE './favicon.ico' WITH 'favicon.ico'
+[ 2019-04-22 21:29:51 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:51 ] folder_path = 
+[ 2019-04-22 21:29:51 ] Page updated = index.html
+[ 2019-04-22 21:29:51 ] index.html ( Front page ) : update index.html
+[ 2019-04-22 21:29:51 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:51 ] /*******		End : Extract img files		**********/
+[ 2019-04-22 21:29:51 ] 
+[ 2019-04-22 21:29:51 ] 
+[ 2019-04-22 21:29:51 ] 
+[ 2019-04-22 21:29:51 ] /**************************************************************/
+[ 2019-04-22 21:29:51 ] /*******		Extract 'background_images' files		**********/
+[ 2019-04-22 21:29:51 ] /*******		From    'index.html'      **********/
+[ 2019-04-22 21:29:51 ] /**************************************************************/
+[ 2019-04-22 21:29:51 ] We still update 'index.html'
+[ 2019-04-22 21:29:51 ] count of background images 2
+[ 2019-04-22 21:29:51 ] /*******		End : Extract background_images files		**********/
+[ 2019-04-22 21:29:51 ] 
+[ 2019-04-22 21:29:51 ] 
+[ 2019-04-22 21:29:51 ] 
+[ 2019-04-22 21:29:51 ] /**************************************************************/
+[ 2019-04-22 21:29:51 ] /*******		Extract 'background_images_in_html' files		**********/
+[ 2019-04-22 21:29:51 ] /*******		From    'index.html'      **********/
+[ 2019-04-22 21:29:51 ] /**************************************************************/
+[ 2019-04-22 21:29:51 ] We still update 'index.html'
+[ 2019-04-22 21:29:51 ] /*******		End : Extract background_images_in_html files		**********/
+[ 2019-04-22 21:29:51 ] 
+[ 2019-04-22 21:29:51 ] 
+[ 2019-04-22 21:29:51 ] 
+[ 2019-04-22 21:29:51 ] /**************************************************************/
+[ 2019-04-22 21:29:51 ] /*******		Extract 'script' files		**********/
+[ 2019-04-22 21:29:51 ] /*******		From    'index.html'      **********/
+[ 2019-04-22 21:29:51 ] /**************************************************************/
+[ 2019-04-22 21:29:51 ] We still update 'index.html'
+[ 2019-04-22 21:29:51 ] file url = http://miew.opensource.epam.com/manifest.c2e56b1c8dcbcc37502b.js
+[ 2019-04-22 21:29:51 ] ---------------------------------------
+[ 2019-04-22 21:29:51 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:51 ] ---------------------------------------
+[ 2019-04-22 21:29:51 ] TEST 1
+[ 2019-04-22 21:29:51 ] URL = http://miew.opensource.epam.com/manifest.c2e56b1c8dcbcc37502b.js
+[ 2019-04-22 21:29:51 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:51 ] useragent = Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; da-dk) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1
+[ 2019-04-22 21:29:51 ] manifest.c2e56b1c8dcbcc37502b.js --> File Created !!!
+[ 2019-04-22 21:29:51 ] set_files_count_xml() function
+[ 2019-04-22 21:29:51 ] increment +1
+[ 2019-04-22 21:29:51 ] key = 'js' |  value = '1'
+[ 2019-04-22 21:29:51 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:51 ] local_file_path_rel = manifest.c2e56b1c8dcbcc37502b.js (Exist = Yes)
+[ 2019-04-22 21:29:51 ] index.html : REPLACE './manifest.c2e56b1c8dcbcc37502b.js' WITH 'manifest.c2e56b1c8dcbcc37502b.js'
+[ 2019-04-22 21:29:51 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:51 ] folder_path = 
+[ 2019-04-22 21:29:51 ] Page updated = index.html
+[ 2019-04-22 21:29:51 ] index.html ( Front page ) : update index.html
+[ 2019-04-22 21:29:51 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:51 ] file url = http://miew.opensource.epam.com/vendor.9c579662818bc7433597.js
+[ 2019-04-22 21:29:51 ] ---------------------------------------
+[ 2019-04-22 21:29:51 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:51 ] ---------------------------------------
+[ 2019-04-22 21:29:51 ] TEST 1
+[ 2019-04-22 21:29:51 ] URL = http://miew.opensource.epam.com/vendor.9c579662818bc7433597.js
+[ 2019-04-22 21:29:51 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:51 ] useragent = Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20130401 Firefox/31.0
+[ 2019-04-22 21:29:51 ] vendor.9c579662818bc7433597.js --> File Created !!!
+[ 2019-04-22 21:29:51 ] set_files_count_xml() function
+[ 2019-04-22 21:29:51 ] increment +1
+[ 2019-04-22 21:29:51 ] key = 'js' |  value = '2'
+[ 2019-04-22 21:29:51 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:51 ] local_file_path_rel = vendor.9c579662818bc7433597.js (Exist = Yes)
+[ 2019-04-22 21:29:51 ] index.html : REPLACE './vendor.9c579662818bc7433597.js' WITH 'vendor.9c579662818bc7433597.js'
+[ 2019-04-22 21:29:51 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:51 ] folder_path = 
+[ 2019-04-22 21:29:51 ] Page updated = index.html
+[ 2019-04-22 21:29:51 ] index.html ( Front page ) : update index.html
+[ 2019-04-22 21:29:51 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:51 ] file url = http://miew.opensource.epam.com/demo.4c412ae8f933cba41672.js
+[ 2019-04-22 21:29:51 ] ---------------------------------------
+[ 2019-04-22 21:29:51 ] get_curl_live() function : Start
+[ 2019-04-22 21:29:51 ] ---------------------------------------
+[ 2019-04-22 21:29:51 ] TEST 1
+[ 2019-04-22 21:29:51 ] URL = http://miew.opensource.epam.com/demo.4c412ae8f933cba41672.js
+[ 2019-04-22 21:29:51 ] no proxy used ( Test nbr 1/6 )
+[ 2019-04-22 21:29:53 ] useragent = Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36
+[ 2019-04-22 21:29:53 ] demo.4c412ae8f933cba41672.js --> File Created !!!
+[ 2019-04-22 21:29:53 ] set_files_count_xml() function
+[ 2019-04-22 21:29:53 ] increment +1
+[ 2019-04-22 21:29:53 ] key = 'js' |  value = '3'
+[ 2019-04-22 21:29:53 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:53 ] local_file_path_rel = demo.4c412ae8f933cba41672.js (Exist = Yes)
+[ 2019-04-22 21:29:53 ] index.html : REPLACE './demo.4c412ae8f933cba41672.js' WITH 'demo.4c412ae8f933cba41672.js'
+[ 2019-04-22 21:29:53 ] update_html_file_path = index.html
+[ 2019-04-22 21:29:53 ] folder_path = 
+[ 2019-04-22 21:29:53 ] Page updated = index.html
+[ 2019-04-22 21:29:53 ] index.html ( Front page ) : update index.html
+[ 2019-04-22 21:29:53 ] -------------------------------------------------------------------------------------------
+[ 2019-04-22 21:29:53 ] /*******		End : Extract script files		**********/
+[ 2019-04-22 21:29:53 ] 
+[ 2019-04-22 21:29:53 ] 
+[ 2019-04-22 21:29:53 ] 
+[ 2019-04-22 21:29:53 ] /**************************************************************/
+[ 2019-04-22 21:29:53 ] /*******		Extract 'swf' files		**********/
+[ 2019-04-22 21:29:53 ] /*******		From    'index.html'      **********/
+[ 2019-04-22 21:29:53 ] /**************************************************************/
+[ 2019-04-22 21:29:53 ] We still update 'index.html'
+[ 2019-04-22 21:29:53 ] /*******		End : Extract swf files		**********/
+[ 2019-04-22 21:29:53 ] 
+[ 2019-04-22 21:29:53 ] index.html --> HTML File Created !!!
+[ 2019-04-22 21:29:53 ] ----------------------------------------------------------------------
+[ 2019-04-22 21:29:53 ] update  to_create_arr[0][is_done] = 1
+[ 2019-04-22 21:29:53 ] set_files_count_xml() function
+[ 2019-04-22 21:29:53 ] key = 'html_total' |  value = '1'
+[ 2019-04-22 21:29:53 ] key = 'html_done' |  value = '1'
+[ 2019-04-22 21:29:53 ] key = 'total_size' |  value = '2452'
+[ 2019-04-22 21:29:53 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:53 ] ( 1 / 1 )  Done - 0 error pages fixed
+[ 2019-04-22 21:29:53 ] create_zip_file_and_send_email() function
+[ 2019-04-22 21:29:53 ] set_files_count_xml() function
+[ 2019-04-22 21:29:53 ] key = 'html_total' |  value = '1'
+[ 2019-04-22 21:29:53 ] key = 'html_done' |  value = '1'
+[ 2019-04-22 21:29:53 ] key = 'total_size' |  value = '2452'
+[ 2019-04-22 21:29:53 ] ----------------------------------------------------------
+[ 2019-04-22 21:29:53 ] ( 1 / 1 )  Done - 0 error pages fixed
+[ 2019-04-22 21:29:53 ] Total Size : 2452
+[ 2019-04-22 21:29:54 ] files/demo/miew.opensource.epam.com_mmashiku1_student.gsu.edu_jtt06hb7jay_backup.zip ZIP Created !!!
+[ 2019-04-22 21:29:54 ] Error occured when sending email !!!
+[ 2019-04-22 21:29:54 ] Final demo email sent!
+[ 2019-04-22 21:29:54 ] Loading Time = 00:00:09
