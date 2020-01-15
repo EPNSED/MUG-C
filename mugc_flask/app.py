@@ -17,7 +17,7 @@ import io
 # import subprocess
 # from subprocess import Popen, PIPE
 from core.forms.user import LoginForm, RegisterForm
-from tables import Results
+import config as cfg
 
 app = Flask(__name__)
 app.config.from_object("config")
@@ -27,7 +27,7 @@ bcrypt = Bcrypt(app)
 
 s3 = boto3.resource('s3')
 dynamodb = boto3.resource('dynamodb')
-Table = dynamodb.Table('users_test')
+Table = dynamodb.Table('users-profiles')
 
 
 @app.after_request
@@ -81,7 +81,7 @@ class User(UserMixin):
         return user
 
 
-# Intial Get pdb file from API if pdbid and no file then get the file with request(http) 
+# Intial Get pdb file from API if pdbid and no file then get the file with request(http)
 # else upload file from user input
 # If pdbID then create a txt file with the url to the file and attach meta data to it
 def getPDB(pID, pFile):
@@ -282,7 +282,7 @@ def inputData():
             # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
             pdbData = getPDB(pdbID, '')
             s3key = getS3Key(pdbID, '')
-            s3.Bucket('mugctest').put_object(Key=s3key, Body=pdbData, Metadata={
+            s3.Bucket(cfg.dev_info['S3_BUCKET']).put_object(Key=s3key, Body=pdbData, Metadata={
                 'sessionID': str(sessionID),
                 's3key': str(s3key),
                 'pdbID': str(pdbID),
@@ -295,7 +295,7 @@ def inputData():
             # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
             pdbFile = request.files['pdbFile']
             s3key = getS3Key(pdbID, pdbFile.filename)
-            s3.Bucket('mugctest').put_object(Key=s3key, Body=pdbFile, Metadata={
+            s3.Bucket(cfg.dev_info['S3_BUCKET']).put_object(Key=s3key, Body=pdbFile, Metadata={
                 'sessionID': str(sessionID),
                 's3key': str(s3key),
                 'pdbID': str(pdbFile.filename),
@@ -312,4 +312,3 @@ def inputData():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    #app.run(debug=True)
