@@ -194,6 +194,13 @@ def register():
 
 
 @app.route('/', methods=['GET', 'POST'])
+def calciomics():
+    return render_template('calciomics.html')
+
+@app.route('/resources', methods=['GET', 'POST'])
+def resources():
+    return render_template('resources.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
