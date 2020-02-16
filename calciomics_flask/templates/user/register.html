@@ -37,7 +37,7 @@
                         <input type="email" value="" placeholder="Email" id="email" name="email"/>
                         <input type="password" value="" placeholder="Password" id="password" name="password"/>
                 
-                        <button class="btn btn-success" type="submit">Register!</button>
+                        <button class="btn btn-success" type="submit" onclick="show_alert();">Register!</button>
                         <br><br>
                         <p>Already have an account? <a href="/login">Sign in</a>.</p>
                     </div>
@@ -52,4 +52,9 @@
                 </div>
         </div>
 </body>
+<script>
+        function show_alert() {
+                alert("Please Confirm your Email address before login");
+        }
+</script>
 </html>
