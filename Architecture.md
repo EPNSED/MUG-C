@@ -61,8 +61,9 @@ Create a s3 bucket timer for resources to delete after a week or month.
 javac -cp /home/Mashiku/Documents/Dev/MUG-C/ src/MUGC.java
 
 ## Deploy dev enviroment:
+Install prerequisite. yum install git gcc gcc-c++
 
-1. Git clone the repository
+1. Git clone the repository (git clone 
 
 2. cd into mugc_flask
 
