@@ -63,7 +63,7 @@ javac -cp /home/Mashiku/Documents/Dev/MUG-C/ src/MUGC.java
 ## Deploy dev enviroment:
 Install prerequisite. yum install git gcc gcc-c++
 
-1. Git clone the repository (git clone 
+1. Git clone the repository (git clone git@github.com:EPNSED/MUG-C.git -b flask-dev)
 
 2. cd into mugc_flask
 
