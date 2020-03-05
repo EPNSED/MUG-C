@@ -1,3 +1,5 @@
+language: python
+# command to install dependencies
 git:
   # blocklist
   branches:
@@ -14,8 +16,7 @@ git:
       only:
         - flask-dev
         - master
-language: python
-# command to install dependencies
+
 install:
   - pip install -r calciomics_flask/requirements.txt
 # command to run tests
