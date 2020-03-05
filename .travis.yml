@@ -1,3 +1,13 @@
+# blocklist
+branches:
+  except:
+  - dev-mugpy
+  - docker-mugc
+
+# safelist
+branches:
+  only:
+  - flask-dev
 language: python
 # command to install dependencies
 install:
