@@ -4,4 +4,6 @@ install:
   - pip install -r calciomics_flask/requirements.txt
 # command to run tests
 script:
+  python3 -m venv venv
+  
  
