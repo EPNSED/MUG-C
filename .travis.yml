@@ -1,7 +1,22 @@
+# blocklist
+branches:
+  except:
+  - dev-mugpy
+  - docker-mugc
+  - master
+  - dependabot/pip/urllib3-1.25.7
+  - dependabot/pip/werkzeug-0.16.0
+  - dependabot/pip/pyyaml-5.3
+  - MugPy
+
+# safelist
+branches:-
+  only:
+  - flask-dev
 language: python
 # command to install dependencies
 install:
-  - pip install -r requirements.txt
+  - pip install -r calciomics_flask/requirements.txt
 # command to run tests
 script:
-  - 
+ 
