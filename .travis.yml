@@ -3,7 +3,6 @@ branches:
   except:
   - dev-mugpy
   - docker-mugc
-  - master
   - dependabot/pip/urllib3-1.25.7
   - dependabot/pip/werkzeug-0.16.0
   - dependabot/pip/pyyaml-5.3
@@ -13,6 +12,7 @@ branches:
 branches:-
   only:
   - flask-dev
+  - master
 language: python
 # command to install dependencies
 install:
