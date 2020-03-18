@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Register</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <style type="text/css">
+                .textleft {
+                        text-align: left;
+                }
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    padding: 5px;
+                    text-align: left;    
+                }
+        </style>
+</head>
+<body>
+        <div class = 'container'>
+                <div class="jumbotron"> 
+                        <h1 >
+                                MUGC: calcium binding sites prediction platform
+                        </h1> 
+                        <hr>
+                        <h3 class = 'textleft'> 
+                                Developed by <a href = 'https://www.linkedin.com/in/kun-zhao-51720b22/'>Kun Zhao</a> and <a href="https://chemistry.gsu.edu/profile/jyang/">Jenny J. Yang</a>
+                        </h3>
+                </div>
+                <form class="form" role="form" method="POST" action="{{ url_for('register') }}">
+
+                
+                
+                    <div class="col-lg-4 col-sm-4">
+                
+                        <input type="email" value="" placeholder="Email" id="email" name="email"/>
+                        <input type="password" value="" placeholder="Password" id="password" name="password"/>
+                
+                        <button class="btn btn-success" type="submit" onclick="show_alert();">Register!</button>
+                        <br><br>
+                        <p>Already have an account? <a href="/login">Sign in</a>.</p>
+                    </div>
+                
+                  </form>
+
+                <div style="margin-top: 20px"> 
+                        <h5> About MUGC: </h5> 
+                        <p>Identifying Ca(2+) -binding sites in proteins is the first step toward understanding the molecular basis of diseases related to Ca(2+) -binding proteins. Currently, these sites are identified in structures either through X-ray crystallography or NMR analysis. However, Ca(2+) -binding sites are not always visible in X-ray structures due to flexibility in the binding region or low occupancy in a Ca(2+) -binding site. Similarly, both Ca(2+) and its ligand oxygens are not directly observed in NMR structures. To improve our ability to predict Ca(2+) -binding sites in both X-ray and NMR structures, we report a new graph theory algorithm (MUG(C) ) to predict Ca(2+) -binding sites. Using carbon atoms covalently bonded to the chelating oxygen atoms, and without explicit reference to side-chain oxygen ligand co-ordinates, MUG(C) is able to achieve 94% sensitivity with 76% selectivity on a dataset of X-ray structures composed of 43 Ca(2+) -binding proteins. Additionally, prediction of Ca(2+) -binding sites in NMR structures was obtained by MUG(C) using a different set of parameters, which were determined by the analysis of both Ca(2+) -constrained and unconstrained Ca(2+) -loaded structures derived from NMR data. MUG(C) identified 20 of 21 Ca(2+) -binding sites in NMR structures inferred without the use of Ca(2+) constraints. MUG(C) predictions are also highly selective for Ca(2+) -binding sites as analyses of binding sites for Mg(2+) , Zn(2+) , and Pb(2+) were not identified as Ca(2+) -binding sites. These results indicate that the geometric arrangement of the second-shell carbon cluster is sufficient not only for accurate identification of Ca(2+) -binding sites in NMR and X-ray structures but also for selective differentiation between Ca(2+) and other relevant divalent cations.</p>
+                        <h5>Please cite: </h5>
+                        <a href="https://www.ncbi.nlm.nih.gov/pubmed/22821762"> Zhao K et al, Predicting Ca2+ -binding sites using refined carbon clusters. Proteins. 2012 Dec;80(12):2666-79.</a>
+                </div>
+        </div>
+</body>
+<script>
+        function show_alert() {
+                alert("Please Confirm your Email address before login");
+        }
+</script>
+</html>
