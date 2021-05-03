@@ -1,10 +1,10 @@
 {
-    "dev": {
+    "prod": {
         "app_function": "app.app",
         "aws_region": "us-east-1",
         "profile_name": "default",
-        "project_name": "calciomics-flas",
+        "project_name": "mugpy-zappa",
         "runtime": "python3.6",
-        "s3_bucket": "mug-deploy"
+        "s3_bucket": "mugpy-data-staging"
     }
 }

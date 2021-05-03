@@ -13,15 +13,15 @@
         <div class = 'container'>
                 <div class="jumbotron"> 
                         <h1 >
-                                MUGC: calcium binding sites prediction platform
+                                Multiple Geometries Carbon Oxygen Algorithm Python (MUGCOPy): calcium binding sites prediction platform
                         </h1> 
                         <hr>
                         <h3 class = 'textleft'> 
-                                Developed by <a href = 'https://www.linkedin.com/in/kun-zhao-51720b22/'>Kun Zhao</a> and <a href="https://chemistry.gsu.edu/profile/jyang/">Jenny J. Yang</a>
+                                Algorithm Developed by <a href = 'https://www.linkedin.com/in/kun-zhao-51720b22/'>Kun Zhao</a> and <a href="https://chemistry.gsu.edu/profile/jyang/">Jenny J. Yang</a>
                         </h3>
                 </div>
                 <div class="alert alert-primary" role="alert">
-                  Here: display input instructions, parameters, and restrictions, to user
+                Instructions: Input PDB ID or upload PDB file from local filesystem and enter email address to sumbit computation job. Computational bounds are defined for any PDB file without existing metal ions present in the PDB file, resulting in an incomputable PDBfile and no job completion (MUG(C) Results) conformation.
                 </div>
                 <div class = 'well'> 
                         <div class="row">
@@ -40,17 +40,22 @@
                                                         <input class="btn btn-primary" type="submit" value="Submit">
                                                 </form>
                                         </div>
-                                
+                                </div>
                         </div>
                         <div class = 'col-6'>
                                         <img src="{{url_for('static', filename='mugc.jpg')}}" alt="MUGC" class="img-thumbnail">
                                 </div>
                 </div>
+                <div class="alert alert-primary" role="alert">
+                        <a href="https://calciomics.org/display">Display</a>
+                        <a href="https://calciomics.org">Home</a>
+                        </div>
                 <div style="margin-top: 20px"> 
                         <h5> About MUGC: </h5> 
                         <p>Identifying Ca(2+) -binding sites in proteins is the first step toward understanding the molecular basis of diseases related to Ca(2+) -binding proteins. Currently, these sites are identified in structures either through X-ray crystallography or NMR analysis. However, Ca(2+) -binding sites are not always visible in X-ray structures due to flexibility in the binding region or low occupancy in a Ca(2+) -binding site. Similarly, both Ca(2+) and its ligand oxygens are not directly observed in NMR structures. To improve our ability to predict Ca(2+) -binding sites in both X-ray and NMR structures, we report a new graph theory algorithm (MUG(C) ) to predict Ca(2+) -binding sites. Using carbon atoms covalently bonded to the chelating oxygen atoms, and without explicit reference to side-chain oxygen ligand co-ordinates, MUG(C) is able to achieve 94% sensitivity with 76% selectivity on a dataset of X-ray structures composed of 43 Ca(2+) -binding proteins. Additionally, prediction of Ca(2+) -binding sites in NMR structures was obtained by MUG(C) using a different set of parameters, which were determined by the analysis of both Ca(2+) -constrained and unconstrained Ca(2+) -loaded structures derived from NMR data. MUG(C) identified 20 of 21 Ca(2+) -binding sites in NMR structures inferred without the use of Ca(2+) constraints. MUG(C) predictions are also highly selective for Ca(2+) -binding sites as analyses of binding sites for Mg(2+) , Zn(2+) , and Pb(2+) were not identified as Ca(2+) -binding sites. These results indicate that the geometric arrangement of the second-shell carbon cluster is sufficient not only for accurate identification of Ca(2+) -binding sites in NMR and X-ray structures but also for selective differentiation between Ca(2+) and other relevant divalent cations.</p>
                         <h5>Please cite: </h5>
                         <a href="https://www.ncbi.nlm.nih.gov/pubmed/22821762"> Zhao K et al, Predicting Ca2+ -binding sites using refined carbon clusters. Proteins. 2012 Dec;80(12):2666-79.</a>
+                </div>
         </div>
 </body>
 </html>

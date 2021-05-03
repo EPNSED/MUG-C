@@ -1,519 +1,134 @@
-<html xmlns:v="urn:schemas-microsoft-com:vml"
-xmlns:o="urn:schemas-microsoft-com:office:office"
-xmlns:w="urn:schemas-microsoft-com:office:word"
-xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
-xmlns="http://www.w3.org/TR/REC-html40">
-
-<head>
-<meta http-equiv=Content-Type content="text/html; charset=utf-8">
-<meta name=ProgId content=Word.Document>
-<meta name=Generator content="Microsoft Word 15">
-<meta name=Originator content="Microsoft Word 15">
-<link rel=File-List href="calciomics/filelist.xml">
-<link rel=Edit-Time-Data href="calciomics/editdata.mso">
-
-<link rel=themeData href="calciomics/themedata.thmx">
-<link rel=colorSchemeMapping href="calciomics/colorschememapping.xml">
-
-<style>
+<!DOCTYPE HTML>
 <!--
- /* Font Definitions */
- @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;
-	mso-font-charset:0;
-	mso-generic-font-family:roman;
-	mso-font-pitch:variable;
-	mso-font-signature:-536870145 1107305727 0 0 415 0;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;
-	mso-font-charset:0;
-	mso-generic-font-family:swiss;
-	mso-font-pitch:variable;
-	mso-font-signature:-536858881 -1073732485 9 0 511 0;}
-@font-face
-	{font-family:"Segoe UI";
-	panose-1:2 11 6 4 2 2 2 2 2 4;
-	mso-font-alt:Sylfaen;
-	mso-font-charset:0;
-	mso-generic-font-family:swiss;
-	mso-font-pitch:variable;
-	mso-font-signature:-469750017 -1073683329 9 0 511 0;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{mso-style-unhide:no;
-	mso-style-qformat:yes;
-	mso-style-parent:"";
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:8.0pt;
-	margin-left:0in;
-	line-height:107%;
-	mso-pagination:widow-orphan;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-fareast-font-family:Calibri;
-	mso-fareast-theme-font:minor-latin;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;}
-p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
-	{mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-style-link:"Comment Text Char";
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:8.0pt;
-	margin-left:0in;
-	mso-pagination:widow-orphan;
-	font-size:10.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-fareast-font-family:Calibri;
-	mso-fareast-theme-font:minor-latin;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;}
-span.MsoCommentReference
-	{mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-ansi-font-size:8.0pt;
-	mso-bidi-font-size:8.0pt;}
-a:link, span.MsoHyperlink
-	{mso-style-priority:99;
-	color:blue;
-	text-decoration:underline;
-	text-underline:single;}
-a:visited, span.MsoHyperlinkFollowed
-	{mso-style-noshow:yes;
-	mso-style-priority:99;
-	color:#954F72;
-	mso-themecolor:followedhyperlink;
-	text-decoration:underline;
-	text-underline:single;}
-p
-	{mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-margin-top-alt:auto;
-	margin-right:0in;
-	mso-margin-bottom-alt:auto;
-	margin-left:0in;
-	mso-pagination:widow-orphan;
-	font-size:12.0pt;
-	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:"Times New Roman";}
-p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
-	{mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-style-parent:"Comment Text";
-	mso-style-link:"Comment Subject Char";
-	mso-style-next:"Comment Text";
-	margin-top:0in;
-	margin-right:0in;
-	margin-bottom:8.0pt;
-	margin-left:0in;
-	mso-pagination:widow-orphan;
-	font-size:10.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-fareast-font-family:Calibri;
-	mso-fareast-theme-font:minor-latin;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;
-	font-weight:bold;}
-p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
-	{mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-style-link:"Balloon Text Char";
-	margin:0in;
-	margin-bottom:.0001pt;
-	mso-pagination:widow-orphan;
-	font-size:9.0pt;
-	font-family:"Segoe UI",sans-serif;
-	mso-fareast-font-family:Calibri;
-	mso-fareast-theme-font:minor-latin;}
-span.CommentTextChar
-	{mso-style-name:"Comment Text Char";
-	mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-style-unhide:no;
-	mso-style-locked:yes;
-	mso-style-link:"Comment Text";
-	mso-ansi-font-size:10.0pt;
-	mso-bidi-font-size:10.0pt;}
-span.CommentSubjectChar
-	{mso-style-name:"Comment Subject Char";
-	mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-style-unhide:no;
-	mso-style-locked:yes;
-	mso-style-parent:"Comment Text Char";
-	mso-style-link:"Comment Subject";
-	mso-ansi-font-size:10.0pt;
-	mso-bidi-font-size:10.0pt;
-	font-weight:bold;}
-span.BalloonTextChar
-	{mso-style-name:"Balloon Text Char";
-	mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-style-unhide:no;
-	mso-style-locked:yes;
-	mso-style-link:"Balloon Text";
-	mso-ansi-font-size:9.0pt;
-	mso-bidi-font-size:9.0pt;
-	font-family:"Segoe UI",sans-serif;
-	mso-ascii-font-family:"Segoe UI";
-	mso-hansi-font-family:"Segoe UI";
-	mso-bidi-font-family:"Segoe UI";}
-span.spelle
-	{mso-style-name:spelle;
-	mso-style-unhide:no;}
-span.SpellE
-	{mso-style-name:"";
-	mso-spl-e:yes;}
-span.GramE
-	{mso-style-name:"";
-	mso-gram-e:yes;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	mso-default-props:yes;
-	font-size:11.0pt;
-	mso-ansi-font-size:11.0pt;
-	mso-bidi-font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-fareast-font-family:Calibri;
-	mso-fareast-theme-font:minor-latin;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;}
-.MsoPapDefault
-	{mso-style-type:export-only;
-	margin-bottom:8.0pt;
-	line-height:107%;}
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;
-	mso-header-margin:.5in;
-	mso-footer-margin:.5in;
-	mso-paper-source:0;}
-div.WordSection1
-	{page:WordSection1;}
+	Spectral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-</style>
-<!--[if gte mso 10]>
-<style>
- /* Style Definitions */
- table.MsoNormalTable
-	{mso-style-name:"Table Normal";
-	mso-tstyle-rowband-size:0;
-	mso-tstyle-colband-size:0;
-	mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-style-parent:"";
-	mso-padding-alt:0in 5.4pt 0in 5.4pt;
-	mso-para-margin-top:0in;
-	mso-para-margin-right:0in;
-	mso-para-margin-bottom:8.0pt;
-	mso-para-margin-left:0in;
-	line-height:107%;
-	mso-pagination:widow-orphan;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;}
-table.MsoTableGrid
-	{mso-style-name:"Table Grid";
-	mso-tstyle-rowband-size:0;
-	mso-tstyle-colband-size:0;
-	mso-style-priority:39;
-	mso-style-unhide:no;
-	border:solid windowtext 1.0pt;
-	mso-border-alt:solid windowtext .5pt;
-	mso-padding-alt:0in 5.4pt 0in 5.4pt;
-	mso-border-insideh:.5pt solid windowtext;
-	mso-border-insidev:.5pt solid windowtext;
-	mso-para-margin:0in;
-	mso-para-margin-bottom:.0001pt;
-	mso-pagination:widow-orphan;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;}
-</style>
-<![endif]--><!--[if gte mso 9]><xml>
- <o:shapedefaults v:ext="edit" spidmax="1026"/>
-</xml><![endif]--><!--[if gte mso 9]><xml>
- <o:shapelayout v:ext="edit">
-  <o:idmap v:ext="edit" data="1"/>
- </o:shapelayout></xml><![endif]-->
-</head>
+<html>
+	<head>
+		<title>Calciomics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/calciomics/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/calciomics/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="landing is-preload">
 
-<body lang=EN-US link=blue vlink="#954F72" style='tab-interval:.5in'>
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
 
-<div class=WordSection1>
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="https://calciomics.org">Calciomics</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="https://calciomics.org">Home</a></li>
+											<li><a href="https://calciomics.org/resources">Resources</a></li>
+											<li><a href="https://calciomics.org/register">Sign Up</a></li>
+											<li><a href="https://calciomics.org/login">Log In</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><!--[if gte vml 1]><v:shapetype
- id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
- path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
- <v:stroke joinstyle="miter"/>
- <v:formulas>
-  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
-  <v:f eqn="sum @0 1 0"/>
-  <v:f eqn="sum 0 0 @1"/>
-  <v:f eqn="prod @2 1 2"/>
-  <v:f eqn="prod @3 21600 pixelWidth"/>
-  <v:f eqn="prod @3 21600 pixelHeight"/>
-  <v:f eqn="sum @0 0 1"/>
-  <v:f eqn="prod @6 1 2"/>
-  <v:f eqn="prod @7 21600 pixelWidth"/>
-  <v:f eqn="sum @8 21600 0"/>
-  <v:f eqn="prod @7 21600 pixelHeight"/>
-  <v:f eqn="sum @10 21600 0"/>
- </v:formulas>
- <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
- <o:lock v:ext="edit" aspectratio="t"/>
-</v:shapetype><v:shape id="Picture_x0020_2" o:spid="_x0000_i1027" type="#_x0000_t75"
- style='width:332pt;height:62pt;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="https://mugc-image.s3.amazonaws.com/image001.png" o:title="" croptop="11334f"
-  cropbottom="20023f" cropleft="8092f" cropright="7710f"/>
-</v:shape><![endif]--><![if !vml]><img width=332 height=62
-src="https://mugc-image.s3.amazonaws.com/image002.png" v:shapes="Picture_x0020_2"><![endif]></span></p>
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<h2>Calciomics</h2>
+						</div>
+						<a href="#one" class="more scrolly">Learn More</a>
+					</section>
 
-<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-normal'><span class=SpellE><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-mso-fareast-font-family:"Times New Roman";color:black'>Calciomics</span></span><span
-style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
-"Times New Roman";color:black'>&nbsp;is an integrative study of Calcium-binding
-proteins and their interactomes in biological systems.</span><span
-style='mso-ascii-font-family:Calibri;mso-fareast-font-family:"Times New Roman";
-mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;color:black'>&nbsp;</span><span
-style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
-"Times New Roman";color:black'>The objective of this research is to develop
-bioinformatics methods to predict and identify different classes of calcium
-binding sites in proteins based on key factors that contribute to
-calcium-binding affinity and the selectivity of proteins and calcium-dependent
-conformational change.<o:p></o:p></span></p>
+				<!-- Main -->
+				<article id="main">
+					<section class="wrapper style5">
+						<div class="inner">
 
-<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-normal'><span style='mso-ascii-font-family:Calibri;mso-fareast-font-family:
-"Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:Calibri;
-color:black'><o:p>&nbsp;</o:p></span></p>
+							<p>The objective of this research is to develop
+								bioinformatics methods to predict and identify different classes of calcium
+								binding sites in proteins based on key factors that contribute to
+								calcium-binding affinity and the selectivity of proteins and calcium-dependent
+								conformational change.</p>
 
-<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt;
-font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
-color:black'>In collaboration with faculty in the Georgia State University
-Department of Mathematics and Statistics, algorithms for predicting calcium
-binding sites based on structural and genomic information have been established
-using geometric, graphing, and statistical algorithms along with a web server
-containing up-to-date sequence, structure and literature information about
-calcium and its binding proteins in chemical, biological, and
-biomineralization. The Calcium Bank also provides putative calcium binding
-sites predicted in different genomes.</span><span style='mso-ascii-font-family:
-Calibri;mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
-mso-bidi-font-family:Calibri;color:black'><o:p></o:p></span></p>
+							<p>In collaboration with faculty in the Georgia State University
+								Department of Mathematics and Statistics, algorithms for predicting calcium
+								binding sites based on structural and genomic information have been established
+								using geometric, graphing, and statistical algorithms along with a web server
+								containing up-to-date sequence, structure and literature information about
+								calcium and its binding proteins in chemical, biological, and
+								biomineralization. The Calcium Bank also provides putative calcium binding
+								sites predicted in different genomes.</p>
 
-<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+							<hr />
 
-<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
-line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-mso-fareast-font-family:"Times New Roman";color:black;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
- id="Picture_x0020_5" o:spid="_x0000_i1026" type="#_x0000_t75" style='width:66pt;
- height:28pt;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="https://mugc-image.s3.amazonaws.com/image003.png" o:title="" croptop="15117f"
-  cropbottom="23870f" cropleft="11838f" cropright="11793f"/>
-</v:shape><![endif]--><![if !vml]><img width=66 height=28
-src="https://mugc-image.s3.amazonaws.com/image004.png" v:shapes="Picture_x0020_5"><![endif]></span><span
-style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
-"Times New Roman";color:black'><o:p></o:p></span></p>
+							<h4>Calcium Pattern Search</h4>
+							<p><a href="https://shenghuixue.github.io/CAPS/index.html">CaPS(Calcium Pattern Search</a> provides a list of Ca(II)-binding A sequence patterns that indicate the presence of a Ca(II)-binding motif. To date, we have developed sequence patterns, or signatures, for canonical EF-hand, pseudo EF-hand, and baterial EF-hand. We expect to significantly expand this list in the future to indlude non-contiguous (binding motif includes A residues distant from each other in the primary structure) patterns. To check a sequence for the presence of a Ca(II)-binding signature click on the CaPS link and enter your sequence for analysis.</p>
 
-<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
-line-height:normal'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:
-normal'><u><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-mso-fareast-font-family:"Times New Roman"'><a
-href="https://shenghuixue.github.io/CAPS/index.html"><span
-class=SpellE>CaPS</span> (Calcium Pattern Search</a></span></u></i></b><span
-style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
-"Times New Roman";color:black'>&nbsp;provides a list of <span class=GramE>Ca(</span>II)-binding
-A sequence patterns that indicate the presence of a Ca(II)-binding motif. To
-date, we have developed sequence patterns, or signatures, for canonical
-EF-hand, pseudo EF-hand, and <span class=SpellE>baterial</span> EF-hand. We
-expect to significantly expand this list in the future to <span class=SpellE>indlude</span>
-non-contiguous (binding motif includes A residues distant from each other in
-the primary structure) patterns. To check a sequence for the presence of a <span
-class=GramE>Ca(</span>II)-binding signature click on the <span class=SpellE>CaPS</span>
-link and enter your sequence for analysis.<o:p></o:p></span></p>
+							<h4>MUG<sup>π</sup></h4>
+							<p><a href="https://calciomics.org/login">MUG<sup>π</sup></a> is a web-based algorithm for processing x-ray and NMR protein data using bio-python. MUGπ creates a protein topology network using bio-python and NetworkX. A NetworkX topology of oxygen and carbon maximum cliques is used to filter protein features for calcium-binding site identification.</p>
 
-<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
-line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-mso-fareast-font-family:"Times New Roman";color:black;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
- id="Picture_x0020_3" o:spid="_x0000_i1025" type="#_x0000_t75" style='width:80pt;
- height:29pt;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="https://mugc-image.s3.amazonaws.com/image005.png" o:title="" croptop="18689f"
-  cropbottom="17384f" cropleft="9055f" cropright="10047f"/>
-</v:shape><![endif]--><![if !vml]><img border=0 width=80 height=29
-src="https://mugc-image.s3.amazonaws.com/image006.png" v:shapes="Picture_x0020_3"><![endif]></span><span
-style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
-"Times New Roman";color:black'><o:p></o:p></span></p>
+							<p>This is the latest iteration of software developed in our labs to identify Ca2+-binding sites in protein structure files. The first iteration of the program, GG, was a graph-theoretic and geometric analysis program developed by Hai Deng, Guan Tao Chen, Wei Yang, and Jenny J Yang. The program was used for predicting Ca(II)-binding sites in protein based on the geometric information. GG was later extended in the MUG (Multiple Geometries) program, a prediction algorithm capable of identifying calcium-binding sites in proteins with atomic resolution. MUG worked by first identifying all possible oxygen clusters from maximal cliques, and then calculating a calcium center (CC) for each cluster corresponding to the potential Ca2+ position, located to maximally regularize the structure of the (cluster, CC) pair. The structure was then inspected by geometric filters. Any unqualified (cluster, CC) pairs were further handled by recursively removing oxygen atoms and relocating the CC until its structure was either qualified or contained fewer than four ligand atoms. Ligand coordination was then determined for qualified structures. Immediately following the release of MUG, MUGC was developed to recognize calcium-binding sites without explicit reference to side-chain oxygen ligand coordinates. By using second shell carbon atoms, main-chain oxygen atoms, center of mass of side-chain, and graph theory, it was able to predict calcium-binding sites exhibiting insignificant conformational change with high sensitivity and selectivity based on X-ray structures or NMR structures.</p>
 
-<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
-line-height:normal'><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:
-normal'><u><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-mso-fareast-font-family:"Times New Roman"'><a
-href="https://calciomics.org/login">MUG<sup>π</sup></a></span></u></i></b><span
-style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
-"Times New Roman"'> is a web-based algorithm for processing x-ray and NMR
-protein data using bio-python. MUG<sup>π</sup> creates a protein topology
-network using bio-python and <span class=SpellE>NetworkX</span>. A <span
-class=SpellE>NetworkX</span> topology of oxygen and carbon maximum cliques is
-used to filter protein features for calcium-binding site identification. <o:p></o:p></span></p>
+							<p>The new, advanced MUGπ extends the original algorithms efforts to identify oxygen clusters, combined with the identification of carbon clusters, into a single application. MUGπ was developed by M.G. Mashiku under the supervision of Dr. Suranga Pathirannehelage and Dr. Jenny J. Yang.</p>
 
-<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
-line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
-mso-fareast-font-family:"Times New Roman"'>This is the latest iteration of
-software developed in our labs to identify Ca<sup>2+</sup>-binding sites in
-protein structure files. The first iteration of the program, GG, wa<span
-style='color:black'>s a graph-theoretic and geometric analysis program
-developed by Hai Deng, Guan Tao Chen, Wei Yang, and Jenny J Yang. The program was
-used for predicting <span class=GramE>Ca(</span>II)-binding sites in protein
-based on the geometric information. GG was later extended in the MUG (Multiple
-Geometries) program, a prediction algorithm capable of identifying
-calcium-binding sites in proteins with atomic resolution. MUG worked by first
-identifying all possible oxygen clusters from maximal cliques, and then
-calculating a calcium center (CC) for each cluster corresponding to the
-potential Ca<sup>2+</sup>&nbsp;position, located to maximally regularize the
-structure of the (cluster, CC) pair. The structure was then inspected by
-geometric filters. Any unqualified (cluster, CC) pairs were further handled by
-recursively removing oxygen atoms and relocating the CC until its structure was
-either qualified or contained fewer than four ligand atoms. Ligand coordination
-was then determined for qualified structures. Immediately following the release
-of MUG, MUGC was developed to recognize calcium-binding sites without explicit
-reference to side-chain oxygen ligand coordinates. By using second shell carbon
-atoms, main-chain oxygen atoms, center of mass of side-chain, and graph theory,
-it was able to predict calcium-binding sites exhibiting insignificant
-conformational change with high sensitivity and selectivity based on X-ray
-structures or NMR structures.<o:p></o:p></span></span></p>
+							<h5>Related Resources</h5>
 
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Times New Roman",serif'>The new, advanced </span><span style='font-size:12.0pt;
-line-height:107%;font-family:"Times New Roman",serif;mso-fareast-font-family:
-"Times New Roman"'>MUG<sup>π</sup> extends the original algorithms efforts to
-identify oxygen clusters, combined with the identification of carbon clusters,
-into a single application. MUG<sup>π</sup> was developed by </span><span
-style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman",serif'>Melchizedek
-Mashiku under the supervision of Dr. <span class=SpellE>Suranga</span> <span
-class=SpellE>Pathirannehelage</span> and Dr. Jenny J. Yang.<o:p></o:p></span></p>
+							<p>Click <a href="https://calciomics.org/resources">here</a> to see a list of related resources, including databases and prediction algorithms.</p>
 
-<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
-style='font-size:16.0pt;line-height:107%;mso-bidi-font-family:Calibri;
-mso-bidi-theme-font:minor-latin'>Related Resources<o:p></o:p></span></b></p>
+							<h5>Acknowledgments, Publications</h5>
 
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Times New Roman",serif'>Click <b style='mso-bidi-font-weight:normal'><i
-style='mso-bidi-font-style:normal'><u><a href="https://calciomics.org/resources">here</a></u></i></b>
-to see a list of related resources, including databases and prediction
-algorithms. <o:p></o:p></span></p>
+							<p>We would like to acknowledge the efforts of the developers, graduate students and faculty who contributed to the development of these algorithms. The list of related publications is summarized below.</p>
 
-<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
-style='font-size:16.0pt;line-height:107%;mso-bidi-font-family:Calibri;
-mso-bidi-theme-font:minor-latin'>Acknowledgments, Publications<o:p></o:p></span></b></p>
+							<h6>Publications</h6>
 
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Times New Roman",serif'>We would like to acknowledge the efforts of the
-developers, graduate students and faculty who contributed to the development of
-these algorithms. The list of related publications is summarized below.<o:p></o:p></span></p>
+							<p><i>Yubin Zhou, Shenghui Xue, and Jenny J. Yang. Calciomics: integrative studies of Ca2+ binding proteins and their interactomes in biological systems. Metallomics, (2013) Jan;5(1):29-42. doi: 10.1039/c2mt20009k. PMID: 23235533</i></p>
+							<p><i>Kun Zhao, Xue Wang, Michael Kirberger, Hing Wong, Guantao Chen, and Jenny J. Yang, Predicting Calcium-binding Site Using Second Shell Carbon Atoms. Proteins (2012).</i></p>
+								
+							<p><i>Xue Wang, Michael Kirberger, Guantao Chen, and Jenny J. Yang, Towards Predicting Ca(2+)–binding Sites with Different Coordination Numbers in Proteins with Atomic Resolution. Proteins (2009).</i></p>
+							<p><i>Yubin Zhou, Wei Yang, Michael Kirberger, Hsiau-Wei Lee, Gayatri Ayalasomayajula, and Jenny J. Yang. Prediction of EF-hand Calcium Binding Proteins and Analysis of Bacterial EF-hand Proteins. Proteins (2006).</i></p>
+								
+							<p><i>Hai Deng, Guantao Chen, Wei Yang, Jenny J. Yang. Predicting calcium-binding sites in proteins - a graph theory and geometry approach. Proteins (2006).</i></p>
+								
+							<p><i>Wei Yang, Hsiau-wei Lee, Homme Hellinga and Jenny J. Yang. Identification and Design of Metal-Binding Proteins. Proteins (2002).</i></p>
+								
+							<p><i>Wei Yang, Hsiauwei Lee, Homme Hellinga , Michelle Pu and Jenny Jie Yang. Design Calcium Binding Sites by Computer Algorithm. Computational Studies, Nanotechnology , and Solution Thermodynamics of Polymer Systems . Kluwer Academic/Plenum Publishers (2000).</i></p>
+								
+							<p><i>Mashiku, M., & Edirisinghe, N. (2019, July). Serverless Science Gateway Development for Ca2+ binding site prediction on Amazon Web Services: Case Study. In Proceedings of the Practice and Experience in Advanced Research Computing on Rise of the Machines (learning) (p. 56). ACM.</i></p>
 
-<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:
-normal'><span style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman",serif'>Publications<o:p></o:p></span></i></b></p>
+						</div>
+					</section>
+				</article>
 
-<p class=MsoNormal><span class=SpellE><span style='font-size:12.0pt;line-height:
-107%;font-family:"Times New Roman",serif'>Yubin</span></span><span
-style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman",serif'>
-Zhou, <span class=SpellE>Shenghui</span> <span class=SpellE>Xue</span>, and
-Jenny J. Yang. <span class=SpellE>Calciomics</span>: integrative studies of Ca<sup>2+</sup>
-binding proteins and their interactomes in biological systems. <span
-class=SpellE><i style='mso-bidi-font-style:normal'>Metallomics</i></span>,
-(2013) Jan;5(1):29-42. <span class=SpellE>doi</span>: 10.1039/c2mt20009k. PMID:
-23235533<o:p></o:p></span></p>
+				<!-- Footer
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</footer> -->
 
-<p class=MsoNormal><span class=SpellE><span style='font-size:12.0pt;line-height:
-107%;font-family:"Times New Roman",serif'>Kun</span></span><span
-style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman",serif'>
-Zhao, <span class=SpellE>Xue</span> Wang, Michael <span class=SpellE>Kirberger</span>,
-Hing Wong, <span class=SpellE>Guantao</span> Chen, and Jenny J. Yang,
-Predicting Calcium-binding Site Using Second Shell Carbon Atoms. Proteins
-(2012).<o:p></o:p></span></p>
+			</div>
 
-<p class=MsoNormal><span class=SpellE><span style='font-size:12.0pt;line-height:
-107%;font-family:"Times New Roman",serif'>Xue</span></span><span
-style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman",serif'>
-Wang, Michael <span class=SpellE>Kirberger</span>, <span class=SpellE>Guantao</span>
-Chen, and Jenny J. Yang, Towards Predicting <span class=GramE>Ca(</span>2+)–binding
-Sites with Different Coordination Numbers in Proteins with Atomic Resolution.
-Proteins (2009).<o:p></o:p></span></p>
+		<!-- Scripts -->
+			<script src="static/calciomics/assets/js/jquery.min.js"></script>
+			<script src="static/calciomics/assets/js/jquery.scrollex.min.js"></script>
+			<script src="static/calciomics/assets/js/jquery.scrolly.min.js"></script>
+			<script src="static/calciomics/assets/js/browser.min.js"></script>
+			<script src="static/calciomics/assets/js/breakpoints.min.js"></script>
+			<script src="static/calciomics/assets/js/util.js"></script>
+			<script src="static/calciomics/assets/js/main.js"></script>
 
-<p class=MsoNormal><span class=SpellE><span style='font-size:12.0pt;line-height:
-107%;font-family:"Times New Roman",serif'>Yubin</span></span><span
-style='font-size:12.0pt;line-height:107%;font-family:"Times New Roman",serif'>
-Zhou, Wei Yang, Michael <span class=SpellE>Kirberger</span>, <span
-class=SpellE>Hsiau</span>-Wei Lee, Gayatri <span class=SpellE>Ayalasomayajula</span>,
-and Jenny J. Yang. Prediction of EF-hand Calcium Binding Proteins and Analysis
-of Bacterial EF-hand Proteins. Proteins (2006).<o:p></o:p></span></p>
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Times New Roman",serif'>Hai Deng, <span class=SpellE>Guantao</span> Chen, Wei
-Yang, Jenny J. Yang. Predicting calcium-binding sites in proteins - a graph
-theory and geometry approach. Proteins (2006).<o:p></o:p></span></p>
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Times New Roman",serif'>Wei Yang, <span class=SpellE>Hsiau-wei</span> Lee,
-Homme <span class=SpellE>Hellinga</span> and Jenny J. Yang. Identification and
-Design of Metal-Binding Proteins. Proteins (2002).<o:p></o:p></span></p>
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Times New Roman",serif'>Wei Yang, <span class=SpellE>Hsiauwei</span> Lee,
-Homme <span class=SpellE><span class=GramE>Hellinga</span></span><span
-class=GramE> ,</span> Michelle Pu and Jenny <span class=SpellE>Jie</span> Yang.
-Design Calcium Binding Sites by Computer Algorithm. Computational Studies, <span
-class=GramE>Nanotechnology ,</span> and Solution Thermodynamics of Polymer
-Systems . Kluwer Academic/Plenum Publishers (2000).<o:p></o:p></span></p>
-
-<p class=MsoNormal style='mso-line-height-alt:11.75pt'><span style='font-size:
-12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
-color:black'>Mashiku, M., &amp;&nbsp;<span class=SpellE>Edirisinghe</span>, N.
-(2019, July). Serverless Science Gateway Development for Ca2+ binding site
-prediction on Amazon Web Services: Case Study. In&nbsp;<i>Proceedings of the
-Practice and Experience in Advanced Research Computing on Rise of the Machines
-(learning)&nbsp;</i>(p. 56). ACM.</span><span style='mso-ascii-font-family:
-Calibri;mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
-mso-bidi-font-family:Calibri;color:black'><o:p></o:p></span></p>
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
-
-</div>
-
-</body>
-
+	</body>
 </html>

@@ -289,7 +289,7 @@ def inputData():
             # create the handler method for storing the pdb file in s3 and Add metadata to s3 object: pdbFile
             pdbData = getPDB(pdbID, '')
             s3key = getS3Key(pdbID, '')
-            s3.Bucket('mugctest').put_object(Key=s3key, Body=pdbData, Metadata={
+            s3.Bucket('mugpy-data-staging').put_object(Key=s3key, Body=pdbData, Metadata={
                 'sessionID': str(sessionID),
                 's3key': str(s3key),
                 'pdbID': str(pdbID),
@@ -318,5 +318,4 @@ def inputData():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
-    #app.run(debug=True)
+    app.run(debug=False)
