@@ -526,8 +526,12 @@ class MUG(object):
         allAtom = []
         allAtom = ParsePDB.getLines(filaddress, "ATOM", "Res", "allatom")
         pdb_site_list = allAtom + resultAtoms
-        FileOperation.saveResults(pdb_site_list, "/tmp/" + PDBID + "_site.pdb", "w")
-        locfileName = PDBID + "_site.pdb"
-        FileOperation.write2S3(locfileName, pdb_site_list, folder_path_arg, typefolder_arg, bucket, email_arg)
-        print("File: " + bucket + folder_path_arg + typefolder_arg + PDBID + "_site.pdb" + " just written")
-        print('Completed!')
+        try:
+            FileOperation.saveResults(pdb_site_list, "/tmp/" + PDBID + "_site.pdb", "w")
+            locfileName = PDBID + "_site.pdb"
+            FileOperation.write2S3(locfileName, pdb_site_list, folder_path_arg, typefolder_arg, bucket, email_arg)
+            print("File: " + bucket + folder_path_arg + typefolder_arg + PDBID + "_site.pdb" + " just written")
+            print('Completed!')
+            return False
+        except:
+            return True

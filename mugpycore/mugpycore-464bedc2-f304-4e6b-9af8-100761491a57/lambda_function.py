@@ -53,7 +53,9 @@ def lambda_handler(event, context):
                     bucketname = bucket
                     response = urllib.request.urlopen(mugin_url_arg)
                     file_content = str(response.read().decode('utf-8'))
-                    MUG.runPrediction(file_content, pdbID_noextention, sessionID_arg, 'predictionResults', bucketname, email_arg, metal = 'CA')
+                    has_Error_bool = MUG.runPrediction(file_content, pdbID_noextention, sessionID_arg, 'predictionResults', bucketname, email_arg, metal = 'CA')
+                    if has_Error_bool:
+                        send_errorhandling_incompatible_pdb(email_arg, email_arg)
                     #delete pdb.txt file
                     fileObj = s3.delete_object(Bucket=bucketname, Key=s3key_arg)
                 else:
@@ -64,6 +66,7 @@ def lambda_handler(event, context):
             print(e)
             print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
             raise e
+    
         
 #####///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -308,7 +311,88 @@ def shortenURL(url_arg):
     short_url_secure = r.split(":")[0]+"s:"+r.split(":")[1]
     print(short_url_secure)
     return(short_url_secure)
+
+
+#################################################################################################
+
+#################################################################################################
+
+def send_errorhandling_incompatible_pdb(sender_arg, recipient_arg):
+    # Replace sender@example.com with your "From" address.
+    # This address must be verified with Amazon SES.
+    SENDER = sender_arg
     
+    # Replace recipient@example.com with a "To" address. If your account 
+    # is still in the sandbox, this address must be verified.
+    RECIPIENT = recipient_arg
+    
+    # Specify a configuration set. If you do not want to use a configuration
+    # set, comment the following variable, and the 
+    # ConfigurationSetName=CONFIGURATION_SET argument below.
+    #CONFIGURATION_SET = "ConfigSet"
+    
+    # If necessary, replace us-west-2 with the AWS Region you're using for Amazon SES.
+    AWS_REGION = "us-east-1"
+    
+    # The subject line for the email.
+    SUBJECT = "MUGC: Incompatible PDB file"
+    
+    # The email body for recipients with non-HTML email clients.
+    BODY_TEXT = ("Email Notification"
+                )
+                
+    # The HTML body of the email.
+    BODY_HTML = """<html>
+    <head></head>
+    <body>
+      <h1>MUGC: Incompatible PDB file</h1>
+        <p> Your PDB file has been recieved, but was found incompatible with our algorithm. Please try another PDB file</p>
+    </body>
+    </html>
+                """            
+    
+    # The character encoding for the email.
+    CHARSET = "UTF-8"
+    
+    # Create a new SES resource and specify a region.
+    client = boto3.client('ses',region_name=AWS_REGION)
+    
+    # Try to send the email.
+    try:
+        #Provide the contents of the email.
+        response = client.send_email(
+            Destination={
+                'ToAddresses': [
+                    RECIPIENT,
+                ],
+            },
+            Message={
+                'Body': {
+                    'Html': {
+                        'Charset': CHARSET,
+                        'Data': BODY_HTML,
+                    },
+                    'Text': {
+                        'Charset': CHARSET,
+                        'Data': BODY_TEXT,
+                    },
+                },
+                'Subject': {
+                    'Charset': CHARSET,
+                    'Data': SUBJECT,
+                },
+            },
+            Source=SENDER,
+            # If you are not using a configuration set, comment or delete the
+            # following line
+            # ConfigurationSetName=CONFIGURATION_SET,
+        )
+    # Display an error if something goes wrong.	
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
+        print("Email sent! Message ID:"),
+        print(response['MessageId'])    
 #################################################################################################
 
 #################################################################################################
